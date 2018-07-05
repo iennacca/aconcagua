@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aconcagua.common", "aconcagua.common\aconcagua.common.csproj", "{E2A040D9-A16F-4A24-B4C0-0AAAA11175F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "aconcagua.data", "aconcagua.data\aconcagua.data.csproj", "{DE12C54C-C7E2-43C0-AF7E-389661D529C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aconcagua.tests", "aconcagua.tests\aconcagua.tests.csproj", "{7AB9C102-5A83-474E-AF26-E9D727C46679}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aconcagua.common", "aconcagua.common\aconcagua.common.csproj", "{28A7A29B-E8B7-40DE-827C-4134D0697CC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aconcagua.server", "aconcagua.server\aconcagua.server.csproj", "{3FCF7617-15E9-4460-B5F9-3AE205E91E4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aconcagua.client", "aconcagua.client\aconcagua.client.csproj", "{CEDCC7ED-9D15-4F6D-AA3D-1143BB825D0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +19,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E2A040D9-A16F-4A24-B4C0-0AAAA11175F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2A040D9-A16F-4A24-B4C0-0AAAA11175F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2A040D9-A16F-4A24-B4C0-0AAAA11175F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2A040D9-A16F-4A24-B4C0-0AAAA11175F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE12C54C-C7E2-43C0-AF7E-389661D529C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE12C54C-C7E2-43C0-AF7E-389661D529C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE12C54C-C7E2-43C0-AF7E-389661D529C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE12C54C-C7E2-43C0-AF7E-389661D529C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AB9C102-5A83-474E-AF26-E9D727C46679}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AB9C102-5A83-474E-AF26-E9D727C46679}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AB9C102-5A83-474E-AF26-E9D727C46679}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AB9C102-5A83-474E-AF26-E9D727C46679}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28A7A29B-E8B7-40DE-827C-4134D0697CC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28A7A29B-E8B7-40DE-827C-4134D0697CC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28A7A29B-E8B7-40DE-827C-4134D0697CC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28A7A29B-E8B7-40DE-827C-4134D0697CC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FCF7617-15E9-4460-B5F9-3AE205E91E4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FCF7617-15E9-4460-B5F9-3AE205E91E4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FCF7617-15E9-4460-B5F9-3AE205E91E4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FCF7617-15E9-4460-B5F9-3AE205E91E4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEDCC7ED-9D15-4F6D-AA3D-1143BB825D0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEDCC7ED-9D15-4F6D-AA3D-1143BB825D0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEDCC7ED-9D15-4F6D-AA3D-1143BB825D0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEDCC7ED-9D15-4F6D-AA3D-1143BB825D0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
