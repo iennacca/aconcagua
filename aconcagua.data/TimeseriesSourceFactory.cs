@@ -15,17 +15,18 @@ namespace aconcagua.data
             _sourceDictionary = new Dictionary<string, ITimeseriesSource>();
         }
 
+
+        // [jc] refactor the creation algorithm? DI factory for all ITimeseriesSource implementations?
+        // [jc] currently this factory should explicitly know all ITimeseriesSource implementations
         private static ITimeseriesSource CreateSource(string key)
         {
             var sourceKey = new TimeseriesSourceKey(key);
+            ITimeseriesSource source = null;
 
-            switch (sourceKey.Key.Scheme)
-            {
-                case "null":
-                    return new NullTimeseriesSource(sourceKey);
-                default:
-                    throw new UnknownTimeseriesSourceException();
-            }
+            if (NullTimeseriesSource.TryCreate(sourceKey, out source))
+                return source;
+
+            throw new UnknownTimeseriesSourceException();
         }
 
         #endregion

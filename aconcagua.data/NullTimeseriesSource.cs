@@ -1,23 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace aconcagua.data
 {
-    public class NullTimeseriesSource : ITimeseriesSource
+    internal class NullTimeseriesSource : ITimeseriesSource
     {
-        public NullTimeseriesSource(TimeseriesSourceKey sourceKey)
+        private readonly Dictionary<TimeseriesKey, NullTimeseries> _seriesList;
+
+        private NullTimeseriesSource(TimeseriesSourceKey sourceKey)
         {
             SourceKey = sourceKey;
+            _seriesList = new Dictionary<TimeseriesKey, NullTimeseries>();
         }
 
-        public string SchemeType => "null";
+        public const string SchemeType = "null";
         public bool AutoCreate { get; set; }
 
         public TimeseriesSourceKey SourceKey { get; }
 
-        public IEnumerable<ITimeseries> Get(IEnumerable<TimeseriesKey> seriesCodeKeys, IEnumerable<string> headerList)
+        public IEnumerable<ITimeseries> Get(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList)
         {
-            throw new NotImplementedException();
+            foreach (var seriesKey in seriesKeys)
+            {
+                _seriesList.Add(seriesKey, new NullTimeseries(SourceKey, seriesKey, headerList));
+            }
+
+            return _seriesList.Values;
+        }
+
+        public static bool TryCreate(TimeseriesSourceKey sourceKey, out ITimeseriesSource timeseriesSource)
+        {
+            timeseriesSource = null;
+            if (String.Equals(sourceKey.Key.Scheme,NullTimeseriesSource.SchemeType))
+                timeseriesSource = new NullTimeseriesSource(sourceKey);
+            return (timeseriesSource != null);
+        }
+    }
+
+    internal class NullTimeseries : ITimeseries
+    {
+        public TimeseriesSourceKey SourceKey { get; }
+        public TimeseriesKey SeriesKey { get; }
+        public IReadOnlyDictionary<string, string> HeaderData => _headerData;
+
+        private readonly Dictionary<string, string> _headerData;
+
+        public NullTimeseries(TimeseriesSourceKey sourceKey, TimeseriesKey seriesKey, IEnumerable<string> headerList)
+        {
+            SourceKey = sourceKey;
+            SeriesKey = seriesKey;
+            _headerData = new Dictionary<string, string>();
+            foreach (var header in headerList)
+                _headerData.Add(header, $"{SourceKey}|{SeriesKey}|{header}");
         }
     }
 }

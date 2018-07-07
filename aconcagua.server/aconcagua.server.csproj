@@ -62,9 +62,15 @@
       <Project>{28a7a29b-e8b7-40de-827c-4134d0697cc3}</Project>
       <Name>aconcagua.common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\aconcagua.data\aconcagua.data.csproj">
+      <Project>{de12c54c-c7e2-43c0-af7e-389661d529c1}</Project>
+      <Name>aconcagua.data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

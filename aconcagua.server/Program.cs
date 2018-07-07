@@ -14,6 +14,7 @@
 
 using System;
 using System.Threading.Tasks;
+using aconcagua.data;
 using Grpc.Core;
 
 namespace aconcagua.server
@@ -37,6 +38,13 @@ namespace aconcagua.server
         private static GetMetadataReply CreateMetadataReply(GetMetadataRequest request)
         {
             var reply = new GetMetadataReply();
+            var tssFactory = TimeseriesSourceFactory.Factory;
+
+            foreach (var ts in request.Keys)
+            {
+
+            }
+
             reply.Metadataheaders.Add(request.Metadataheaders);
             return reply;
         }

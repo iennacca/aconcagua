@@ -17,20 +17,20 @@ namespace aconcagua.data
 
     public class TimeseriesKey
     {
-        public string Source { get; }
-        public string Key { get; }
+        public string SourceKey { get; }
+        public string SeriesKey { get; }
 
         public TimeseriesKey(string sourceKey)
         {
-            Source = sourceKey;
-            Key = sourceKey;
+            SourceKey = sourceKey;
+            SeriesKey = sourceKey;
         }
     }
 
     public interface ITimeseries
     {
-        TimeseriesSourceKey Source { get; }
-        TimeseriesKey SeriesName { get; }
+        TimeseriesSourceKey SourceKey { get; }
+        TimeseriesKey SeriesKey { get; }
         IReadOnlyDictionary<string, string> HeaderData { get; }
     }
 
