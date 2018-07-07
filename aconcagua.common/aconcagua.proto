@@ -35,7 +35,7 @@ message GetMetadataRequest {
 message GetMetadataReply {
 	map<string,string> replymetadata = 1;
 	repeated string metadataheaders = 2;
-	repeated MetadataList serieslist = 3;
+	repeated MetadataList datalist = 3;
 }
 
 message GetObservationsRequest {
@@ -47,22 +47,20 @@ message GetObservationsRequest {
 message GetObservationsReply {
 	map<string,string> replymetadata = 1;
 	repeated string observationheaders = 2;
-	repeated ObservationsList serieslist = 3;
+	repeated ObservationsList datalist = 3;
 }
 
 message MetadataList {
-	TimeseriesKey source = 1;
-	TimeseriesKey key = 2;
-	repeated string data = 3;
+	TimeseriesKey key = 1;
+	repeated string data = 2;
 }
 
 message ObservationsList {
-	TimeseriesKey source = 1;
-	TimeseriesKey key = 2;
-	repeated float data = 3;
+	TimeseriesKey key = 1;
+	repeated float data = 2;
 }
 
 message TimeseriesKey {
-	string database = 1;
-	string seriescode = 2;
+	string databasename = 1;
+	string seriesname = 2;
 }
