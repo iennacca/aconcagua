@@ -52,7 +52,7 @@ namespace aconcagua.data
             SeriesKey = seriesKey;
             _headerData = new Dictionary<string, string>();
             foreach (var header in headerList)
-                _headerData.Add(header, $"{SourceKey}|{SeriesKey}|{header}");
+                _headerData.Add(header, $"{SourceKey.Key}|{SeriesKey.Key}|{header}|DATA");
         }
     }
 }

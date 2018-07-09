@@ -29,7 +29,7 @@ service Aconcagua {
 message GetMetadataRequest {
 	map<string,string> requestmetadata = 1;
 	repeated string metadataheaders = 2;
-	repeated TimeseriesKey keys = 3;
+	repeated SourceSeriesKey keys = 3;
 }
 
 message GetMetadataReply {
@@ -41,7 +41,7 @@ message GetMetadataReply {
 message GetObservationsRequest {
 	map<string,string> requestmetadata = 1;
 	repeated string observationheaders = 2;
-	repeated TimeseriesKey keys = 3;
+	repeated SourceSeriesKey keys = 3;
 }
 
 message GetObservationsReply {
@@ -51,16 +51,16 @@ message GetObservationsReply {
 }
 
 message MetadataList {
-	TimeseriesKey key = 1;
+	SourceSeriesKey key = 1;
 	repeated string data = 2;
 }
 
 message ObservationsList {
-	TimeseriesKey key = 1;
+	SourceSeriesKey key = 1;
 	repeated float data = 2;
 }
 
-message TimeseriesKey {
-	string databasename = 1;
+message SourceSeriesKey {
+	string sourcename = 1;
 	string seriesname = 2;
 }

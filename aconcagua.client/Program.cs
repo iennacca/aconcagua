@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Grpc.Core;
 using Google.Protobuf.Collections;
 
@@ -29,7 +30,12 @@ namespace aconcagua.client
             var metadataRequest = CreateMetadataRequest();
 
             var reply = client.GetMetadata(metadataRequest);
-            Console.WriteLine(reply.Metadataheaders[0]);
+
+
+            Console.WriteLine($"Sourcename[0]: {reply.Datalist.ElementAt(0).Key.Sourcename}");
+            Console.WriteLine($"Seriesname[0]: {reply.Datalist.ElementAt(0).Key.Seriesname}");
+            Console.WriteLine($"Data[0][0]: {reply.Datalist.ElementAt(0).Data[0]}");
+            Console.WriteLine($"Metadata: {reply.Metadataheaders[0]}");
 
             channel.ShutdownAsync().Wait();
             Console.WriteLine("Press any key to exit...");
@@ -40,9 +46,13 @@ namespace aconcagua.client
         {
             var request = new GetMetadataRequest();
 
-            request.Metadataheaders.Add("testheader");
+            request.Metadataheaders.Add(new [] {
+                "h1", "h2"
+            });
+
+            //TODO [jc]: what do we do with the requestmetadata?
             request.Requestmetadata.Add(new Dictionary<string, string>() { { "version", "0.9" } });
-            request.Keys.AddRange(new [] { new TimeseriesKey() { Database = "database", Seriescode = "seriescode"}, });
+            request.Keys.AddRange(new [] { new SourceSeriesKey() { Sourcename = "null://test.me", Seriesname = "a01"}, });
             return request;
         }
     }

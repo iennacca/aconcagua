@@ -8,22 +8,22 @@ namespace aconcagua.data
         public string Source { get; }
         public Uri Key { get; }
 
-        public TimeseriesSourceKey(string sourceKey)
+        public TimeseriesSourceKey(string key)
         {
-            Source = sourceKey;
-            Key = new Uri(sourceKey);
+            Source = key;
+            Key = new Uri(key);
         }
     }
 
     public class TimeseriesKey
     {
-        public string SourceKey { get; }
-        public string SeriesKey { get; }
+        public string Source { get; }
+        public string Key { get; }
 
-        public TimeseriesKey(string sourceKey)
+        public TimeseriesKey(string key)
         {
-            SourceKey = sourceKey;
-            SeriesKey = sourceKey;
+            Source = key;
+            Key = key;
         }
     }
 
@@ -37,6 +37,6 @@ namespace aconcagua.data
     public interface ITimeseriesSource
     {
         TimeseriesSourceKey SourceKey { get; }
-        IEnumerable<ITimeseries> Get(IEnumerable<TimeseriesKey> seriesCodeKeys, IEnumerable<string> headerList);
+        IEnumerable<ITimeseries> Get(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList);
     }
 }

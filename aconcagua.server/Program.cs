@@ -13,8 +13,10 @@
 // limitations under the License.
 
 using System;
+using System.Runtime.Remoting.Messaging;
 using System.Threading.Tasks;
 using aconcagua.data;
+using Google.Protobuf.Collections;
 using Grpc.Core;
 
 namespace aconcagua.server
@@ -38,13 +40,41 @@ namespace aconcagua.server
         private static GetMetadataReply CreateMetadataReply(GetMetadataRequest request)
         {
             var reply = new GetMetadataReply();
-            var tssFactory = TimeseriesSourceFactory.Factory;
-
-            foreach (var ts in request.Keys)
+            try
             {
-            }
+                var tssFactory = TimeseriesSourceFactory.Factory;
 
-            reply.Metadataheaders.Add(request.Metadataheaders);
+                //TODO [jc]: what do we do with the requestmetadata?
+                reply.Replymetadata.Add(request.Requestmetadata);
+                reply.Metadataheaders.Add(request.Metadataheaders);
+
+                foreach (var ssKey in request.Keys)
+                {
+                    // TODO [jc]: Refactor for better usage of IEnumerable 
+                    var tsList = tssFactory[ssKey.Sourcename].Get(
+                        new[] {new TimeseriesKey(ssKey.Seriesname)},
+                        request.Metadataheaders);
+
+                    foreach (var ts in tsList)
+                    {
+                        var m = new MetadataList
+                        {
+                            Key = new SourceSeriesKey()
+                            {
+                                Sourcename = ts.SourceKey.Key.ToString(),
+                                Seriesname = ts.SeriesKey.Key
+                            }
+                        };
+                        m.Data.AddRange(ts.HeaderData.Values);
+                        reply.Datalist.Add(m);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
             return reply;
         }
     }
