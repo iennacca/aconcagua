@@ -31,11 +31,7 @@ namespace aconcagua.client
 
             var reply = client.GetMetadata(metadataRequest);
 
-
-            Console.WriteLine($"Sourcename[0]: {reply.Datalist.ElementAt(0).Key.Sourcename}");
-            Console.WriteLine($"Seriesname[0]: {reply.Datalist.ElementAt(0).Key.Seriesname}");
-            Console.WriteLine($"Data[0][0]: {reply.Datalist.ElementAt(0).Data[0]}");
-            Console.WriteLine($"Metadata: {reply.Metadataheaders[0]}");
+            ShowMetadataReply(reply);
 
             channel.ShutdownAsync().Wait();
             Console.WriteLine("Press any key to exit...");
@@ -54,6 +50,23 @@ namespace aconcagua.client
             request.Requestmetadata.Add(new Dictionary<string, string>() { { "version", "0.9" } });
             request.Keys.AddRange(new [] { new SourceSeriesKey() { Sourcename = "null://test.me", Seriesname = "a01"}, });
             return request;
+        }
+
+        private static void ShowMetadataReply(GetMetadataReply reply)
+        {
+            var i = 0;
+
+            foreach (var ts in reply.Datalist)
+            {
+                Console.WriteLine($"Sourcename[{i}]: {ts.Key.Sourcename}/{ts.Key.Seriesname}");
+
+                foreach (var dataPoint in ts.Data)
+                {
+                    Console.WriteLine($"    Data: {dataPoint}");
+                }
+
+                i++;
+            }
         }
     }
 }
