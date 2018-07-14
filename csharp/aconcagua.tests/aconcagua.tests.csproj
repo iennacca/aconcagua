@@ -61,7 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\aconcagua.data\aconcagua.data.csproj">
-      <Project>{de12c54c-c7e2-43c0-af7e-389661d529c1}</Project>
+      <Project>{1c4b2b35-c7cc-41c5-bbff-5861b3b6df09}</Project>
       <Name>aconcagua.data</Name>
     </ProjectReference>
   </ItemGroup>

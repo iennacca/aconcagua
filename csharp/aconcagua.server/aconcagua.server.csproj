@@ -58,20 +58,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\aconcagua.common\aconcagua.common.csproj">
       <Project>{28a7a29b-e8b7-40de-827c-4134d0697cc3}</Project>
       <Name>aconcagua.common</Name>
     </ProjectReference>
     <ProjectReference Include="..\aconcagua.data\aconcagua.data.csproj">
-      <Project>{de12c54c-c7e2-43c0-af7e-389661d529c1}</Project>
+      <Project>{1c4b2b35-c7cc-41c5-bbff-5861b3b6df09}</Project>
       <Name>aconcagua.data</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Grpc.Core.1.13.0\build\net45\Grpc.Core.targets" Condition="Exists('..\packages\Grpc.Core.1.13.0\build\net45\Grpc.Core.targets')" />
