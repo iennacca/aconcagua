@@ -17,7 +17,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aconcagua.tests", "csharp\a
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "python", "python", "{0A839018-2DC7-41D5-93BB-F1EF4041F97E}"
 EndProject
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "aconcagua.client", "python\aconcagua.client.python\aconcagua.client.pyproj", "{785D4734-BCDD-4731-9D78-9D10E1DB8801}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "proto", "proto", "{AF15DBBD-E17C-4FDF-A679-8BB134BBBEE3}"
+	ProjectSection(SolutionItems) = preProject
+		proto\aconcagua.proto = proto\aconcagua.proto
+	EndProjectSection
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "aconcagua.clientserver", "python\aconcagua.clientserver\aconcagua.clientserver.pyproj", "{785D4734-BCDD-4731-9D78-9D10E1DB8801}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
