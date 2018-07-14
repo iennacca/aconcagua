@@ -1,0 +1,1 @@
+python -m grpc_tools.protoc -I..\aconcagua.common --python_out=. --grpc_python_out=. ..\aconcagua.common\aconcagua.proto

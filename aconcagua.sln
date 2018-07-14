@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aconcagua.server", "aconcag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aconcagua.client", "aconcagua.client\aconcagua.client.csproj", "{CEDCC7ED-9D15-4F6D-AA3D-1143BB825D0F}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "aconcagua.client.python", "aconcagua.client.python\aconcagua.client.python.pyproj", "{785D4734-BCDD-4731-9D78-9D10E1DB8801}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,8 @@ Global
 		{CEDCC7ED-9D15-4F6D-AA3D-1143BB825D0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEDCC7ED-9D15-4F6D-AA3D-1143BB825D0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEDCC7ED-9D15-4F6D-AA3D-1143BB825D0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{785D4734-BCDD-4731-9D78-9D10E1DB8801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{785D4734-BCDD-4731-9D78-9D10E1DB8801}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -22,8 +22,8 @@ option objc_class_prefix = "ACA";
 // package aconcagua;
 
 service Aconcagua {
-	rpc GetMetadata (GetMetadataRequest) returns (GetMetadataReply) {}
-	rpc GetObservations (GetObservationsRequest) returns (GetObservationsReply) {}
+	rpc GetMetadata (GetMetadataRequest) returns (GetMetadataResponse) {}
+	rpc GetObservations (GetObservationsRequest) returns (GetObservationsResponse) {}
 }
 
 message GetMetadataRequest {
@@ -32,8 +32,8 @@ message GetMetadataRequest {
 	repeated SourceSeriesKey keys = 3;
 }
 
-message GetMetadataReply {
-	map<string,string> replymetadata = 1;
+message GetMetadataResponse {
+	map<string,string> responsemetadata = 1;
 	repeated string metadataheaders = 2;
 	repeated MetadataList datalist = 3;
 }
@@ -44,8 +44,8 @@ message GetObservationsRequest {
 	repeated SourceSeriesKey keys = 3;
 }
 
-message GetObservationsReply {
-	map<string,string> replymetadata = 1;
+message GetObservationsResponse {
+	map<string,string> responsemetadata = 1;
 	repeated string observationheaders = 2;
 	repeated ObservationsList datalist = 3;
 }

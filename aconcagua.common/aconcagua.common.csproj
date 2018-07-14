@@ -53,7 +53,6 @@
   <ItemGroup>
     <Compile Include="Aconcagua.cs" />
     <Compile Include="AconcaguaGrpc.cs" />
-    <Compile Include="Interfaces.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

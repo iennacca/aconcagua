@@ -27,23 +27,23 @@ public static partial class Aconcagua
   static readonly string __ServiceName = "Aconcagua";
 
   static readonly grpc::Marshaller<global::GetMetadataRequest> __Marshaller_GetMetadataRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GetMetadataRequest.Parser.ParseFrom);
-  static readonly grpc::Marshaller<global::GetMetadataReply> __Marshaller_GetMetadataReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GetMetadataReply.Parser.ParseFrom);
+  static readonly grpc::Marshaller<global::GetMetadataResponse> __Marshaller_GetMetadataResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GetMetadataResponse.Parser.ParseFrom);
   static readonly grpc::Marshaller<global::GetObservationsRequest> __Marshaller_GetObservationsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GetObservationsRequest.Parser.ParseFrom);
-  static readonly grpc::Marshaller<global::GetObservationsReply> __Marshaller_GetObservationsReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GetObservationsReply.Parser.ParseFrom);
+  static readonly grpc::Marshaller<global::GetObservationsResponse> __Marshaller_GetObservationsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GetObservationsResponse.Parser.ParseFrom);
 
-  static readonly grpc::Method<global::GetMetadataRequest, global::GetMetadataReply> __Method_GetMetadata = new grpc::Method<global::GetMetadataRequest, global::GetMetadataReply>(
+  static readonly grpc::Method<global::GetMetadataRequest, global::GetMetadataResponse> __Method_GetMetadata = new grpc::Method<global::GetMetadataRequest, global::GetMetadataResponse>(
       grpc::MethodType.Unary,
       __ServiceName,
       "GetMetadata",
       __Marshaller_GetMetadataRequest,
-      __Marshaller_GetMetadataReply);
+      __Marshaller_GetMetadataResponse);
 
-  static readonly grpc::Method<global::GetObservationsRequest, global::GetObservationsReply> __Method_GetObservations = new grpc::Method<global::GetObservationsRequest, global::GetObservationsReply>(
+  static readonly grpc::Method<global::GetObservationsRequest, global::GetObservationsResponse> __Method_GetObservations = new grpc::Method<global::GetObservationsRequest, global::GetObservationsResponse>(
       grpc::MethodType.Unary,
       __ServiceName,
       "GetObservations",
       __Marshaller_GetObservationsRequest,
-      __Marshaller_GetObservationsReply);
+      __Marshaller_GetObservationsResponse);
 
   /// <summary>Service descriptor</summary>
   public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -54,12 +54,12 @@ public static partial class Aconcagua
   /// <summary>Base class for server-side implementations of Aconcagua</summary>
   public abstract partial class AconcaguaBase
   {
-    public virtual global::System.Threading.Tasks.Task<global::GetMetadataReply> GetMetadata(global::GetMetadataRequest request, grpc::ServerCallContext context)
+    public virtual global::System.Threading.Tasks.Task<global::GetMetadataResponse> GetMetadata(global::GetMetadataRequest request, grpc::ServerCallContext context)
     {
       throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
     }
 
-    public virtual global::System.Threading.Tasks.Task<global::GetObservationsReply> GetObservations(global::GetObservationsRequest request, grpc::ServerCallContext context)
+    public virtual global::System.Threading.Tasks.Task<global::GetObservationsResponse> GetObservations(global::GetObservationsRequest request, grpc::ServerCallContext context)
     {
       throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
     }
@@ -89,35 +89,35 @@ public static partial class Aconcagua
     {
     }
 
-    public virtual global::GetMetadataReply GetMetadata(global::GetMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    public virtual global::GetMetadataResponse GetMetadata(global::GetMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
     {
       return GetMetadata(request, new grpc::CallOptions(headers, deadline, cancellationToken));
     }
-    public virtual global::GetMetadataReply GetMetadata(global::GetMetadataRequest request, grpc::CallOptions options)
+    public virtual global::GetMetadataResponse GetMetadata(global::GetMetadataRequest request, grpc::CallOptions options)
     {
       return CallInvoker.BlockingUnaryCall(__Method_GetMetadata, null, options, request);
     }
-    public virtual grpc::AsyncUnaryCall<global::GetMetadataReply> GetMetadataAsync(global::GetMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    public virtual grpc::AsyncUnaryCall<global::GetMetadataResponse> GetMetadataAsync(global::GetMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
     {
       return GetMetadataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
     }
-    public virtual grpc::AsyncUnaryCall<global::GetMetadataReply> GetMetadataAsync(global::GetMetadataRequest request, grpc::CallOptions options)
+    public virtual grpc::AsyncUnaryCall<global::GetMetadataResponse> GetMetadataAsync(global::GetMetadataRequest request, grpc::CallOptions options)
     {
       return CallInvoker.AsyncUnaryCall(__Method_GetMetadata, null, options, request);
     }
-    public virtual global::GetObservationsReply GetObservations(global::GetObservationsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    public virtual global::GetObservationsResponse GetObservations(global::GetObservationsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
     {
       return GetObservations(request, new grpc::CallOptions(headers, deadline, cancellationToken));
     }
-    public virtual global::GetObservationsReply GetObservations(global::GetObservationsRequest request, grpc::CallOptions options)
+    public virtual global::GetObservationsResponse GetObservations(global::GetObservationsRequest request, grpc::CallOptions options)
     {
       return CallInvoker.BlockingUnaryCall(__Method_GetObservations, null, options, request);
     }
-    public virtual grpc::AsyncUnaryCall<global::GetObservationsReply> GetObservationsAsync(global::GetObservationsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    public virtual grpc::AsyncUnaryCall<global::GetObservationsResponse> GetObservationsAsync(global::GetObservationsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
     {
       return GetObservationsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
     }
-    public virtual grpc::AsyncUnaryCall<global::GetObservationsReply> GetObservationsAsync(global::GetObservationsRequest request, grpc::CallOptions options)
+    public virtual grpc::AsyncUnaryCall<global::GetObservationsResponse> GetObservationsAsync(global::GetObservationsRequest request, grpc::CallOptions options)
     {
       return CallInvoker.AsyncUnaryCall(__Method_GetObservations, null, options, request);
     }

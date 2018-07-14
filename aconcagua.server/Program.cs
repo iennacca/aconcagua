@@ -23,29 +23,29 @@ namespace aconcagua.server
 {
     internal class AconcaguaServer : Aconcagua.AconcaguaBase
     {
-        public override Task<GetMetadataReply> GetMetadata(GetMetadataRequest request, ServerCallContext context)
+        public override Task<GetMetadataResponse> GetMetadata(GetMetadataRequest request, ServerCallContext context)
         {
             Console.WriteLine("GetMetadata() called");
             return Task.FromResult(CreateMetadataReply(request));
         }
 
-        public override Task<GetObservationsReply> GetObservations(GetObservationsRequest request, ServerCallContext context)
+        public override Task<GetObservationsResponse> GetObservations(GetObservationsRequest request, ServerCallContext context)
         {
             Console.WriteLine("GetObservations() called");
-            return Task.FromResult(new GetObservationsReply());
+            return Task.FromResult(new GetObservationsResponse());
         }
 
 
         // Helper functions
-        private static GetMetadataReply CreateMetadataReply(GetMetadataRequest request)
+        private static GetMetadataResponse CreateMetadataReply(GetMetadataRequest request)
         {
-            var reply = new GetMetadataReply();
+            var reply = new GetMetadataResponse();
             try
             {
                 var tssFactory = TimeseriesSourceFactory.Factory;
 
                 //TODO [jc]: what do we do with the requestmetadata?
-                reply.Replymetadata.Add(request.Requestmetadata);
+                reply.Responsemetadata.Add(request.Requestmetadata);
                 reply.Metadataheaders.Add(request.Metadataheaders);
 
                 foreach (var ssKey in request.Keys)
