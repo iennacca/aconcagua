@@ -58,6 +58,7 @@
   <ItemGroup>
     <None Include="aconcagua.proto" />
     <None Include="app.config" />
+    <None Include="generate_protos.bat" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
