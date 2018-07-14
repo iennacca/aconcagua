@@ -18,12 +18,12 @@ class AconcaguaStub(object):
     self.GetMetadata = channel.unary_unary(
         '/Aconcagua/GetMetadata',
         request_serializer=aconcagua__pb2.GetMetadataRequest.SerializeToString,
-        response_deserializer=aconcagua__pb2.GetMetadataReply.FromString,
+        response_deserializer=aconcagua__pb2.GetMetadataResponse.FromString,
         )
     self.GetObservations = channel.unary_unary(
         '/Aconcagua/GetObservations',
         request_serializer=aconcagua__pb2.GetObservationsRequest.SerializeToString,
-        response_deserializer=aconcagua__pb2.GetObservationsReply.FromString,
+        response_deserializer=aconcagua__pb2.GetObservationsResponse.FromString,
         )
 
 
@@ -52,12 +52,12 @@ def add_AconcaguaServicer_to_server(servicer, server):
       'GetMetadata': grpc.unary_unary_rpc_method_handler(
           servicer.GetMetadata,
           request_deserializer=aconcagua__pb2.GetMetadataRequest.FromString,
-          response_serializer=aconcagua__pb2.GetMetadataReply.SerializeToString,
+          response_serializer=aconcagua__pb2.GetMetadataResponse.SerializeToString,
       ),
       'GetObservations': grpc.unary_unary_rpc_method_handler(
           servicer.GetObservations,
           request_deserializer=aconcagua__pb2.GetObservationsRequest.FromString,
-          response_serializer=aconcagua__pb2.GetObservationsReply.SerializeToString,
+          response_serializer=aconcagua__pb2.GetObservationsResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

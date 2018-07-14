@@ -1,0 +1,1 @@
+python -m grpc_tools.protoc -I..\..\csharp\aconcagua.common --python_out=. --grpc_python_out=. ..\..\csharp\aconcagua.common\aconcagua.proto

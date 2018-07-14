@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "aconcagua.client.python", "aconcagua.client.python\aconcagua.client.python.pyproj", "{785D4734-BCDD-4731-9D78-9D10E1DB8801}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "csharp", "csharp", "{08B1C1DD-7CC5-4535-AA9F-A33A722F7703}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aconcagua.client", "csharp\aconcagua.client\aconcagua.client.csproj", "{CEDCC7ED-9D15-4F6D-AA3D-1143BB825D0F}"
@@ -17,14 +15,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aconcagua.server", "csharp\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aconcagua.tests", "csharp\aconcagua.tests\aconcagua.tests.csproj", "{7AB9C102-5A83-474E-AF26-E9D727C46679}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "python", "python", "{0A839018-2DC7-41D5-93BB-F1EF4041F97E}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "aconcagua.client", "python\aconcagua.client.python\aconcagua.client.pyproj", "{785D4734-BCDD-4731-9D78-9D10E1DB8801}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{785D4734-BCDD-4731-9D78-9D10E1DB8801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{785D4734-BCDD-4731-9D78-9D10E1DB8801}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEDCC7ED-9D15-4F6D-AA3D-1143BB825D0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CEDCC7ED-9D15-4F6D-AA3D-1143BB825D0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEDCC7ED-9D15-4F6D-AA3D-1143BB825D0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +45,8 @@ Global
 		{7AB9C102-5A83-474E-AF26-E9D727C46679}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AB9C102-5A83-474E-AF26-E9D727C46679}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AB9C102-5A83-474E-AF26-E9D727C46679}.Release|Any CPU.Build.0 = Release|Any CPU
+		{785D4734-BCDD-4731-9D78-9D10E1DB8801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{785D4734-BCDD-4731-9D78-9D10E1DB8801}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +57,7 @@ Global
 		{1C4B2B35-C7CC-41C5-BBFF-5861B3B6DF09} = {08B1C1DD-7CC5-4535-AA9F-A33A722F7703}
 		{3FCF7617-15E9-4460-B5F9-3AE205E91E4A} = {08B1C1DD-7CC5-4535-AA9F-A33A722F7703}
 		{7AB9C102-5A83-474E-AF26-E9D727C46679} = {08B1C1DD-7CC5-4535-AA9F-A33A722F7703}
+		{785D4734-BCDD-4731-9D78-9D10E1DB8801} = {0A839018-2DC7-41D5-93BB-F1EF4041F97E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D9FA2CB5-A404-4E81-B746-92925E7800FF}
