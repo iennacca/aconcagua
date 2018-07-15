@@ -89,8 +89,9 @@ namespace aconcagua.server
             };
             server.Start();
 
-            Console.WriteLine("Aconcagua server listening on port " + Port);
-            Console.WriteLine("UserName: " + Environment.UserName);
+            Console.WriteLine($"Aconcagua server running");
+            Console.WriteLine($"Port: {Port}");
+            Console.WriteLine($"UserName: {Environment.UserName}");
             Console.WriteLine($"UserDomainName: {Environment.UserDomainName}");
             Console.WriteLine("Press any key to stop the server...");
             Console.ReadKey();
