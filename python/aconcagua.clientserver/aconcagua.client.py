@@ -12,17 +12,24 @@ def run():
     response = client.GetMetadata(request)
     showmetadataresponse(response)
 
-
 def createmetadatarequest():
-    return aconcagua_pb2.GetMetadataRequest()
+    r = aconcagua_pb2.GetMetadataRequest()
+    r.metadataheaders.extend(['scale','unit'])
+    r.requestmetadata['version'] = '0.9'
     
+    # TODO [jc]: find better way of projecting onto the list 
+    ssk = aconcagua_pb2.SourceSeriesKey(sourcename = 'null://test')
+    for i in range(1,3):
+        ssk.seriesname = "series%02d" % i
+        r.keys.extend([ssk])
+
+    return r
+
 def showmetadataresponse(response):
     i = 0
     for ts in response.datalist:
-        print("Sourcename:" + ts.Key.Soucename)
+        print("Sourcename: %s" + ts.key.sourcename)
         i = i + 1
     
-    return NotImplemented
-
 if __name__ == '__main__':
     run()

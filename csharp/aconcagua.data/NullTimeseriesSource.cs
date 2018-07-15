@@ -23,7 +23,9 @@ namespace aconcagua.data
         {
             foreach (var seriesKey in seriesKeys)
             {
-                _seriesList.Add(seriesKey, new NullTimeseries(SourceKey, seriesKey, headerList));
+                // TODO [jc]: change key to string value instead of TimeseriesKey
+                if (!_seriesList.ContainsKey(seriesKey))
+                    _seriesList.Add(seriesKey, new NullTimeseries(SourceKey, seriesKey, headerList));
             }
 
             return _seriesList.Values;
