@@ -21,14 +21,17 @@ namespace aconcagua.data
 
         public IEnumerable<ITimeseries> Get(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList)
         {
+            var seriesList = new List<ITimeseries>();
+
             foreach (var seriesKey in seriesKeys)
             {
                 // TODO [jc]: change key to string value instead of TimeseriesKey
                 if (!_seriesList.ContainsKey(seriesKey))
                     _seriesList.Add(seriesKey, new NullTimeseries(SourceKey, seriesKey, headerList));
+                seriesList.Add(_seriesList[seriesKey]);
             }
 
-            return _seriesList.Values;
+            return seriesList;
         }
 
         public static bool TryCreate(TimeseriesSourceKey sourceKey, out ITimeseriesSource timeseriesSource)

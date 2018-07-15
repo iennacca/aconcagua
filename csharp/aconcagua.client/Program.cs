@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Grpc.Core;
 
 namespace aconcagua.client
@@ -23,13 +24,12 @@ namespace aconcagua.client
         {
             var request = new GetMetadataRequest();
 
-            request.Metadataheaders.Add(new [] {
-                "h1", "h2"
-            });
-
-            //TODO [jc]: what do we do with the requestmetadata?
+            request.Metadataheaders.Add(new [] { "scale", "unit" });
             request.Requestmetadata.Add(new Dictionary<string, string>() { { "version", "0.9" } });
-            request.Keys.AddRange(new [] { new SourceSeriesKey() { Sourcename = "null://test.me", Seriesname = "a01"}, });
+
+            foreach (var i in Enumerable.Range(1,3))
+                request.Keys.Add(new [] { new SourceSeriesKey() { Sourcename = "null://test", Seriesname = $"series{i}"} });
+
             return request;
         }
 

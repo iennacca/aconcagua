@@ -13,10 +13,8 @@
 // limitations under the License.
 
 using System;
-using System.Runtime.Remoting.Messaging;
 using System.Threading.Tasks;
 using aconcagua.data;
-using Google.Protobuf.Collections;
 using Grpc.Core;
 
 namespace aconcagua.server
@@ -26,7 +24,7 @@ namespace aconcagua.server
         public override Task<GetMetadataResponse> GetMetadata(GetMetadataRequest request, ServerCallContext context)
         {
             Console.WriteLine("GetMetadata() called");
-            return Task.FromResult(CreateMetadataReply(request));
+            return Task.FromResult(CreateMetadataResponse(request));
         }
 
         public override Task<GetObservationsResponse> GetObservations(GetObservationsRequest request, ServerCallContext context)
@@ -37,7 +35,7 @@ namespace aconcagua.server
 
 
         // Helper functions
-        private static GetMetadataResponse CreateMetadataReply(GetMetadataRequest request)
+        private static GetMetadataResponse CreateMetadataResponse(GetMetadataRequest request)
         {
             var reply = new GetMetadataResponse();
             try
@@ -50,7 +48,6 @@ namespace aconcagua.server
 
                 foreach (var ssKey in request.Keys)
                 {
-                    // TODO [jc]: Refactor for better usage of IEnumerable 
                     var tsList = tssFactory[ssKey.Sourcename].Get(
                         new[] {new TimeseriesKey(ssKey.Seriesname)},
                         request.Metadataheaders);
