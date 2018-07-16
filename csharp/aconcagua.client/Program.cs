@@ -23,11 +23,10 @@ namespace aconcagua.client
         private static GetMetadataRequest CreateMetadataRequest()
         {
             var request = new GetMetadataRequest();
-
-            request.Metadataheaders.Add(new [] { "scale", "unit" });
             request.Requestmetadata.Add(new Dictionary<string, string>() { { "version", "0.9" } });
+            request.Metadataheaders.Add(new [] { "scale", "unit" });
 
-            foreach (var i in Enumerable.Range(1,3))
+            foreach (var i in Enumerable.Range(1,5))
                 request.Keys.Add(new [] { new SourceSeriesKey() { Sourcename = "null://test", Seriesname = $"series{i}"} });
 
             return request;
@@ -42,10 +41,7 @@ namespace aconcagua.client
                 Console.WriteLine($"Sourcename[{i}]: {ts.Key.Sourcename}/{ts.Key.Seriesname}");
 
                 foreach (var dataPoint in ts.Data)
-                {
                     Console.WriteLine($"    Data: {dataPoint}");
-                }
-
                 i++;
             }
         }

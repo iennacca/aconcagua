@@ -6,22 +6,25 @@ import aconcagua_pb2
 import aconcagua_pb2_grpc
 
 def createmetadatarequest():
-    r = aconcagua_pb2.GetMetadataRequest()
-    r.metadataheaders.extend(['scale','unit'])
-    r.requestmetadata['version'] = '0.9'
+    request = aconcagua_pb2.GetMetadataRequest()
+    request.requestmetadata['version'] = '0.9'
+    request.metadataheaders.extend(['scale','unit'])
     
     # TODO [jc]: find better way of projecting onto the list 
     ssk = aconcagua_pb2.SourceSeriesKey(sourcename = 'null://test')
     for i in range(1,5):
         ssk.seriesname = "series%02d" % i
-        r.keys.extend([ssk])
+        request.keys.extend([ssk])
 
-    return r
+    return request
 
 def showmetadataresponse(response):
     i = 0
     for ts in response.datalist:
-        print("t%02d: %s/%s" % (i,ts.key.sourcename, ts.key.seriesname))
+        print('Sourcename[%02d]: %s/%s' % (i, ts.key.sourcename, ts.key.seriesname))
+
+        for d in ts.data:
+            print('    Data: %s' % d)
         i = i + 1
 
 def run():
