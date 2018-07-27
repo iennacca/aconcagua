@@ -435,3 +435,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# github googleapis repo 
+/googleapis

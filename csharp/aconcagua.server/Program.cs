@@ -15,12 +15,19 @@
 using System;
 using System.Threading.Tasks;
 using aconcagua.data;
+using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 
 namespace aconcagua.server
 {
     internal class AconcaguaServer : Aconcagua.AconcaguaBase
     {
+        public override Task<GetVersionResponse> GetVersion(Empty request, ServerCallContext context)
+        {
+            Console.WriteLine("GetVersion() called");
+            return Task.FromResult(new GetVersionResponse(){ Version="1.0" });
+        }
+
         public override Task<GetMetadataResponse> GetMetadata(GetMetadataRequest request, ServerCallContext context)
         {
             Console.WriteLine("GetMetadata() called");

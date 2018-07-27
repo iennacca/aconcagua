@@ -14,13 +14,27 @@
 
 @rem Generate the C# code for .proto files
 
+echo off
 setlocal
 
 @rem enter this directory
 cd /d %~dp0
 
 set TOOLS_PATH=..\packages\Grpc.Tools.1.13.0\tools\windows_x86
+set GOOGLEAPIS_DIR=..\..\googleapis
 
-%TOOLS_PATH%\protoc.exe -I ..\..\proto --csharp_out . ..\..\proto\aconcagua.proto --grpc_out . --plugin=protoc-gen-grpc=%TOOLS_PATH%\grpc_csharp_plugin.exe
+%TOOLS_PATH%\protoc.exe ^
+	-I ..\..\proto ^
+	--csharp_out=. ^
+	--grpc_out=. ^
+	--proto_path=%GOOGLEAPIS_DIR% ^
+	--plugin=protoc-gen-grpc=%TOOLS_PATH%\grpc_csharp_plugin.exe ^
+	..\..\proto\aconcagua.proto 
 
+%TOOLS_PATH%\protoc.exe ^
+	-I ..\..\proto ^
+	--csharp_out=. ^
+	--grpc-gateway_out=logtostderr=true:. ^
+	--proto_path=%GOOGLEAPIS_DIR% ^
+	..\..\proto\aconcagua.proto 
 endlocal

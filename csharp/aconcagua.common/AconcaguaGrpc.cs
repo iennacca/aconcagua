@@ -26,10 +26,19 @@ public static partial class Aconcagua
 {
   static readonly string __ServiceName = "Aconcagua";
 
+  static readonly grpc::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_Empty = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.WellKnownTypes.Empty.Parser.ParseFrom);
+  static readonly grpc::Marshaller<global::GetVersionResponse> __Marshaller_GetVersionResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GetVersionResponse.Parser.ParseFrom);
   static readonly grpc::Marshaller<global::GetMetadataRequest> __Marshaller_GetMetadataRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GetMetadataRequest.Parser.ParseFrom);
   static readonly grpc::Marshaller<global::GetMetadataResponse> __Marshaller_GetMetadataResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GetMetadataResponse.Parser.ParseFrom);
   static readonly grpc::Marshaller<global::GetObservationsRequest> __Marshaller_GetObservationsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GetObservationsRequest.Parser.ParseFrom);
   static readonly grpc::Marshaller<global::GetObservationsResponse> __Marshaller_GetObservationsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GetObservationsResponse.Parser.ParseFrom);
+
+  static readonly grpc::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::GetVersionResponse> __Method_GetVersion = new grpc::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::GetVersionResponse>(
+      grpc::MethodType.Unary,
+      __ServiceName,
+      "GetVersion",
+      __Marshaller_Empty,
+      __Marshaller_GetVersionResponse);
 
   static readonly grpc::Method<global::GetMetadataRequest, global::GetMetadataResponse> __Method_GetMetadata = new grpc::Method<global::GetMetadataRequest, global::GetMetadataResponse>(
       grpc::MethodType.Unary,
@@ -54,6 +63,11 @@ public static partial class Aconcagua
   /// <summary>Base class for server-side implementations of Aconcagua</summary>
   public abstract partial class AconcaguaBase
   {
+    public virtual global::System.Threading.Tasks.Task<global::GetVersionResponse> GetVersion(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::ServerCallContext context)
+    {
+      throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+    }
+
     public virtual global::System.Threading.Tasks.Task<global::GetMetadataResponse> GetMetadata(global::GetMetadataRequest request, grpc::ServerCallContext context)
     {
       throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
@@ -89,6 +103,22 @@ public static partial class Aconcagua
     {
     }
 
+    public virtual global::GetVersionResponse GetVersion(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return GetVersion(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    public virtual global::GetVersionResponse GetVersion(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::CallOptions options)
+    {
+      return CallInvoker.BlockingUnaryCall(__Method_GetVersion, null, options, request);
+    }
+    public virtual grpc::AsyncUnaryCall<global::GetVersionResponse> GetVersionAsync(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return GetVersionAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    public virtual grpc::AsyncUnaryCall<global::GetVersionResponse> GetVersionAsync(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::CallOptions options)
+    {
+      return CallInvoker.AsyncUnaryCall(__Method_GetVersion, null, options, request);
+    }
     public virtual global::GetMetadataResponse GetMetadata(global::GetMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
     {
       return GetMetadata(request, new grpc::CallOptions(headers, deadline, cancellationToken));
@@ -133,6 +163,7 @@ public static partial class Aconcagua
   public static grpc::ServerServiceDefinition BindService(AconcaguaBase serviceImpl)
   {
     return grpc::ServerServiceDefinition.CreateBuilder()
+        .AddMethod(__Method_GetVersion, serviceImpl.GetVersion)
         .AddMethod(__Method_GetMetadata, serviceImpl.GetMetadata)
         .AddMethod(__Method_GetObservations, serviceImpl.GetObservations).Build();
   }
