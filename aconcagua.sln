@@ -24,6 +24,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "proto", "proto", "{AF15DBBD
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "aconcagua.clientserver", "python\aconcagua.clientserver\aconcagua.clientserver.pyproj", "{785D4734-BCDD-4731-9D78-9D10E1DB8801}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "aconcagua.data.factory", "csharp\aconcagua.data.factory\aconcagua.data.factory.csproj", "{A8450C5D-1D6E-499A-B256-613B7579A5EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aconcagua.data.dmx", "csharp\aconcagua.data.dmx\aconcagua.data.dmx.csproj", "{09B907D6-844F-4B78-BACB-F87B3C7B1384}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +56,14 @@ Global
 		{7AB9C102-5A83-474E-AF26-E9D727C46679}.Release|Any CPU.Build.0 = Release|Any CPU
 		{785D4734-BCDD-4731-9D78-9D10E1DB8801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{785D4734-BCDD-4731-9D78-9D10E1DB8801}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8450C5D-1D6E-499A-B256-613B7579A5EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8450C5D-1D6E-499A-B256-613B7579A5EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8450C5D-1D6E-499A-B256-613B7579A5EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8450C5D-1D6E-499A-B256-613B7579A5EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09B907D6-844F-4B78-BACB-F87B3C7B1384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09B907D6-844F-4B78-BACB-F87B3C7B1384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09B907D6-844F-4B78-BACB-F87B3C7B1384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09B907D6-844F-4B78-BACB-F87B3C7B1384}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +75,8 @@ Global
 		{3FCF7617-15E9-4460-B5F9-3AE205E91E4A} = {08B1C1DD-7CC5-4535-AA9F-A33A722F7703}
 		{7AB9C102-5A83-474E-AF26-E9D727C46679} = {08B1C1DD-7CC5-4535-AA9F-A33A722F7703}
 		{785D4734-BCDD-4731-9D78-9D10E1DB8801} = {0A839018-2DC7-41D5-93BB-F1EF4041F97E}
+		{A8450C5D-1D6E-499A-B256-613B7579A5EF} = {08B1C1DD-7CC5-4535-AA9F-A33A722F7703}
+		{09B907D6-844F-4B78-BACB-F87B3C7B1384} = {08B1C1DD-7CC5-4535-AA9F-A33A722F7703}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D9FA2CB5-A404-4E81-B746-92925E7800FF}

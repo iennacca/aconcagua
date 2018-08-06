@@ -59,6 +59,7 @@ namespace aconcagua.data
 
     public interface ITimeseriesSource
     {
+        string SchemeType { get; }
         TimeseriesSourceKey SourceKey { get; }
         IEnumerable<ITimeseries> Get(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList);
     }

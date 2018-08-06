@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Linq;
 
-namespace aconcagua.data
+namespace aconcagua.data.factory
 {
-    internal class NullTimeseriesSource : ITimeseriesSource
+    public class NullTimeseriesSource : ITimeseriesSource
     {
+        private const string _schemeType = "null";
         private readonly Dictionary<TimeseriesKey, NullTimeseries> _seriesList;
+
+        public string SchemeType { get; } = _schemeType;
+        public TimeseriesSourceKey SourceKey { get; }
 
         private NullTimeseriesSource(TimeseriesSourceKey sourceKey)
         {
@@ -14,19 +18,16 @@ namespace aconcagua.data
             _seriesList = new Dictionary<TimeseriesKey, NullTimeseries>();
         }
 
-        public const string SchemeType = "null";
-        public bool AutoCreate { get; set; }
-
-        public TimeseriesSourceKey SourceKey { get; }
-
         public IEnumerable<ITimeseries> Get(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList)
         {
             var seriesList = new List<ITimeseries>();
+            var enumerable = headerList as string[] ?? headerList.ToArray();
 
             foreach (var seriesKey in seriesKeys)
             {
                 if (!_seriesList.ContainsKey(seriesKey))
-                    _seriesList.Add(seriesKey, new NullTimeseries(SourceKey, seriesKey, headerList));
+                    _seriesList.Add(seriesKey, new NullTimeseries(SourceKey, seriesKey, enumerable));
+
                 seriesList.Add(_seriesList[seriesKey]);
             }
 
@@ -36,7 +37,7 @@ namespace aconcagua.data
         public static bool TryCreate(TimeseriesSourceKey sourceKey, out ITimeseriesSource timeseriesSource)
         {
             timeseriesSource = null;
-            if (String.Equals(sourceKey.Key.Scheme,NullTimeseriesSource.SchemeType))
+            if (String.Equals(sourceKey.Key.Scheme, _schemeType))
                 timeseriesSource = new NullTimeseriesSource(sourceKey);
             return (timeseriesSource != null);
         }
@@ -56,7 +57,10 @@ namespace aconcagua.data
             SeriesKey = seriesKey;
             _headerData = new Dictionary<string, string>();
             foreach (var header in headerList)
-                _headerData.Add(header, $"{SourceKey.Key}|{SeriesKey.Key}|{header}|DATA");
+            {
+                var observationValue = new Random().NextDouble();
+                _headerData.Add(header, $"{SourceKey.Key}|{SeriesKey.Key}|{header}|{observationValue}");
+            }
         }
     }
 }

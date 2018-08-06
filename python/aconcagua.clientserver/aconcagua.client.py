@@ -30,6 +30,7 @@ def showmetadataresponse(response):
 def run():
     channel = grpc.insecure_channel('localhost:50051')
     client = aconcagua_pb2_grpc.AconcaguaStub(channel)
+
     request = createmetadatarequest()
     response = client.GetMetadata(request)
     showmetadataresponse(response)

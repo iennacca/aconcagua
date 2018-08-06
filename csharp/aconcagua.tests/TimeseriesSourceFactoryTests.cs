@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using aconcagua.data;
+using aconcagua.data.factory;
 
 namespace aconcagua.tests
 {
@@ -13,7 +14,7 @@ namespace aconcagua.tests
         [TestMethod]
         public void CanAccessNullTimeseriesSourceFromNullUriScheme()
         {
-            const string tsSource = "null:\\test";
+            const string tsSource = "null://test";
             var tss = TimeseriesSourceFactory.Factory[tsSource];
             Assert.IsInstanceOfType(tss, typeof(NullTimeseriesSource));
         }
@@ -28,7 +29,7 @@ namespace aconcagua.tests
         [TestMethod]
         public void CanGetNullMetadataFromNullTimeseriesSource()
         {
-            const string tsSource = "null:\\test";
+            const string tsSource = "null://test";
             var tsKey = new TimeseriesKey("seriesKey01");
 
             var tss = TimeseriesSourceFactory.Factory[tsSource];
@@ -36,6 +37,18 @@ namespace aconcagua.tests
 
             Assert.IsTrue(tsList.Count() == 1);
             Assert.IsTrue(tsList.ElementAt(0).SeriesKey == tsKey);
+        }
+
+        [TestMethod]
+        public void CanAccessDMXTimeseriesSource()
+        {
+            const string tsSource = "dmx:///c:/temp/test.dmx";
+            const string seriesName = "111NGDP";
+
+            var tsKey = new TimeseriesKey(seriesName);
+            var tss = TimeseriesSourceFactory.Factory[tsSource];
+
+            Assert.IsNotInstanceOfType(tss, typeof(NullTimeseriesSource));
         }
     }
 }

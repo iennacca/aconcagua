@@ -13,16 +13,50 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
+from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
+from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='aconcagua.proto',
   package='',
   syntax='proto3',
-  serialized_pb=_b('\n\x0f\x61\x63oncagua.proto\"\xc8\x01\n\x12GetMetadataRequest\x12\x41\n\x0frequestmetadata\x18\x01 \x03(\x0b\x32(.GetMetadataRequest.RequestmetadataEntry\x12\x17\n\x0fmetadataheaders\x18\x02 \x03(\t\x12\x1e\n\x04keys\x18\x03 \x03(\x0b\x32\x10.SourceSeriesKey\x1a\x36\n\x14RequestmetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xce\x01\n\x13GetMetadataResponse\x12\x44\n\x10responsemetadata\x18\x01 \x03(\x0b\x32*.GetMetadataResponse.ResponsemetadataEntry\x12\x17\n\x0fmetadataheaders\x18\x02 \x03(\t\x12\x1f\n\x08\x64\x61talist\x18\x03 \x03(\x0b\x32\r.MetadataList\x1a\x37\n\x15ResponsemetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xd3\x01\n\x16GetObservationsRequest\x12\x45\n\x0frequestmetadata\x18\x01 \x03(\x0b\x32,.GetObservationsRequest.RequestmetadataEntry\x12\x1a\n\x12observationheaders\x18\x02 \x03(\t\x12\x1e\n\x04keys\x18\x03 \x03(\x0b\x32\x10.SourceSeriesKey\x1a\x36\n\x14RequestmetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xdd\x01\n\x17GetObservationsResponse\x12H\n\x10responsemetadata\x18\x01 \x03(\x0b\x32..GetObservationsResponse.ResponsemetadataEntry\x12\x1a\n\x12observationheaders\x18\x02 \x03(\t\x12#\n\x08\x64\x61talist\x18\x03 \x03(\x0b\x32\x11.ObservationsList\x1a\x37\n\x15ResponsemetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\";\n\x0cMetadataList\x12\x1d\n\x03key\x18\x01 \x01(\x0b\x32\x10.SourceSeriesKey\x12\x0c\n\x04\x64\x61ta\x18\x02 \x03(\t\"?\n\x10ObservationsList\x12\x1d\n\x03key\x18\x01 \x01(\x0b\x32\x10.SourceSeriesKey\x12\x0c\n\x04\x64\x61ta\x18\x02 \x03(\x02\"9\n\x0fSourceSeriesKey\x12\x12\n\nsourcename\x18\x01 \x01(\t\x12\x12\n\nseriesname\x18\x02 \x01(\t2\x8f\x01\n\tAconcagua\x12:\n\x0bGetMetadata\x12\x13.GetMetadataRequest\x1a\x14.GetMetadataResponse\"\x00\x12\x46\n\x0fGetObservations\x12\x17.GetObservationsRequest\x1a\x18.GetObservationsResponse\"\x00\x42+\n\x11io.grpc.aconcaguaB\x0e\x41\x63oncaguaProtoP\x01\xa2\x02\x03\x41\x43\x41\x62\x06proto3')
+  serialized_pb=_b('\n\x0f\x61\x63oncagua.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\"%\n\x12GetVersionResponse\x12\x0f\n\x07version\x18\x01 \x01(\t\"\xc8\x01\n\x12GetMetadataRequest\x12\x41\n\x0frequestmetadata\x18\x01 \x03(\x0b\x32(.GetMetadataRequest.RequestmetadataEntry\x12\x17\n\x0fmetadataheaders\x18\x02 \x03(\t\x12\x1e\n\x04keys\x18\x03 \x03(\x0b\x32\x10.SourceSeriesKey\x1a\x36\n\x14RequestmetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xce\x01\n\x13GetMetadataResponse\x12\x44\n\x10responsemetadata\x18\x01 \x03(\x0b\x32*.GetMetadataResponse.ResponsemetadataEntry\x12\x17\n\x0fmetadataheaders\x18\x02 \x03(\t\x12\x1f\n\x08\x64\x61talist\x18\x03 \x03(\x0b\x32\r.MetadataList\x1a\x37\n\x15ResponsemetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xd3\x01\n\x16GetObservationsRequest\x12\x45\n\x0frequestmetadata\x18\x01 \x03(\x0b\x32,.GetObservationsRequest.RequestmetadataEntry\x12\x1a\n\x12observationheaders\x18\x02 \x03(\t\x12\x1e\n\x04keys\x18\x03 \x03(\x0b\x32\x10.SourceSeriesKey\x1a\x36\n\x14RequestmetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xdd\x01\n\x17GetObservationsResponse\x12H\n\x10responsemetadata\x18\x01 \x03(\x0b\x32..GetObservationsResponse.ResponsemetadataEntry\x12\x1a\n\x12observationheaders\x18\x02 \x03(\t\x12#\n\x08\x64\x61talist\x18\x03 \x03(\x0b\x32\x11.ObservationsList\x1a\x37\n\x15ResponsemetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\";\n\x0cMetadataList\x12\x1d\n\x03key\x18\x01 \x01(\x0b\x32\x10.SourceSeriesKey\x12\x0c\n\x04\x64\x61ta\x18\x02 \x03(\t\"?\n\x10ObservationsList\x12\x1d\n\x03key\x18\x01 \x01(\x0b\x32\x10.SourceSeriesKey\x12\x0c\n\x04\x64\x61ta\x18\x02 \x03(\x02\"9\n\x0fSourceSeriesKey\x12\x12\n\nsourcename\x18\x01 \x01(\t\x12\x12\n\nseriesname\x18\x02 \x01(\t2\xcc\x01\n\tAconcagua\x12;\n\nGetVersion\x12\x16.google.protobuf.Empty\x1a\x13.GetVersionResponse\"\x00\x12:\n\x0bGetMetadata\x12\x13.GetMetadataRequest\x1a\x14.GetMetadataResponse\"\x00\x12\x46\n\x0fGetObservations\x12\x17.GetObservationsRequest\x1a\x18.GetObservationsResponse\"\x00\x42+\n\x11io.grpc.aconcaguaB\x0e\x41\x63oncaguaProtoP\x01\xa2\x02\x03\x41\x43\x41\x62\x06proto3')
+  ,
+  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
+
+
+
+
+_GETVERSIONRESPONSE = _descriptor.Descriptor(
+  name='GetVersionResponse',
+  full_name='GetVersionResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='version', full_name='GetVersionResponse.version', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=78,
+  serialized_end=115,
 )
-
-
 
 
 _GETMETADATAREQUEST_REQUESTMETADATAENTRY = _descriptor.Descriptor(
@@ -58,8 +92,8 @@ _GETMETADATAREQUEST_REQUESTMETADATAENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=166,
-  serialized_end=220,
+  serialized_start=264,
+  serialized_end=318,
 )
 
 _GETMETADATAREQUEST = _descriptor.Descriptor(
@@ -102,8 +136,8 @@ _GETMETADATAREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20,
-  serialized_end=220,
+  serialized_start=118,
+  serialized_end=318,
 )
 
 
@@ -140,8 +174,8 @@ _GETMETADATARESPONSE_RESPONSEMETADATAENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=374,
-  serialized_end=429,
+  serialized_start=472,
+  serialized_end=527,
 )
 
 _GETMETADATARESPONSE = _descriptor.Descriptor(
@@ -184,8 +218,8 @@ _GETMETADATARESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=223,
-  serialized_end=429,
+  serialized_start=321,
+  serialized_end=527,
 )
 
 
@@ -222,8 +256,8 @@ _GETOBSERVATIONSREQUEST_REQUESTMETADATAENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=166,
-  serialized_end=220,
+  serialized_start=264,
+  serialized_end=318,
 )
 
 _GETOBSERVATIONSREQUEST = _descriptor.Descriptor(
@@ -266,8 +300,8 @@ _GETOBSERVATIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=432,
-  serialized_end=643,
+  serialized_start=530,
+  serialized_end=741,
 )
 
 
@@ -304,8 +338,8 @@ _GETOBSERVATIONSRESPONSE_RESPONSEMETADATAENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=374,
-  serialized_end=429,
+  serialized_start=472,
+  serialized_end=527,
 )
 
 _GETOBSERVATIONSRESPONSE = _descriptor.Descriptor(
@@ -348,8 +382,8 @@ _GETOBSERVATIONSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=646,
-  serialized_end=867,
+  serialized_start=744,
+  serialized_end=965,
 )
 
 
@@ -386,8 +420,8 @@ _METADATALIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=869,
-  serialized_end=928,
+  serialized_start=967,
+  serialized_end=1026,
 )
 
 
@@ -424,8 +458,8 @@ _OBSERVATIONSLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=930,
-  serialized_end=993,
+  serialized_start=1028,
+  serialized_end=1091,
 )
 
 
@@ -462,8 +496,8 @@ _SOURCESERIESKEY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=995,
-  serialized_end=1052,
+  serialized_start=1093,
+  serialized_end=1150,
 )
 
 _GETMETADATAREQUEST_REQUESTMETADATAENTRY.containing_type = _GETMETADATAREQUEST
@@ -480,6 +514,7 @@ _GETOBSERVATIONSRESPONSE.fields_by_name['responsemetadata'].message_type = _GETO
 _GETOBSERVATIONSRESPONSE.fields_by_name['datalist'].message_type = _OBSERVATIONSLIST
 _METADATALIST.fields_by_name['key'].message_type = _SOURCESERIESKEY
 _OBSERVATIONSLIST.fields_by_name['key'].message_type = _SOURCESERIESKEY
+DESCRIPTOR.message_types_by_name['GetVersionResponse'] = _GETVERSIONRESPONSE
 DESCRIPTOR.message_types_by_name['GetMetadataRequest'] = _GETMETADATAREQUEST
 DESCRIPTOR.message_types_by_name['GetMetadataResponse'] = _GETMETADATARESPONSE
 DESCRIPTOR.message_types_by_name['GetObservationsRequest'] = _GETOBSERVATIONSREQUEST
@@ -488,6 +523,13 @@ DESCRIPTOR.message_types_by_name['MetadataList'] = _METADATALIST
 DESCRIPTOR.message_types_by_name['ObservationsList'] = _OBSERVATIONSLIST
 DESCRIPTOR.message_types_by_name['SourceSeriesKey'] = _SOURCESERIESKEY
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
+GetVersionResponse = _reflection.GeneratedProtocolMessageType('GetVersionResponse', (_message.Message,), dict(
+  DESCRIPTOR = _GETVERSIONRESPONSE,
+  __module__ = 'aconcagua_pb2'
+  # @@protoc_insertion_point(class_scope:GetVersionResponse)
+  ))
+_sym_db.RegisterMessage(GetVersionResponse)
 
 GetMetadataRequest = _reflection.GeneratedProtocolMessageType('GetMetadataRequest', (_message.Message,), dict(
 
@@ -588,13 +630,22 @@ _ACONCAGUA = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=1055,
-  serialized_end=1198,
+  serialized_start=1153,
+  serialized_end=1357,
   methods=[
+  _descriptor.MethodDescriptor(
+    name='GetVersion',
+    full_name='Aconcagua.GetVersion',
+    index=0,
+    containing_service=None,
+    input_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
+    output_type=_GETVERSIONRESPONSE,
+    options=None,
+  ),
   _descriptor.MethodDescriptor(
     name='GetMetadata',
     full_name='Aconcagua.GetMetadata',
-    index=0,
+    index=1,
     containing_service=None,
     input_type=_GETMETADATAREQUEST,
     output_type=_GETMETADATARESPONSE,
@@ -603,7 +654,7 @@ _ACONCAGUA = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetObservations',
     full_name='Aconcagua.GetObservations',
-    index=1,
+    index=2,
     containing_service=None,
     input_type=_GETOBSERVATIONSREQUEST,
     output_type=_GETOBSERVATIONSRESPONSE,

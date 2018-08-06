@@ -2,12 +2,12 @@
 import grpc
 
 import aconcagua_pb2 as aconcagua__pb2
+from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
 class AconcaguaStub(object):
-  """package aconcagua;
-
-  """
+  # missing associated documentation comment in .proto file
+  pass
 
   def __init__(self, channel):
     """Constructor.
@@ -15,6 +15,11 @@ class AconcaguaStub(object):
     Args:
       channel: A grpc.Channel.
     """
+    self.GetVersion = channel.unary_unary(
+        '/Aconcagua/GetVersion',
+        request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+        response_deserializer=aconcagua__pb2.GetVersionResponse.FromString,
+        )
     self.GetMetadata = channel.unary_unary(
         '/Aconcagua/GetMetadata',
         request_serializer=aconcagua__pb2.GetMetadataRequest.SerializeToString,
@@ -28,9 +33,15 @@ class AconcaguaStub(object):
 
 
 class AconcaguaServicer(object):
-  """package aconcagua;
+  # missing associated documentation comment in .proto file
+  pass
 
-  """
+  def GetVersion(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
 
   def GetMetadata(self, request, context):
     # missing associated documentation comment in .proto file
@@ -49,6 +60,11 @@ class AconcaguaServicer(object):
 
 def add_AconcaguaServicer_to_server(servicer, server):
   rpc_method_handlers = {
+      'GetVersion': grpc.unary_unary_rpc_method_handler(
+          servicer.GetVersion,
+          request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+          response_serializer=aconcagua__pb2.GetVersionResponse.SerializeToString,
+      ),
       'GetMetadata': grpc.unary_unary_rpc_method_handler(
           servicer.GetMetadata,
           request_deserializer=aconcagua__pb2.GetMetadataRequest.FromString,

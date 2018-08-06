@@ -5,9 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="dmxDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-    </None>
+    <ProjectReference Include="..\aconcagua.data.dmx\aconcagua.data.dmx.csproj" />
+    <ProjectReference Include="..\aconcagua.data\aconcagua.data.csproj" />
   </ItemGroup>
 
 </Project>

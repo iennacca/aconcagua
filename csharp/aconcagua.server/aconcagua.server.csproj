@@ -68,6 +68,10 @@
       <Project>{28a7a29b-e8b7-40de-827c-4134d0697cc3}</Project>
       <Name>aconcagua.common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\aconcagua.data.factory\aconcagua.data.factory.csproj">
+      <Project>{a8450c5d-1d6e-499a-b256-613b7579a5ef}</Project>
+      <Name>aconcagua.data.factory</Name>
+    </ProjectReference>
     <ProjectReference Include="..\aconcagua.data\aconcagua.data.csproj">
       <Project>{1c4b2b35-c7cc-41c5-bbff-5861b3b6df09}</Project>
       <Name>aconcagua.data</Name>

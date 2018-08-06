@@ -15,6 +15,7 @@
 using System;
 using System.Threading.Tasks;
 using aconcagua.data;
+using aconcagua.data.factory;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 
