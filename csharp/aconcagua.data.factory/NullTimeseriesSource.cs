@@ -11,6 +11,7 @@ namespace aconcagua.data.factory
 
         public string SchemeType { get; } = _schemeType;
         public TimeseriesSourceKey SourceKey { get; }
+        #region Initialization
 
         private NullTimeseriesSource(TimeseriesSourceKey sourceKey)
         {
@@ -18,7 +19,19 @@ namespace aconcagua.data.factory
             _seriesList = new Dictionary<TimeseriesKey, NullTimeseries>();
         }
 
-        public IEnumerable<ITimeseries> Get(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList)
+        public static bool TryCreate(TimeseriesSourceKey sourceKey, out ITimeseriesSource timeseriesSource)
+        {
+            timeseriesSource = null;
+            if (String.Equals(sourceKey.Key.Scheme, _schemeType))
+                timeseriesSource = new NullTimeseriesSource(sourceKey);
+            return (timeseriesSource != null);
+        }
+
+        #endregion
+
+        #region Execution
+
+        public IEnumerable<ITimeseries> GetMetadata(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList)
         {
             var seriesList = new List<ITimeseries>();
             var enumerable = headerList as string[] ?? headerList.ToArray();
@@ -34,13 +47,13 @@ namespace aconcagua.data.factory
             return seriesList;
         }
 
-        public static bool TryCreate(TimeseriesSourceKey sourceKey, out ITimeseriesSource timeseriesSource)
+        public IEnumerable<ITimeseries> GetObservations(IEnumerable<TimeseriesKey> seriesKeys, TimeSpan span)
         {
-            timeseriesSource = null;
-            if (String.Equals(sourceKey.Key.Scheme, _schemeType))
-                timeseriesSource = new NullTimeseriesSource(sourceKey);
-            return (timeseriesSource != null);
+            throw new NotImplementedException();
         }
+
+        #endregion
+
     }
 
     internal class NullTimeseries : ITimeseries

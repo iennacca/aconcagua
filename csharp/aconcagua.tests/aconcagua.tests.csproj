@@ -60,6 +60,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\aconcagua.data.dmx\aconcagua.data.dmx.csproj">
+      <Project>{09b907d6-844f-4b78-bacb-f87b3c7b1384}</Project>
+      <Name>aconcagua.data.dmx</Name>
+    </ProjectReference>
     <ProjectReference Include="..\aconcagua.data.factory\aconcagua.data.factory.csproj">
       <Project>{a8450c5d-1d6e-499a-b256-613b7579a5ef}</Project>
       <Name>aconcagua.data.factory</Name>

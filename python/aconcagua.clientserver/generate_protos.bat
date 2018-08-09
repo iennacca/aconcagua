@@ -1,4 +1,4 @@
-echo off
+
 setlocal
 set GOOGLEAPIS_DIR=..\..\googleapis
 

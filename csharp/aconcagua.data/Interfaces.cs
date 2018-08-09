@@ -61,6 +61,7 @@ namespace aconcagua.data
     {
         string SchemeType { get; }
         TimeseriesSourceKey SourceKey { get; }
-        IEnumerable<ITimeseries> Get(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList);
+        IEnumerable<ITimeseries> GetMetadata(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList);
+        IEnumerable<ITimeseries> GetObservations(IEnumerable<TimeseriesKey> seriesKeys, TimeSpan span);
     }
 }

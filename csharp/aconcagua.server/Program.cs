@@ -56,7 +56,7 @@ namespace aconcagua.server
 
                 foreach (var ssKey in request.Keys)
                 {
-                    var tsList = tssFactory[ssKey.Sourcename].Get(
+                    var tsList = tssFactory[ssKey.Sourcename].GetMetadata(
                         new[] {new TimeseriesKey(ssKey.Seriesname)},
                         request.Metadataheaders);
 

@@ -8,12 +8,12 @@ import aconcagua_pb2_grpc
 def createmetadatarequest():
     request = aconcagua_pb2.GetMetadataRequest()
     request.requestmetadata['version'] = '0.9'
-    request.metadataheaders.extend(['scale','unit'])
+    request.metadataheaders.extend(['scale','unit','description'])
     
     # TODO [jc]: find better way of projecting onto the list 
-    ssk = aconcagua_pb2.SourceSeriesKey(sourcename = 'null://test')
-    for i in range(1,5):
-        ssk.seriesname = "series%02d" % i
+    ssk = aconcagua_pb2.SourceSeriesKey(sourcename = 'dmx:\\C:\\Users\\Jerry\\Projects\\aconcagua\\data\\sample.dmx')
+    for i in range(1):
+        ssk.seriesname = "911BCA_GDP"
         request.keys.extend([ssk])
 
     return request

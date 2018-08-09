@@ -38,3 +38,24 @@ set GOOGLEAPIS_DIR=..\..\googleapis
 	--proto_path=%GOOGLEAPIS_DIR% ^
 	..\..\proto\aconcagua.proto 
 endlocal
+
+
+@rem [jc]: grpc-gateway build for REST API stubs
+@rem protoc -I. -I$(cygpath -w /usr/local/include) -I${GOPATH}/src -I${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --go_out=plugins=grpc:. ./path/to/your_service.proto
+@rem protoc -I. -I$(cygpath -w /usr/local/include) -I${GOPATH}/src -I${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --grpc-gateway_out=logtostderr=true:. ./path/to/your_service.proto
+@rem protoc -I. -I$(cygpath -w /usr/local/include) -I${GOPATH}/src -I${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --swagger_out=logtostderr=true:. ./path/to/your_service.proto
+
+@rem [jc]: grpc-gateway : change db_home on nsswitch.conf to run cygwin build correctly
+@rem # /etc/nsswitch.conf
+@rem #
+@rem #    This file is read once by the first process in a Cygwin process tree.
+@rem #    To pick up changes, restart all Cygwin processes.  For a description
+@rem #    see https://cygwin.com/cygwin-ug-net/ntsec.html#ntsec-mapping-nsswitch
+@rem #
+@rem # Defaults:
+@rem # passwd:   files db
+@rem # group:    files db
+@rem # db_enum:  cache builtin
+@rem db_home:  windows
+@rem # db_shell: /bin/bash
+@rem # db_gecos: <empty>
