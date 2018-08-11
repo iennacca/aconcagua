@@ -5,15 +5,15 @@ import grpc
 import aconcagua_pb2
 import aconcagua_pb2_grpc
 
-def createmetadatarequest():
+def createmetadatarequest(seriesSource, seriesCodes, headers):
     request = aconcagua_pb2.GetMetadataRequest()
     request.requestmetadata['version'] = '0.9'
-    request.metadataheaders.extend(['scale','unit','description'])
+    request.metadataheaders.extend(headers)
     
     # TODO [jc]: find better way of projecting onto the list 
-    ssk = aconcagua_pb2.SourceSeriesKey(sourcename = 'dmx:\\C:\\Users\\Jerry\\Projects\\aconcagua\\data\\sample.dmx')
-    for i in range(1):
-        ssk.seriesname = "911BCA_GDP"
+    ssk = aconcagua_pb2.SourceSeriesKey(sourcename = seriesSource)
+    for s in seriesCodes :
+        ssk.seriesname = s
         request.keys.extend([ssk])
 
     return request
@@ -31,7 +31,11 @@ def run():
     channel = grpc.insecure_channel('localhost:50051')
     client = aconcagua_pb2_grpc.AconcaguaStub(channel)
 
-    request = createmetadatarequest()
+    request = createmetadatarequest(
+        'dmx:\\C:\\Users\\Jerry\\Projects\\aconcagua\\data\\sample.dmx',
+        ['911BE','911BEA','911BEAB'], 
+        ['scale','unit','description'])
+
     response = client.GetMetadata(request)
     showmetadataresponse(response)
 
