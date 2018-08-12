@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace aconcagua.data
 {
@@ -61,7 +62,7 @@ namespace aconcagua.data
     {
         string SchemeType { get; }
         TimeseriesSourceKey SourceKey { get; }
-        IEnumerable<ITimeseries> GetMetadata(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList);
-        IEnumerable<ITimeseries> GetObservations(IEnumerable<TimeseriesKey> seriesKeys, TimeSpan span);
+        IQueryable<ITimeseries> GetMetadata(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList);
+        IQueryable<ITimeseries> GetObservations(IEnumerable<TimeseriesKey> seriesKeys, TimeSpan span);
     }
 }

@@ -31,7 +31,7 @@ namespace aconcagua.data.factory
 
         #region Execution
 
-        public IEnumerable<ITimeseries> GetMetadata(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList)
+        public IQueryable<ITimeseries> GetMetadata(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList)
         {
             var seriesList = new List<ITimeseries>();
             var enumerable = headerList as string[] ?? headerList.ToArray();
@@ -44,10 +44,10 @@ namespace aconcagua.data.factory
                 seriesList.Add(_seriesList[seriesKey]);
             }
 
-            return seriesList;
+            return seriesList.AsQueryable();
         }
 
-        public IEnumerable<ITimeseries> GetObservations(IEnumerable<TimeseriesKey> seriesKeys, TimeSpan span)
+        public IQueryable<ITimeseries> GetObservations(IEnumerable<TimeseriesKey> seriesKeys, TimeSpan span)
         {
             throw new NotImplementedException();
         }

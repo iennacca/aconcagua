@@ -40,12 +40,12 @@ namespace aconcagua.data.dmx
 
         #region Execution
 
-        public IEnumerable<ITimeseries> GetObservations(IEnumerable<TimeseriesKey> seriesKeys, TimeSpan span)
+        public IQueryable<ITimeseries> GetObservations(IEnumerable<TimeseriesKey> seriesKeys, TimeSpan span)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<ITimeseries> GetMetadata(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList)
+        public IQueryable<ITimeseries> GetMetadata(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList)
         {
             var hdrs = headerList as string[] ?? headerList.ToArray();
             var seriesList = new List<ITimeseries>();
@@ -67,7 +67,7 @@ namespace aconcagua.data.dmx
                 seriesList.Add(new DMXTimeseries(SourceKey, seriesKey, headerData));
             }
 
-            return seriesList;
+            return seriesList.AsQueryable();
         }
 
         private string createQuery(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList)
