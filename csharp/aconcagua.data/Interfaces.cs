@@ -51,18 +51,39 @@ namespace aconcagua.data
         }
     }
 
-    public interface ITimeseries
+    public enum FrequencyIndicator
+    {
+        Annual = 'A',
+        Quarterly = 'Q',
+        Monthly = 'M'
+    }
+
+    public struct TimePeriodSpan
+    {
+        public DateTime Start;
+        public DateTime End;
+        public IEnumerable<FrequencyIndicator> Frequencies;
+    }
+
+    public interface ITimeseriesMetadata
     {
         TimeseriesSourceKey SourceKey { get; }
         TimeseriesKey SeriesKey { get; }
-        IReadOnlyDictionary<string, string> HeaderData { get; }
+        IDictionary<string, string> Metadata { get; }
+    }
+
+    public interface ITimeseriesObservations
+    {
+        TimeseriesSourceKey SourceKey { get; }
+        TimeseriesKey SeriesKey { get; }
+        IDictionary<string, double> Observations { get; }
     }
 
     public interface ITimeseriesSource
     {
         string SchemeType { get; }
         TimeseriesSourceKey SourceKey { get; }
-        IQueryable<ITimeseries> GetMetadata(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList);
-        IQueryable<ITimeseries> GetObservations(IEnumerable<TimeseriesKey> seriesKeys, TimeSpan span);
+        IQueryable<ITimeseriesMetadata> GetMetadata(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList);
+        IQueryable<ITimeseriesObservations> GetObservations(IEnumerable<TimeseriesKey> seriesKeys, string frequencies);
     }
 }

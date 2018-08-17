@@ -48,13 +48,12 @@ message GetMetadataResponse {
 
 message GetObservationsRequest {
 	map<string,string> requestmetadata = 1;
-	repeated string observationheaders = 2;
+	string frequencies = 2;
 	repeated SourceSeriesKey keys = 3;
 }
 
 message GetObservationsResponse {
 	map<string,string> responsemetadata = 1;
-	repeated string observationheaders = 2;
 	repeated ObservationsList datalist = 3;
 }
 
@@ -65,7 +64,7 @@ message MetadataList {
 
 message ObservationsList {
 	SourceSeriesKey key = 1;
-	repeated float data = 2;
+	map<string,double> values = 2;
 }
 
 message SourceSeriesKey {

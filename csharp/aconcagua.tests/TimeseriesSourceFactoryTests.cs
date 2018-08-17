@@ -68,5 +68,17 @@ namespace aconcagua.tests
             var listKeys = strKeys.ToTimeseriesKeys();
             Assert.IsTrue(listKeys.Count() == numKeys);
         }
+
+        [TestMethod]
+        public void CanCreateQueriesCorrectly()
+        {
+            var actualresult = GetObservationsQuery.CreateOValueFieldNamesFrom(FrequencyIndicator.Monthly);
+            var expectedresult = "OValue1 AS M1, OValue2 AS M2, OValue3 AS M3, OValue4 AS M4, OValue5 AS M5, OValue6 AS M6, OValue7 AS M7, OValue8 AS M8, OValue9 AS M9, OValue10 AS M10, OValue11 AS M11, OValue12 AS M12";
+            Assert.AreEqual(actualresult, expectedresult);
+
+            actualresult = GetObservationsQuery.CreateOValueFieldNamesFrom(FrequencyIndicator.Quarterly);
+            expectedresult = "OValue13 AS Q1, OValue14 AS Q2, OValue15 AS Q3, OValue16 AS Q4";
+            Assert.AreEqual(actualresult, expectedresult);
+        }
     }
 }

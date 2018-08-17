@@ -18,6 +18,19 @@ def createmetadatarequest(seriesSource, seriesCodes, headers):
 
     return request
 
+def createobservationrequest(seriesSource, seriesCodes, frequencies):
+    request = aconcagua_pb2.GetObservationsRequest()
+    request.requestmetadata['version'] = '0.9'
+    request.frequencies = frequencies
+    
+    # TODO [jc]: find better way of projecting onto the list 
+    ssk = aconcagua_pb2.SourceSeriesKey(sourcename = seriesSource)
+    for s in seriesCodes :
+        ssk.seriesname = s
+        request.keys.extend([ssk])
+
+    return request
+
 def showmetadataresponse(response):
     i = 0
     for ts in response.datalist:
@@ -25,6 +38,15 @@ def showmetadataresponse(response):
 
         for d in ts.data:
             print('    Data: %s' % d)
+        i = i + 1
+
+def showobservationsresponse(response):
+    i = 0
+    for ts in response.datalist:
+        print('Sourcename[%02d]: %s/%s' % (i, ts.key.sourcename, ts.key.seriesname))
+
+        for key in ts.values:
+            print('    %s: %d' % (key, ts.values[key]))
         i = i + 1
 
 def run():
@@ -35,9 +57,17 @@ def run():
         'dmx:\\C:\\Users\\Jerry\\Projects\\aconcagua\\data\\sample.dmx',
         ['911BE','911BEA','911BEAB'], 
         ['scale','unit','description'])
-
     response = client.GetMetadata(request)
     showmetadataresponse(response)
+
+    request = createobservationrequest(
+        'dmx:\\C:\\Users\\Jerry\\Projects\\aconcagua\\data\\sample.dmx',
+        ['911BE','911BEA','911BEAB'], 
+        'A')
+    response = client.GetObservations(request)
+    showobservationsresponse(response)
+    
+
 
 if __name__ == '__main__':
     run()

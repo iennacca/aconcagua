@@ -11,6 +11,7 @@ namespace aconcagua.data.factory
 
         public string SchemeType { get; } = _schemeType;
         public TimeseriesSourceKey SourceKey { get; }
+
         #region Initialization
 
         private NullTimeseriesSource(TimeseriesSourceKey sourceKey)
@@ -31,9 +32,9 @@ namespace aconcagua.data.factory
 
         #region Execution
 
-        public IQueryable<ITimeseries> GetMetadata(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList)
+        public IQueryable<ITimeseriesMetadata> GetMetadata(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList)
         {
-            var seriesList = new List<ITimeseries>();
+            var seriesList = new List<ITimeseriesMetadata>();
             var enumerable = headerList as string[] ?? headerList.ToArray();
 
             foreach (var seriesKey in seriesKeys)
@@ -47,7 +48,7 @@ namespace aconcagua.data.factory
             return seriesList.AsQueryable();
         }
 
-        public IQueryable<ITimeseries> GetObservations(IEnumerable<TimeseriesKey> seriesKeys, TimeSpan span)
+        public IQueryable<ITimeseriesObservations> GetObservations(IEnumerable<TimeseriesKey> seriesKeys, string frequencies)
         {
             throw new NotImplementedException();
         }
@@ -56,23 +57,26 @@ namespace aconcagua.data.factory
 
     }
 
-    internal class NullTimeseries : ITimeseries
+    internal class NullTimeseries : ITimeseriesMetadata, ITimeseriesObservations
     {
         public TimeseriesSourceKey SourceKey { get; }
         public TimeseriesKey SeriesKey { get; }
-        public IReadOnlyDictionary<string, string> HeaderData => _headerData;
+        public IDictionary<string, string> Metadata => _metadata;
+        public IDictionary<string, double> Observations => _observations;
 
-        private readonly Dictionary<string, string> _headerData;
+        private readonly Dictionary<string, string> _metadata = new Dictionary<string, string>();
+        private readonly Dictionary<string, double> _observations = new Dictionary<string, double>();
 
+        // TODO [jc]: Create separate initializers for metadata and observations
         public NullTimeseries(TimeseriesSourceKey sourceKey, TimeseriesKey seriesKey, IEnumerable<string> headerList)
         {
             SourceKey = sourceKey;
             SeriesKey = seriesKey;
-            _headerData = new Dictionary<string, string>();
+
             foreach (var header in headerList)
             {
                 var observationValue = new Random().NextDouble();
-                _headerData.Add(header, $"{SourceKey.Key}|{SeriesKey.Key}|{header}|{observationValue}");
+                _metadata.Add(header, $"{SourceKey.Key}|{SeriesKey.Key}|{header}|{observationValue}");
             }
         }
     }

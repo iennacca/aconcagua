@@ -13,6 +13,7 @@
 // limitations under the License.
 
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using aconcagua.data;
 using aconcagua.data.factory;
@@ -38,7 +39,7 @@ namespace aconcagua.server
         public override Task<GetObservationsResponse> GetObservations(GetObservationsRequest request, ServerCallContext context)
         {
             Console.WriteLine("GetObservations() called");
-            return Task.FromResult(new GetObservationsResponse());
+            return Task.FromResult(CreateObservationsResponse(request));
         }
 
 
@@ -70,7 +71,7 @@ namespace aconcagua.server
                                 Seriesname = ts.SeriesKey.Key
                             }
                         };
-                        m.Data.AddRange(ts.HeaderData.Values);
+                        m.Data.AddRange(ts.Metadata.Values);
                         reply.Datalist.Add(m);
                     }
                 }
@@ -82,6 +83,47 @@ namespace aconcagua.server
             }
             return reply;
         }
+
+        private static GetObservationsResponse CreateObservationsResponse(GetObservationsRequest request)
+        {
+            var reply = new GetObservationsResponse();
+            try
+            {
+                var tssFactory = TimeseriesSourceFactory.Factory;
+
+                //TODO [jc]: what do we do with the requestmetadata?
+                reply.Responsemetadata.Add(request.Requestmetadata);
+
+                foreach (var ssKey in request.Keys)
+                {
+                    var tsList = tssFactory[ssKey.Sourcename].GetObservations(
+                        new[] { new TimeseriesKey(ssKey.Seriesname) },
+                        request.Frequencies);
+
+                    
+                    foreach (var ts in tsList)
+                    {
+                        var o = new ObservationsList
+                        {
+                            Key = new SourceSeriesKey()
+                            {
+                                Sourcename = ts.SourceKey.Key.ToString(),
+                                Seriesname = ts.SeriesKey.Key
+                            }
+                        };
+                        o.Values.Add(ts.Observations);
+                        reply.Datalist.Add(o);
+                    }                    
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            return reply;
+        }
+
     }
 
     internal class Program

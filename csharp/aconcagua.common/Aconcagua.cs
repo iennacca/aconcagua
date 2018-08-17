@@ -33,37 +33,38 @@ public static partial class AconcaguaReflection {
           "dGEYASADKAsyKi5HZXRNZXRhZGF0YVJlc3BvbnNlLlJlc3BvbnNlbWV0YWRh",
           "dGFFbnRyeRIXCg9tZXRhZGF0YWhlYWRlcnMYAiADKAkSHwoIZGF0YWxpc3QY",
           "AyADKAsyDS5NZXRhZGF0YUxpc3QaNwoVUmVzcG9uc2VtZXRhZGF0YUVudHJ5",
-          "EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCToCOAEi0wEKFkdldE9ic2Vy",
+          "EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCToCOAEizAEKFkdldE9ic2Vy",
           "dmF0aW9uc1JlcXVlc3QSRQoPcmVxdWVzdG1ldGFkYXRhGAEgAygLMiwuR2V0",
-          "T2JzZXJ2YXRpb25zUmVxdWVzdC5SZXF1ZXN0bWV0YWRhdGFFbnRyeRIaChJv",
-          "YnNlcnZhdGlvbmhlYWRlcnMYAiADKAkSHgoEa2V5cxgDIAMoCzIQLlNvdXJj",
-          "ZVNlcmllc0tleRo2ChRSZXF1ZXN0bWV0YWRhdGFFbnRyeRILCgNrZXkYASAB",
-          "KAkSDQoFdmFsdWUYAiABKAk6AjgBIt0BChdHZXRPYnNlcnZhdGlvbnNSZXNw",
-          "b25zZRJIChByZXNwb25zZW1ldGFkYXRhGAEgAygLMi4uR2V0T2JzZXJ2YXRp",
-          "b25zUmVzcG9uc2UuUmVzcG9uc2VtZXRhZGF0YUVudHJ5EhoKEm9ic2VydmF0",
-          "aW9uaGVhZGVycxgCIAMoCRIjCghkYXRhbGlzdBgDIAMoCzIRLk9ic2VydmF0",
-          "aW9uc0xpc3QaNwoVUmVzcG9uc2VtZXRhZGF0YUVudHJ5EgsKA2tleRgBIAEo",
-          "CRINCgV2YWx1ZRgCIAEoCToCOAEiOwoMTWV0YWRhdGFMaXN0Eh0KA2tleRgB",
-          "IAEoCzIQLlNvdXJjZVNlcmllc0tleRIMCgRkYXRhGAIgAygJIj8KEE9ic2Vy",
-          "dmF0aW9uc0xpc3QSHQoDa2V5GAEgASgLMhAuU291cmNlU2VyaWVzS2V5EgwK",
-          "BGRhdGEYAiADKAIiOQoPU291cmNlU2VyaWVzS2V5EhIKCnNvdXJjZW5hbWUY",
-          "ASABKAkSEgoKc2VyaWVzbmFtZRgCIAEoCTLMAQoJQWNvbmNhZ3VhEjsKCkdl",
-          "dFZlcnNpb24SFi5nb29nbGUucHJvdG9idWYuRW1wdHkaEy5HZXRWZXJzaW9u",
-          "UmVzcG9uc2UiABI6CgtHZXRNZXRhZGF0YRITLkdldE1ldGFkYXRhUmVxdWVz",
-          "dBoULkdldE1ldGFkYXRhUmVzcG9uc2UiABJGCg9HZXRPYnNlcnZhdGlvbnMS",
-          "Fy5HZXRPYnNlcnZhdGlvbnNSZXF1ZXN0GhguR2V0T2JzZXJ2YXRpb25zUmVz",
-          "cG9uc2UiAEIrChFpby5ncnBjLmFjb25jYWd1YUIOQWNvbmNhZ3VhUHJvdG9Q",
-          "AaICA0FDQWIGcHJvdG8z"));
+          "T2JzZXJ2YXRpb25zUmVxdWVzdC5SZXF1ZXN0bWV0YWRhdGFFbnRyeRITCgtm",
+          "cmVxdWVuY2llcxgCIAEoCRIeCgRrZXlzGAMgAygLMhAuU291cmNlU2VyaWVz",
+          "S2V5GjYKFFJlcXVlc3RtZXRhZGF0YUVudHJ5EgsKA2tleRgBIAEoCRINCgV2",
+          "YWx1ZRgCIAEoCToCOAEiwQEKF0dldE9ic2VydmF0aW9uc1Jlc3BvbnNlEkgK",
+          "EHJlc3BvbnNlbWV0YWRhdGEYASADKAsyLi5HZXRPYnNlcnZhdGlvbnNSZXNw",
+          "b25zZS5SZXNwb25zZW1ldGFkYXRhRW50cnkSIwoIZGF0YWxpc3QYAyADKAsy",
+          "ES5PYnNlcnZhdGlvbnNMaXN0GjcKFVJlc3BvbnNlbWV0YWRhdGFFbnRyeRIL",
+          "CgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBIjsKDE1ldGFkYXRhTGlz",
+          "dBIdCgNrZXkYASABKAsyEC5Tb3VyY2VTZXJpZXNLZXkSDAoEZGF0YRgCIAMo",
+          "CSKPAQoQT2JzZXJ2YXRpb25zTGlzdBIdCgNrZXkYASABKAsyEC5Tb3VyY2VT",
+          "ZXJpZXNLZXkSLQoGdmFsdWVzGAIgAygLMh0uT2JzZXJ2YXRpb25zTGlzdC5W",
+          "YWx1ZXNFbnRyeRotCgtWYWx1ZXNFbnRyeRILCgNrZXkYASABKAkSDQoFdmFs",
+          "dWUYAiABKAE6AjgBIjkKD1NvdXJjZVNlcmllc0tleRISCgpzb3VyY2VuYW1l",
+          "GAEgASgJEhIKCnNlcmllc25hbWUYAiABKAkyzAEKCUFjb25jYWd1YRI7CgpH",
+          "ZXRWZXJzaW9uEhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5GhMuR2V0VmVyc2lv",
+          "blJlc3BvbnNlIgASOgoLR2V0TWV0YWRhdGESEy5HZXRNZXRhZGF0YVJlcXVl",
+          "c3QaFC5HZXRNZXRhZGF0YVJlc3BvbnNlIgASRgoPR2V0T2JzZXJ2YXRpb25z",
+          "EhcuR2V0T2JzZXJ2YXRpb25zUmVxdWVzdBoYLkdldE9ic2VydmF0aW9uc1Jl",
+          "c3BvbnNlIgBCKwoRaW8uZ3JwYy5hY29uY2FndWFCDkFjb25jYWd1YVByb3Rv",
+          "UAGiAgNBQ0FiBnByb3RvMw=="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, },
         new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
           new pbr::GeneratedClrTypeInfo(typeof(global::GetVersionResponse), global::GetVersionResponse.Parser, new[]{ "Version" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::GetMetadataRequest), global::GetMetadataRequest.Parser, new[]{ "Requestmetadata", "Metadataheaders", "Keys" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
           new pbr::GeneratedClrTypeInfo(typeof(global::GetMetadataResponse), global::GetMetadataResponse.Parser, new[]{ "Responsemetadata", "Metadataheaders", "Datalist" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-          new pbr::GeneratedClrTypeInfo(typeof(global::GetObservationsRequest), global::GetObservationsRequest.Parser, new[]{ "Requestmetadata", "Observationheaders", "Keys" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-          new pbr::GeneratedClrTypeInfo(typeof(global::GetObservationsResponse), global::GetObservationsResponse.Parser, new[]{ "Responsemetadata", "Observationheaders", "Datalist" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+          new pbr::GeneratedClrTypeInfo(typeof(global::GetObservationsRequest), global::GetObservationsRequest.Parser, new[]{ "Requestmetadata", "Frequencies", "Keys" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+          new pbr::GeneratedClrTypeInfo(typeof(global::GetObservationsResponse), global::GetObservationsResponse.Parser, new[]{ "Responsemetadata", "Datalist" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
           new pbr::GeneratedClrTypeInfo(typeof(global::MetadataList), global::MetadataList.Parser, new[]{ "Key", "Data" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::ObservationsList), global::ObservationsList.Parser, new[]{ "Key", "Data" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::ObservationsList), global::ObservationsList.Parser, new[]{ "Key", "Values" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
           new pbr::GeneratedClrTypeInfo(typeof(global::SourceSeriesKey), global::SourceSeriesKey.Parser, new[]{ "Sourcename", "Seriesname" }, null, null, null)
         }));
   }
@@ -548,7 +549,7 @@ public sealed partial class GetObservationsRequest : pb::IMessage<GetObservation
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public GetObservationsRequest(GetObservationsRequest other) : this() {
     requestmetadata_ = other.requestmetadata_.Clone();
-    observationheaders_ = other.observationheaders_.Clone();
+    frequencies_ = other.frequencies_;
     keys_ = other.keys_.Clone();
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
@@ -568,14 +569,15 @@ public sealed partial class GetObservationsRequest : pb::IMessage<GetObservation
     get { return requestmetadata_; }
   }
 
-  /// <summary>Field number for the "observationheaders" field.</summary>
-  public const int ObservationheadersFieldNumber = 2;
-  private static readonly pb::FieldCodec<string> _repeated_observationheaders_codec
-      = pb::FieldCodec.ForString(18);
-  private readonly pbc::RepeatedField<string> observationheaders_ = new pbc::RepeatedField<string>();
+  /// <summary>Field number for the "frequencies" field.</summary>
+  public const int FrequenciesFieldNumber = 2;
+  private string frequencies_ = "";
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public pbc::RepeatedField<string> Observationheaders {
-    get { return observationheaders_; }
+  public string Frequencies {
+    get { return frequencies_; }
+    set {
+      frequencies_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
   }
 
   /// <summary>Field number for the "keys" field.</summary>
@@ -602,7 +604,7 @@ public sealed partial class GetObservationsRequest : pb::IMessage<GetObservation
       return true;
     }
     if (!Requestmetadata.Equals(other.Requestmetadata)) return false;
-    if(!observationheaders_.Equals(other.observationheaders_)) return false;
+    if (Frequencies != other.Frequencies) return false;
     if(!keys_.Equals(other.keys_)) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
@@ -611,7 +613,7 @@ public sealed partial class GetObservationsRequest : pb::IMessage<GetObservation
   public override int GetHashCode() {
     int hash = 1;
     hash ^= Requestmetadata.GetHashCode();
-    hash ^= observationheaders_.GetHashCode();
+    if (Frequencies.Length != 0) hash ^= Frequencies.GetHashCode();
     hash ^= keys_.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
@@ -627,7 +629,10 @@ public sealed partial class GetObservationsRequest : pb::IMessage<GetObservation
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public void WriteTo(pb::CodedOutputStream output) {
     requestmetadata_.WriteTo(output, _map_requestmetadata_codec);
-    observationheaders_.WriteTo(output, _repeated_observationheaders_codec);
+    if (Frequencies.Length != 0) {
+      output.WriteRawTag(18);
+      output.WriteString(Frequencies);
+    }
     keys_.WriteTo(output, _repeated_keys_codec);
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
@@ -638,7 +643,9 @@ public sealed partial class GetObservationsRequest : pb::IMessage<GetObservation
   public int CalculateSize() {
     int size = 0;
     size += requestmetadata_.CalculateSize(_map_requestmetadata_codec);
-    size += observationheaders_.CalculateSize(_repeated_observationheaders_codec);
+    if (Frequencies.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(Frequencies);
+    }
     size += keys_.CalculateSize(_repeated_keys_codec);
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -652,7 +659,9 @@ public sealed partial class GetObservationsRequest : pb::IMessage<GetObservation
       return;
     }
     requestmetadata_.Add(other.requestmetadata_);
-    observationheaders_.Add(other.observationheaders_);
+    if (other.Frequencies.Length != 0) {
+      Frequencies = other.Frequencies;
+    }
     keys_.Add(other.keys_);
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -670,7 +679,7 @@ public sealed partial class GetObservationsRequest : pb::IMessage<GetObservation
           break;
         }
         case 18: {
-          observationheaders_.AddEntriesFrom(input, _repeated_observationheaders_codec);
+          Frequencies = input.ReadString();
           break;
         }
         case 26: {
@@ -709,7 +718,6 @@ public sealed partial class GetObservationsResponse : pb::IMessage<GetObservatio
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public GetObservationsResponse(GetObservationsResponse other) : this() {
     responsemetadata_ = other.responsemetadata_.Clone();
-    observationheaders_ = other.observationheaders_.Clone();
     datalist_ = other.datalist_.Clone();
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
@@ -727,16 +735,6 @@ public sealed partial class GetObservationsResponse : pb::IMessage<GetObservatio
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public pbc::MapField<string, string> Responsemetadata {
     get { return responsemetadata_; }
-  }
-
-  /// <summary>Field number for the "observationheaders" field.</summary>
-  public const int ObservationheadersFieldNumber = 2;
-  private static readonly pb::FieldCodec<string> _repeated_observationheaders_codec
-      = pb::FieldCodec.ForString(18);
-  private readonly pbc::RepeatedField<string> observationheaders_ = new pbc::RepeatedField<string>();
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public pbc::RepeatedField<string> Observationheaders {
-    get { return observationheaders_; }
   }
 
   /// <summary>Field number for the "datalist" field.</summary>
@@ -763,7 +761,6 @@ public sealed partial class GetObservationsResponse : pb::IMessage<GetObservatio
       return true;
     }
     if (!Responsemetadata.Equals(other.Responsemetadata)) return false;
-    if(!observationheaders_.Equals(other.observationheaders_)) return false;
     if(!datalist_.Equals(other.datalist_)) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
@@ -772,7 +769,6 @@ public sealed partial class GetObservationsResponse : pb::IMessage<GetObservatio
   public override int GetHashCode() {
     int hash = 1;
     hash ^= Responsemetadata.GetHashCode();
-    hash ^= observationheaders_.GetHashCode();
     hash ^= datalist_.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
@@ -788,7 +784,6 @@ public sealed partial class GetObservationsResponse : pb::IMessage<GetObservatio
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public void WriteTo(pb::CodedOutputStream output) {
     responsemetadata_.WriteTo(output, _map_responsemetadata_codec);
-    observationheaders_.WriteTo(output, _repeated_observationheaders_codec);
     datalist_.WriteTo(output, _repeated_datalist_codec);
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
@@ -799,7 +794,6 @@ public sealed partial class GetObservationsResponse : pb::IMessage<GetObservatio
   public int CalculateSize() {
     int size = 0;
     size += responsemetadata_.CalculateSize(_map_responsemetadata_codec);
-    size += observationheaders_.CalculateSize(_repeated_observationheaders_codec);
     size += datalist_.CalculateSize(_repeated_datalist_codec);
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -813,7 +807,6 @@ public sealed partial class GetObservationsResponse : pb::IMessage<GetObservatio
       return;
     }
     responsemetadata_.Add(other.responsemetadata_);
-    observationheaders_.Add(other.observationheaders_);
     datalist_.Add(other.datalist_);
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -828,10 +821,6 @@ public sealed partial class GetObservationsResponse : pb::IMessage<GetObservatio
           break;
         case 10: {
           responsemetadata_.AddEntriesFrom(input, _map_responsemetadata_codec);
-          break;
-        }
-        case 18: {
-          observationheaders_.AddEntriesFrom(input, _repeated_observationheaders_codec);
           break;
         }
         case 26: {
@@ -1025,7 +1014,7 @@ public sealed partial class ObservationsList : pb::IMessage<ObservationsList> {
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public ObservationsList(ObservationsList other) : this() {
     Key = other.key_ != null ? other.Key.Clone() : null;
-    data_ = other.data_.Clone();
+    values_ = other.values_.Clone();
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -1045,14 +1034,14 @@ public sealed partial class ObservationsList : pb::IMessage<ObservationsList> {
     }
   }
 
-  /// <summary>Field number for the "data" field.</summary>
-  public const int DataFieldNumber = 2;
-  private static readonly pb::FieldCodec<float> _repeated_data_codec
-      = pb::FieldCodec.ForFloat(18);
-  private readonly pbc::RepeatedField<float> data_ = new pbc::RepeatedField<float>();
+  /// <summary>Field number for the "values" field.</summary>
+  public const int ValuesFieldNumber = 2;
+  private static readonly pbc::MapField<string, double>.Codec _map_values_codec
+      = new pbc::MapField<string, double>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForDouble(17), 18);
+  private readonly pbc::MapField<string, double> values_ = new pbc::MapField<string, double>();
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public pbc::RepeatedField<float> Data {
-    get { return data_; }
+  public pbc::MapField<string, double> Values {
+    get { return values_; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1069,7 +1058,7 @@ public sealed partial class ObservationsList : pb::IMessage<ObservationsList> {
       return true;
     }
     if (!object.Equals(Key, other.Key)) return false;
-    if(!data_.Equals(other.data_)) return false;
+    if (!Values.Equals(other.Values)) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -1077,7 +1066,7 @@ public sealed partial class ObservationsList : pb::IMessage<ObservationsList> {
   public override int GetHashCode() {
     int hash = 1;
     if (key_ != null) hash ^= Key.GetHashCode();
-    hash ^= data_.GetHashCode();
+    hash ^= Values.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -1095,7 +1084,7 @@ public sealed partial class ObservationsList : pb::IMessage<ObservationsList> {
       output.WriteRawTag(10);
       output.WriteMessage(Key);
     }
-    data_.WriteTo(output, _repeated_data_codec);
+    values_.WriteTo(output, _map_values_codec);
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -1107,7 +1096,7 @@ public sealed partial class ObservationsList : pb::IMessage<ObservationsList> {
     if (key_ != null) {
       size += 1 + pb::CodedOutputStream.ComputeMessageSize(Key);
     }
-    size += data_.CalculateSize(_repeated_data_codec);
+    size += values_.CalculateSize(_map_values_codec);
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
     }
@@ -1125,7 +1114,7 @@ public sealed partial class ObservationsList : pb::IMessage<ObservationsList> {
       }
       Key.MergeFrom(other.Key);
     }
-    data_.Add(other.data_);
+    values_.Add(other.values_);
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
 
@@ -1144,9 +1133,8 @@ public sealed partial class ObservationsList : pb::IMessage<ObservationsList> {
           input.ReadMessage(key_);
           break;
         }
-        case 18:
-        case 21: {
-          data_.AddEntriesFrom(input, _repeated_data_codec);
+        case 18: {
+          values_.AddEntriesFrom(input, _map_values_codec);
           break;
         }
       }
