@@ -50,23 +50,26 @@ def showobservationsresponse(response):
         i = i + 1
 
 def run():
+    seriesList = ['911BE','911BEA','BCA_GDP']
+    headerList  = ['scale','unit','description']
+    frequencyList = 'MA'
+
     channel = grpc.insecure_channel('localhost:50051')
     client = aconcagua_pb2_grpc.AconcaguaStub(channel)
-
+    
     request = createmetadatarequest(
         'dmx:\\C:\\Users\\Jerry\\Projects\\aconcagua\\data\\sample.dmx',
-        ['911BE','911BEA','911BEAB'], 
-        ['scale','unit','description'])
+        seriesList, 
+        headerList)
     response = client.GetMetadata(request)
     showmetadataresponse(response)
 
     request = createobservationrequest(
         'dmx:\\C:\\Users\\Jerry\\Projects\\aconcagua\\data\\sample.dmx',
-        ['911BE','911BEA','911BEAB'], 
-        'A')
+        seriesList, 
+        frequencyList)
     response = client.GetObservations(request)
-    showobservationsresponse(response)
-    
+    showobservationsresponse(response)    
 
 
 if __name__ == '__main__':

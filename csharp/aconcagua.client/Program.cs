@@ -7,21 +7,19 @@ namespace aconcagua.client
 {
     internal class Program
     {
-        private static char[] _delimiters = new[] {','};
-        const string sourceName = "dmx:\\C:\\Users\\Jerry\\Projects\\aconcagua\\data\\sample.dmx";
-        const string strSeriesList = "911BCA_GDP, 911BCAXGT_GDP,911BCAXT,911BE,911BEA,911BEAB,911BEAI,911BEAM,911BEAO,911BEAP,911BED,911BER,911BF";
-        const string strHeaderList = "scale, unit, description";
-        const string frequencyList = "MA";
+        static readonly string _sourceName = "dmx:\\C:\\Users\\Jerry\\Projects\\aconcagua\\data\\sample.dmx";
+        static readonly IEnumerable<string> _seriesList = new [] {"911BE", "911BEA", "BCA_GDP"};
+        static readonly IEnumerable<string> _headerList = new [] {"scale", "unit", "description"};
+        static string _frequencyList = "MA";
 
         public static void Main(string[] args)
         {
             var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
             var client = new Aconcagua.AconcaguaClient(channel);
-            var mrq = CreateMetadataRequest();
 
+            var mrq = CreateMetadataRequest();
             var mrs = client.GetMetadata(mrq);
             ShowMetadataResponse(mrs);
-
 
             var orq = CreateObservationsRequest();
             var or = client.GetObservations(orq);
@@ -39,22 +37,10 @@ namespace aconcagua.client
             var request = new GetMetadataRequest();
             request.Requestmetadata.Add(new Dictionary<string, string>() { { "version", "0.9" } });
 
-            var headers = createStringListFrom(strHeaderList);
-            request.Metadataheaders.Add(headers);
-            request.Keys.Add(createSourceSeriesKeyListFrom(sourceName, strSeriesList));
+            request.Metadataheaders.Add(_headerList);
+            request.Keys.Add(CreateSourceSeriesKeyListFrom(_sourceName, _seriesList));
 
             return request;
-        }
-
-        private static IEnumerable<string> createStringListFrom(string strList)
-        {
-            return strList.Split(_delimiters, StringSplitOptions.RemoveEmptyEntries).AsEnumerable();
-        }
-
-        private static IEnumerable<SourceSeriesKey> createSourceSeriesKeyListFrom(string sourceName, string strSeries)
-        {
-            return strSeries.Split(_delimiters, StringSplitOptions.RemoveEmptyEntries).
-                Select(s => new SourceSeriesKey() {Sourcename = sourceName, Seriesname = s}).ToList();
         }
 
         private static void ShowMetadataResponse(GetMetadataResponse response)
@@ -65,8 +51,8 @@ namespace aconcagua.client
             {
                 Console.WriteLine($"Sourcename[{i}]: {ts.Key.Sourcename}/{ts.Key.Seriesname}");
 
-                foreach (var pair in ts.Data.Zip(response.Metadataheaders, Tuple.Create))
-                    Console.WriteLine($"    {pair.Item2}: {pair.Item1}");
+                foreach (var pair in response.Metadataheaders.Zip(ts.Data, Tuple.Create))
+                    Console.WriteLine($"    {pair.Item1}: {pair.Item2}");
                 i++;
             }
         }
@@ -80,8 +66,8 @@ namespace aconcagua.client
             var request = new GetObservationsRequest();
             request.Requestmetadata.Add(new Dictionary<string, string>() { { "version", "0.9" } });
 
-            request.Frequencies = frequencyList;
-            request.Keys.Add(createSourceSeriesKeyListFrom(sourceName, strSeriesList));
+            request.Frequencies = _frequencyList;
+            request.Keys.Add(CreateSourceSeriesKeyListFrom(_sourceName, _seriesList));
 
             return request;
         }
@@ -95,11 +81,16 @@ namespace aconcagua.client
                 Console.WriteLine($"Sourcename[{i}]: {ts.Key.Sourcename}/{ts.Key.Seriesname}");
 
                 foreach (var pair in ts.Values.Keys.Zip(ts.Values.Values, Tuple.Create))
-                    Console.WriteLine($"    {pair.Item2}: {pair.Item1}");
+                    Console.WriteLine($"    {pair.Item1}: {pair.Item2}");
                 i++;
             }
         }
 
         #endregion
+
+        private static IEnumerable<SourceSeriesKey> CreateSourceSeriesKeyListFrom(string sourceName, IEnumerable<string> _seriesList)
+        {
+            return _seriesList.Select(s => new SourceSeriesKey() { Sourcename = sourceName, Seriesname = s }).ToList();
+        }
     }
 }
