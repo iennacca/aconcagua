@@ -10,4 +10,4 @@ gRPC serves as a language-independent interface layer to facilitate fast remote 
 Compile all C# projects, which will render 2 console executables in particular, called aconcagua.client.exe and aconcagua.server.exe. From a DOS terminal command line, run aconcagua.server.exe, which will start listening for requests. Running aconcagua.client.exe on a separate DOS terminal will launch 2 RPC calls called GetMetadata() and GetObservations(); hopefully if all goes well, the client will spit out some data on each call. 
 
 ### Running the Python client
-Make sure the C# server is running, then from the Python/aconcagua.clientserver project run the script in aconcagua.client.py. This should emulate the C# client and should call the C# server using the same RPC calls.
+Make sure the C# server is running, then from the Python/aconcagua.clientserver project, open an interactive window or terminal under the included virtual environment run the script in aconcagua.client.py. This should emulate the C# client and should call the C# server using the same RPC calls.
