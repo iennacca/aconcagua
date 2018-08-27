@@ -72,10 +72,12 @@ def converttodataframe(response):
     if isinstance(response, aconcagua_pb2.GetMetadataResponse):
         for ts in response.datalist:
             dts = {'source': ts.key.sourcename, 'series': ts.key.seriesname }
-            dts.update(dict(ts.values))
+            for m, v in zip(response.metadataheaders, ts.data):
+                dts.update({m:v})
             lts.append(dts)
 
     return pd.DataFrame(lts)
+
 
 def run():
     seriesList = ['911BE','911BEA','BCA_GDP']
@@ -99,6 +101,7 @@ def run():
         headerList)
     response = client.GetMetadata(request)
     showmetadataresponse(response)
+    dfts = converttodataframe(response)
 
 
 if __name__ == '__main__':
