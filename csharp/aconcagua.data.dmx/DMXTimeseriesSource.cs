@@ -200,12 +200,12 @@ namespace aconcagua.data.dmx
             {
                 case FrequencyIndicator.Monthly:
                     return Enumerable.Range(1, 12).
-                        Select(i => $"OValue{i} AS {(char) indicator}{i}").
+                        Select(i => $"OValue{i} AS {(char) indicator}{i:D2}").
                         Aggregate((a, s) => $"{a}, {s}");
 
                 case FrequencyIndicator.Quarterly:
                     return Enumerable.Range(13, 4).
-                        Select(i => $"OValue{i} AS {(char) indicator}{i - 12}").
+                        Select(i => $"OValue{i} AS {(char) indicator}{i - 12:D2}").
                         Aggregate((a, s) => $"{a}, {s}");
 
                 case FrequencyIndicator.Annual:
