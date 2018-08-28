@@ -46,7 +46,7 @@ def createobservationrequest(seriesSource, seriesCodes, frequencies):
 def showmetadataresponse(response):
     i = 0
     for ts in response.datalist:
-        print('Sourcename[%02d]: %s/%s' % (i, ts.key.sourcename, ts.key.seriesname))
+        print('[%02d] source[series]: %s[%s]' % (i, ts.key.sourcename, ts.key.seriesname))
 
         for d in ts.data:
             print('    Data: %s' % d)
@@ -55,7 +55,7 @@ def showmetadataresponse(response):
 def showobservationsresponse(response):
     i = 0
     for ts in response.datalist:
-        print('Sourcename[%02d]: %s/%s' % (i, ts.key.sourcename, ts.key.seriesname))
+        print('[%02d] source[series]: %s[%s]' % (i, ts.key.sourcename, ts.key.seriesname))
 
         for key in ts.values:
             print('    %s: %d' % (key, ts.values[key]))
@@ -76,8 +76,9 @@ def converttodataframe(response):
                 dts.update({m:v})
             lts.append(dts)
 
-    return pd.DataFrame(lts)
-
+    df = pd.DataFrame(lts)
+    df.reindex(sorted(df.columns), axis=1)
+    return df
 
 def run():
     seriesList = ['911BE','911BEA','BCA_GDP']
