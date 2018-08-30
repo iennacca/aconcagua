@@ -16,6 +16,10 @@ namespace aconcagua.client
         {
             var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
             var client = new Aconcagua.AconcaguaClient(channel);
+            var empty = new Google.Protobuf.WellKnownTypes.Empty();
+
+            var vrs = client.GetVersion(empty);
+            Console.WriteLine($"Version: {vrs.Version}");
 
             var mrq = CreateMetadataRequest();
             var mrs = client.GetMetadata(mrq);

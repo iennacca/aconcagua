@@ -4,17 +4,9 @@ from __future__ import print_function
 import grpc
 import aconcagua_pb2
 import aconcagua_pb2_grpc
-from google.protobuf.internal import api_implementation
-import pandas as pd
+from google.protobuf import empty_pb2 as googleEmpty
 
-if api_implementation.Type() == 'cpp':
-    from google.protobuf.pyext.cpp_message import GeneratedProtocolMessageType
-    from google.protobuf.pyext._message import ScalarMapContainer as ScalarMap
-    from google.protobuf.pyext._message import RepeatedScalarContainer as RepeatedScalarFieldContainer
-    from google.protobuf.pyext._message import RepeatedCompositeContainer as RepeatedCompositeFieldContainer
-else:
-    from google.protobuf.internal.python_message import GeneratedProtocolMessageType
-    from google.protobuf.internal.containers import ScalarMap, RepeatedScalarFieldContainer, RepeatedCompositeFieldContainer
+import pandas as pd
 
 
 def createmetadatarequest(seriesSource, seriesCodes, headers):
@@ -87,7 +79,10 @@ def run():
 
     channel = grpc.insecure_channel('localhost:50051')
     client = aconcagua_pb2_grpc.AconcaguaStub(channel)
-    
+
+    response = client.GetVersion(googleEmpty.Empty())    
+    print(response)
+
     request = createobservationrequest(
         'dmx:\\C:\\Users\\Jerry\\Projects\\aconcagua\\data\\sample.dmx',
         seriesList, 
