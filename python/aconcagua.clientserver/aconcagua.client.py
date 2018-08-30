@@ -40,9 +40,9 @@ def showmetadataresponse(response):
     for ts in response.datalist:
         print('[%02d] source[series]: %s[%s]' % (i, ts.key.sourcename, ts.key.seriesname))
 
-        for d in ts.data:
-            print('    Data: %s' % d)
-        i = i + 1
+        for m,d in zip(response.metadataheaders, ts.data):
+            print('    %s: %s' % (m,d))
+        i += 1
 
 def showobservationsresponse(response):
     i = 0
