@@ -7,6 +7,7 @@ import aconcagua_pb2_grpc
 from google.protobuf import empty_pb2 as googleEmpty
 
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 def createmetadatarequest(seriesSource, seriesCodes, headers):
