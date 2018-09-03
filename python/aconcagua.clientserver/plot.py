@@ -34,7 +34,10 @@ pdf = df[['series'] + [c for c in df.columns if c[0].isdigit() and 'A' in c]]
 # reshape data
 pdf = pdf.T
 pdf = pdf.reset_index()
+
+#change the column names
 pdf.columns = ['series'] + df['series'].tolist()
+pdf.rename(index=str, columns={"series": "label"})
 
 #drop the series row
 pdf = pdf.drop(pdf.index[pdf['series'] == 'series'])
