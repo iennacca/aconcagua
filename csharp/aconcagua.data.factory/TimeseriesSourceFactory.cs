@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using aconcagua.data.dmx;
+using aconcagua.data.ecos;
 
 namespace aconcagua.data.factory
 {
@@ -29,6 +30,9 @@ namespace aconcagua.data.factory
                 return source;
 
             if (DMXTimeseriesSource.TryCreate(sourceKey, out source))
+                return source;
+
+            if (ECOSTimeseriesSource.TryCreate(sourceKey, out source))
                 return source;
 
             throw new UnknownTimeseriesSourceException();

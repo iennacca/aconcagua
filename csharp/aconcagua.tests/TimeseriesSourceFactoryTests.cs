@@ -5,6 +5,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using aconcagua.data;
 using aconcagua.data.dmx;
+using aconcagua.data.ecos;
 using aconcagua.data.factory;
 
 namespace aconcagua.tests
@@ -44,15 +45,36 @@ namespace aconcagua.tests
         public void CanAccessDMXTimeseriesSource()
         {
             // Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Jerry\Projects\aconcagua\data\sample.dmx
-            const string tsSource = "dmx:///C:/Users/Jerry\\Projects/aconcagua/data/sample.dmx";
-            const string seriesName = "111NGDP,112NGDP";
-            // const string headers = "oname,description"; 
+            const string tsSource = "dmx:.\\..\\..\\..\\..\\data\\sample.dmx";
+            const string seriesNames = "911BE,911BEA,BCA_GDP";
+            const string headers = "oname,description,scale"; 
 
-            var tsKey = new TimeseriesKey(seriesName);
+            var tsKeys = seriesNames.ToTimeseriesKeys();
+            var headerList = headers.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+
             var tss = TimeseriesSourceFactory.Factory[tsSource];
-
             Assert.IsInstanceOfType(tss, typeof(DMXTimeseriesSource));
-            // var r = tss.Get(new List<TimeseriesKey>(), )
+
+            var result = tss.GetMetadata(tsKeys, headerList);
+            Assert.IsTrue(result.Any());
+        }
+
+        [TestMethod]
+        public void CanAccessECOSTimeseriesSource()
+        {
+            // Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Jerry\Projects\aconcagua\data\sample.dmx
+            const string tsSource = "ecos://ECDATA_CPI";
+            const string seriesNames = "312PCPIFBT_IX.A, 612PCPIFBT_IX.M, 612PCPIFBT_IX.Q";
+            const string headers = "SCALE,INDICATOR,COUNTRY";
+
+            var tsKeys = seriesNames.ToTimeseriesKeys();
+            var headerList = headers.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+
+            var tss = TimeseriesSourceFactory.Factory[tsSource];
+            Assert.IsInstanceOfType(tss, typeof(ECOSTimeseriesSource));
+
+            var result = tss.GetMetadata(tsKeys, headerList);
+            Assert.IsTrue(result.Any());
         }
 
         [TestMethod]

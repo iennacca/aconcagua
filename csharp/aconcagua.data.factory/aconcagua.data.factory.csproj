@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\aconcagua.data.dmx\aconcagua.data.dmx.csproj" />
+    <ProjectReference Include="..\aconcagua.data.ecos\aconcagua.data.ecos.csproj" />
     <ProjectReference Include="..\aconcagua.data\aconcagua.data.csproj" />
   </ItemGroup>
 

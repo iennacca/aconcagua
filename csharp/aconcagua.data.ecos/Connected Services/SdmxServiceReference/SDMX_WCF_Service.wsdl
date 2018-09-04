@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://www.prognoz.com/SDMX" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.prognoz.com/SDMX" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.prognoz.com/SDMX/Imports">
+      <xsd:import schemaLocation="http://ecossdmx:8080/SDMX_WCF_Service.svc?xsd=xsd0" namespace="http://www.prognoz.com/SDMX" />
+      <xsd:import schemaLocation="http://ecossdmx:8080/SDMX_WCF_Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://ecossdmx:8080/SDMX_WCF_Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Prognoz.SDMX.WebService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISDMXService_GetDataflow_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataflow" />
+  </wsdl:message>
+  <wsdl:message name="ISDMXService_GetDataflow_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataflowResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISDMXService_GetDataStructure_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataStructure" />
+  </wsdl:message>
+  <wsdl:message name="ISDMXService_GetDataStructure_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataStructureResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISDMXService_GetGenericData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGenericData" />
+  </wsdl:message>
+  <wsdl:message name="ISDMXService_GetGenericData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGenericDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISDMXService_GetCompactData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompactData" />
+  </wsdl:message>
+  <wsdl:message name="ISDMXService_GetCompactData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompactDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISDMXService_GetMetadataStructure_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMetadataStructure" />
+  </wsdl:message>
+  <wsdl:message name="ISDMXService_GetMetadataStructure_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMetadataStructureResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISDMXService_GetGenericMetadata_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGenericMetadata" />
+  </wsdl:message>
+  <wsdl:message name="ISDMXService_GetGenericMetadata_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGenericMetadataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISDMXService_GetMaxSeriesInResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMaxSeriesInResult" />
+  </wsdl:message>
+  <wsdl:message name="ISDMXService_GetMaxSeriesInResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMaxSeriesInResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISDMXService_GetDataStructureFull_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataStructureFull" />
+  </wsdl:message>
+  <wsdl:message name="ISDMXService_GetDataStructureFull_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataStructureFullResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISDMXService_GetTimeSeriesCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimeSeriesCount" />
+  </wsdl:message>
+  <wsdl:message name="ISDMXService_GetTimeSeriesCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimeSeriesCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISDMXService_GetTimeSeriesAttributes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimeSeriesAttributes" />
+  </wsdl:message>
+  <wsdl:message name="ISDMXService_GetTimeSeriesAttributes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimeSeriesAttributesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISDMXService_GetServiceVersion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceVersion" />
+  </wsdl:message>
+  <wsdl:message name="ISDMXService_GetServiceVersion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceVersionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISDMXService">
+    <wsdl:operation name="GetDataflow">
+      <wsdl:input wsaw:Action="http://www.prognoz.com/SDMX/ISDMXService/GetDataflow" message="tns:ISDMXService_GetDataflow_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.prognoz.com/SDMX/ISDMXService/GetDataflowResponse" message="tns:ISDMXService_GetDataflow_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataStructure">
+      <wsdl:input wsaw:Action="http://www.prognoz.com/SDMX/ISDMXService/GetDataStructure" message="tns:ISDMXService_GetDataStructure_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.prognoz.com/SDMX/ISDMXService/GetDataStructureResponse" message="tns:ISDMXService_GetDataStructure_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGenericData">
+      <wsdl:input wsaw:Action="http://www.prognoz.com/SDMX/ISDMXService/GetGenericData" message="tns:ISDMXService_GetGenericData_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.prognoz.com/SDMX/ISDMXService/GetGenericDataResponse" message="tns:ISDMXService_GetGenericData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompactData">
+      <wsdl:input wsaw:Action="http://www.prognoz.com/SDMX/ISDMXService/GetCompactData" message="tns:ISDMXService_GetCompactData_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.prognoz.com/SDMX/ISDMXService/GetCompactDataResponse" message="tns:ISDMXService_GetCompactData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMetadataStructure">
+      <wsdl:input wsaw:Action="http://www.prognoz.com/SDMX/ISDMXService/GetMetadataStructure" message="tns:ISDMXService_GetMetadataStructure_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.prognoz.com/SDMX/ISDMXService/GetMetadataStructureResponse" message="tns:ISDMXService_GetMetadataStructure_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGenericMetadata">
+      <wsdl:input wsaw:Action="http://www.prognoz.com/SDMX/ISDMXService/GetGenericMetadata" message="tns:ISDMXService_GetGenericMetadata_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.prognoz.com/SDMX/ISDMXService/GetGenericMetadataResponse" message="tns:ISDMXService_GetGenericMetadata_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMaxSeriesInResult">
+      <wsdl:input wsaw:Action="http://www.prognoz.com/SDMX/ISDMXService/GetMaxSeriesInResult" message="tns:ISDMXService_GetMaxSeriesInResult_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.prognoz.com/SDMX/ISDMXService/GetMaxSeriesInResultResponse" message="tns:ISDMXService_GetMaxSeriesInResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataStructureFull">
+      <wsdl:input wsaw:Action="http://www.prognoz.com/SDMX/ISDMXService/GetDataStructureFull" message="tns:ISDMXService_GetDataStructureFull_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.prognoz.com/SDMX/ISDMXService/GetDataStructureFullResponse" message="tns:ISDMXService_GetDataStructureFull_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTimeSeriesCount">
+      <wsdl:input wsaw:Action="http://www.prognoz.com/SDMX/ISDMXService/GetTimeSeriesCount" message="tns:ISDMXService_GetTimeSeriesCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.prognoz.com/SDMX/ISDMXService/GetTimeSeriesCountResponse" message="tns:ISDMXService_GetTimeSeriesCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTimeSeriesAttributes">
+      <wsdl:input wsaw:Action="http://www.prognoz.com/SDMX/ISDMXService/GetTimeSeriesAttributes" message="tns:ISDMXService_GetTimeSeriesAttributes_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.prognoz.com/SDMX/ISDMXService/GetTimeSeriesAttributesResponse" message="tns:ISDMXService_GetTimeSeriesAttributes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceVersion">
+      <wsdl:input wsaw:Action="http://www.prognoz.com/SDMX/ISDMXService/GetServiceVersion" message="tns:ISDMXService_GetServiceVersion_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.prognoz.com/SDMX/ISDMXService/GetServiceVersionResponse" message="tns:ISDMXService_GetServiceVersion_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

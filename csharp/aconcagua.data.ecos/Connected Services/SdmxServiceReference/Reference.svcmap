@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="080cfc6b-7c45-4606-bad6-6fc98c92ec62" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://ecossdmx:8080/SDMX_WCF_Service.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SDMX_WCF_Service.disco" MetadataType="Disco" ID="778e0096-fefd-4d33-ae36-ed7b943fe316" SourceId="1" SourceUrl="http://ecossdmx:8080/SDMX_WCF_Service.svc?disco" />
+    <MetadataFile FileName="SDMX_WCF_Service.wsdl" MetadataType="Wsdl" ID="7a894ff9-ef46-4657-8d70-4f961230ae27" SourceId="1" SourceUrl="http://ecossdmx:8080/SDMX_WCF_Service.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="SDMX_WCF_Service.xsd" MetadataType="Schema" ID="21c180f3-0fba-4f38-9642-84ea46fb324b" SourceId="1" SourceUrl="http://ecossdmx:8080/SDMX_WCF_Service.svc?xsd=xsd1" />
+    <MetadataFile FileName="SDMX_WCF_Service1.xsd" MetadataType="Schema" ID="db0c98c5-f54c-4937-ab9f-4121321d8382" SourceId="1" SourceUrl="http://ecossdmx:8080/SDMX_WCF_Service.svc?xsd=xsd2" />
+    <MetadataFile FileName="SDMXService.wsdl" MetadataType="Wsdl" ID="4e2956cb-c760-4489-9e76-5354710d0db6" SourceId="1" SourceUrl="http://ecossdmx:8080/SDMX_WCF_Service.svc?wsdl" />
+    <MetadataFile FileName="SDMX_WCF_Service2.xsd" MetadataType="Schema" ID="4bf0b3b1-c45e-4590-97b5-d75bb0911601" SourceId="1" SourceUrl="http://ecossdmx:8080/SDMX_WCF_Service.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
