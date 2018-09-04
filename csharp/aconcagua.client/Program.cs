@@ -7,7 +7,7 @@ namespace aconcagua.client
 {
     internal class Program
     {
-        static readonly string _sourceName = "dmx:\\C:\\Users\\Jerry\\Projects\\aconcagua\\data\\sample.dmx";
+        static readonly string _sourceName = "dmx:.\\..\\..\\..\\..\\data\\sample.dmx";
         static readonly IEnumerable<string> _seriesList = new [] {"911BE", "911BEA", "BCA_GDP"};
         static readonly IEnumerable<string> _headerList = new [] {"scale", "unit", "description"};
         static string _frequencyList = "MA";
