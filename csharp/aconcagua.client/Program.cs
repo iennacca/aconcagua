@@ -28,8 +28,8 @@ namespace aconcagua.client
             // ECOS request
             var req = new Request(
                 "ecos:ECDATA_CPI",
-                new [] {"312PCPIFBT_IX.A", "612PCPIFBT_IX.M", "612PCPIFBT_IX.Q"},
-                new [] {"SCALE","INDICATOR","COUNTRY"},
+                new[] { "312PCPIFBT_IX.A", "612PCPIFBT_IX.M", "612PCPIFBT_IX.Q" },
+                new[] { "SCALE", "INDICATOR", "COUNTRY" },
                 "MA"
             );
 

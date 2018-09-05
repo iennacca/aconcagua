@@ -63,7 +63,7 @@ namespace aconcagua.tests
         public void CanAccessECOSTimeseriesSource()
         {
             // Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Jerry\Projects\aconcagua\data\sample.dmx
-            const string tsSource = "ecos://ECDATA_CPI";
+            const string tsSource = "ECOS://ECDATA_CPI";
             const string seriesNames = "312PCPIFBT_IX.A, 612PCPIFBT_IX.M, 612PCPIFBT_IX.Q";
             const string headers = "SCALE,INDICATOR,COUNTRY";
 
