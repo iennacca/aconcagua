@@ -40,7 +40,7 @@ pdf.columns = ['series'] + df['series'].tolist()
 pdf.rename(index=str, columns={"series": "label"})
 
 #drop the series row
-pdf = pdf.drop(pdf.index[pdf['series'] == 'series'])
+pdf = pdf.drop(pdf.index[pdf['label'] == 'series'])
 
 pdf.plot(y=s)
 plt.show()
