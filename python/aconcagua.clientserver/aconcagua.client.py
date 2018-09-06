@@ -74,9 +74,6 @@ def converttodataframe(response):
     return df
 
 def run():
-    seriesList = ['911BE','911BEA','BCA_GDP']
-    headerList  = ['scale','unit','description']
-    frequencyList = 'MA'
 
     channel = grpc.insecure_channel('localhost:50051')
     client = aconcagua_pb2_grpc.AconcaguaStub(channel)
@@ -84,8 +81,18 @@ def run():
     response = client.GetVersion(googleEmpty.Empty())    
     print(response)
 
+    source = 'dmx:.\\..\\..\\..\\..\\data\\sample.dmx'
+    seriesList = ['911BE','911BEA','BCA_GDP']
+    headerList  = ['scale','unit','description']
+    frequencyList = 'MA'
+
+    source = 'ecos:\\ECDATA_CPI'
+    seriesList = ['312PCPIFBT_IX.A', '612PCPIFBT_IX.M', '612PCPIFBT_IX.Q']
+    headerList  = ['SCALE', 'INDICATOR', 'COUNTRY']
+    frequencyList = 'MA'
+
     request = createobservationrequest(
-        'dmx:\\C:\\Users\\Jerry\\Projects\\aconcagua\\data\\sample.dmx',
+        source,
         seriesList, 
         frequencyList)
     response = client.GetObservations(request)
@@ -93,7 +100,7 @@ def run():
     dfts = converttodataframe(response)
 
     request = createmetadatarequest(
-        'dmx:\\C:\\Users\\Jerry\\Projects\\aconcagua\\data\\sample.dmx',
+        source,
         seriesList, 
         headerList)
     response = client.GetMetadata(request)

@@ -30,7 +30,7 @@ namespace aconcagua.data.ecos
         public ECOSTimeseriesSource(TimeseriesSourceKey sourceKey)
         {
             SourceKey = sourceKey;
-            DatabaseID = sourceKey.Key.Host;
+            DatabaseID = sourceKey.Key.LocalPath.Trim('\\');
         }
 
         public static bool TryCreate(TimeseriesSourceKey sourceKey, out ITimeseriesSource timeseriesSource)
