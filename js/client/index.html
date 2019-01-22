@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IMF PoC</title>
+
+    <link href="http://cdn-na.infragistics.com/igniteui/2018.1/latest/css/themes/infragistics/infragistics.theme.css" rel="stylesheet" />
+    <link href="http://cdn-na.infragistics.com/igniteui/2018.1/latest/css/structure/infragistics.css" rel="stylesheet" />
+
+    <link href="site.css" rel="stylesheet"/>
+
+    <script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.8.3.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+
+    <!-- Ignite UI Required Combined JavaScript Files -->
+    <script src="http://cdn-na.infragistics.com/igniteui/2018.2/latest/js/infragistics.core.js"></script>
+    <script src="http://cdn-na.infragistics.com/igniteui/2018.2/latest/js/infragistics.lob.js"></script>
+
+    <script src="http://cdn-na.infragistics.com/igniteui/2018.2/latest/js/infragistics.excel-bundled.js"></script>
+    <script src="http://cdn-na.infragistics.com/igniteui/2018.2/latest/js/infragistics.spreadsheet-bundled.js"></script>
+
+    <script src="http://cdn-na.infragistics.com/igniteui/2018.2/latest/js/infragistics.dv.js"></script>
+
+    <script defer src="sample-spreadsheet.js"></script>
+</head>
+<body>
+    <form>
+        <label>Database: </label><input type="text" id="database" >
+        <label>Observations: </label><input type="text" id="observations" >
+        <button type="button1">Get Data</button>
+        <button type="button2">Get Version</button>
+    </form>
+    <div class="obsContainer">
+        <div id="spreadsheet"></div>
+        <div id="chart"></div>
+    </div>
+</body>
+</html>

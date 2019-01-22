@@ -30,6 +30,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aconcagua.data.dmx", "cshar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aconcagua.data.ecos", "csharp\aconcagua.data.ecos\aconcagua.data.ecos.csproj", "{5789ACD1-0F42-4E9B-B4A4-6DCC47CB30B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "infrastructure", "csharp\infrastructure\infrastructure.csproj", "{7AF567DA-A794-4DC7-ACFB-DC03263B9DE3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{95D08BDB-8529-4120-A8EC-873E97B53D0A}"
+	ProjectSection(SolutionItems) = preProject
+		app.testsettings = app.testsettings
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +77,10 @@ Global
 		{5789ACD1-0F42-4E9B-B4A4-6DCC47CB30B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5789ACD1-0F42-4E9B-B4A4-6DCC47CB30B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5789ACD1-0F42-4E9B-B4A4-6DCC47CB30B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AF567DA-A794-4DC7-ACFB-DC03263B9DE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AF567DA-A794-4DC7-ACFB-DC03263B9DE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AF567DA-A794-4DC7-ACFB-DC03263B9DE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AF567DA-A794-4DC7-ACFB-DC03263B9DE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,6 +95,7 @@ Global
 		{A8450C5D-1D6E-499A-B256-613B7579A5EF} = {08B1C1DD-7CC5-4535-AA9F-A33A722F7703}
 		{09B907D6-844F-4B78-BACB-F87B3C7B1384} = {08B1C1DD-7CC5-4535-AA9F-A33A722F7703}
 		{5789ACD1-0F42-4E9B-B4A4-6DCC47CB30B0} = {08B1C1DD-7CC5-4535-AA9F-A33A722F7703}
+		{7AF567DA-A794-4DC7-ACFB-DC03263B9DE3} = {08B1C1DD-7CC5-4535-AA9F-A33A722F7703}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D9FA2CB5-A404-4E81-B746-92925E7800FF}

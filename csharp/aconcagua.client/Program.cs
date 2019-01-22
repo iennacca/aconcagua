@@ -18,20 +18,20 @@ namespace aconcagua.client
             Console.WriteLine($"Version: {vrs.Version}");
 
             // DMX request
-            //var req = new Request(
-            //    "dmx:.\\..\\..\\..\\..\\data\\sample.dmx",
-            //    new[] { "911BE", "911BEA", "BCA_GDP" },
-            //    new[] { "scale", "unit", "description" },
-            //    "MA"
-            //    );
+            var req = new Request(
+                "dmx:.\\..\\..\\..\\..\\data\\sample.dmx",
+                new[] { "911BE", "911BEA", "BCA_GDP" },
+                new[] { "scale", "unit", "description" },
+                "MA"
+                );
 
             // ECOS request
-            var req = new Request(
-                "ecos:\\ECDATA_CPI",
-                new[] { "312PCPIFBT_IX.A", "612PCPIFBT_IX.M", "612PCPIFBT_IX.Q" },
-                new[] { "SCALE", "INDICATOR", "COUNTRY" },
-                "MA"
-            );
+            //var req = new Request(
+            //    "ecos:\\ECDATA_CPI",
+            //    new[] { "312PCPIFBT_IX.A", "612PCPIFBT_IX.M", "612PCPIFBT_IX.Q" },
+            //    new[] { "SCALE", "INDICATOR", "COUNTRY" },
+            //    "MA"
+            //);
 
 
             var mrq = req.CreateMetadataRequest();
