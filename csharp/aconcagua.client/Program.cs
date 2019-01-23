@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Grpc.Core;
+using Aconcagua.Proto;
 
 namespace aconcagua.client
 {
@@ -11,7 +12,7 @@ namespace aconcagua.client
         public static void Main(string[] args)
         {
             var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
-            var client = new Aconcagua.AconcaguaClient(channel);
+            var client = new TimeseriesDataService.TimeseriesDataServiceClient(channel);
             var empty = new Google.Protobuf.WellKnownTypes.Empty();
 
             var vrs = client.GetVersion(empty);

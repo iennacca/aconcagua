@@ -14,7 +14,7 @@
 
 syntax = "proto3";
 
-// package aconcagua;
+package aconcagua.proto;
 
 option java_multiple_files = true;
 option java_package = "io.grpc.aconcagua";
@@ -24,7 +24,7 @@ option objc_class_prefix = "ACA";
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 
-service Aconcagua {
+service TimeseriesDataService {
 	rpc GetVersion(google.protobuf.Empty) returns (GetVersionResponse) {}
 	rpc GetMetadata (GetMetadataRequest) returns (GetMetadataResponse) {}
 	rpc GetObservations (GetObservationsRequest) returns (GetObservationsResponse) {}

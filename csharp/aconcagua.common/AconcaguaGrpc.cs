@@ -22,151 +22,153 @@
 
 using grpc = global::Grpc.Core;
 
-public static partial class Aconcagua
-{
-  static readonly string __ServiceName = "Aconcagua";
-
-  static readonly grpc::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_Empty = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.WellKnownTypes.Empty.Parser.ParseFrom);
-  static readonly grpc::Marshaller<global::GetVersionResponse> __Marshaller_GetVersionResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GetVersionResponse.Parser.ParseFrom);
-  static readonly grpc::Marshaller<global::GetMetadataRequest> __Marshaller_GetMetadataRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GetMetadataRequest.Parser.ParseFrom);
-  static readonly grpc::Marshaller<global::GetMetadataResponse> __Marshaller_GetMetadataResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GetMetadataResponse.Parser.ParseFrom);
-  static readonly grpc::Marshaller<global::GetObservationsRequest> __Marshaller_GetObservationsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GetObservationsRequest.Parser.ParseFrom);
-  static readonly grpc::Marshaller<global::GetObservationsResponse> __Marshaller_GetObservationsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GetObservationsResponse.Parser.ParseFrom);
-
-  static readonly grpc::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::GetVersionResponse> __Method_GetVersion = new grpc::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::GetVersionResponse>(
-      grpc::MethodType.Unary,
-      __ServiceName,
-      "GetVersion",
-      __Marshaller_Empty,
-      __Marshaller_GetVersionResponse);
-
-  static readonly grpc::Method<global::GetMetadataRequest, global::GetMetadataResponse> __Method_GetMetadata = new grpc::Method<global::GetMetadataRequest, global::GetMetadataResponse>(
-      grpc::MethodType.Unary,
-      __ServiceName,
-      "GetMetadata",
-      __Marshaller_GetMetadataRequest,
-      __Marshaller_GetMetadataResponse);
-
-  static readonly grpc::Method<global::GetObservationsRequest, global::GetObservationsResponse> __Method_GetObservations = new grpc::Method<global::GetObservationsRequest, global::GetObservationsResponse>(
-      grpc::MethodType.Unary,
-      __ServiceName,
-      "GetObservations",
-      __Marshaller_GetObservationsRequest,
-      __Marshaller_GetObservationsResponse);
-
-  /// <summary>Service descriptor</summary>
-  public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
+namespace Aconcagua.Proto {
+  public static partial class TimeseriesDataService
   {
-    get { return global::AconcaguaReflection.Descriptor.Services[0]; }
+    static readonly string __ServiceName = "aconcagua.proto.TimeseriesDataService";
+
+    static readonly grpc::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_Empty = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.WellKnownTypes.Empty.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Aconcagua.Proto.GetVersionResponse> __Marshaller_GetVersionResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Aconcagua.Proto.GetVersionResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Aconcagua.Proto.GetMetadataRequest> __Marshaller_GetMetadataRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Aconcagua.Proto.GetMetadataRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Aconcagua.Proto.GetMetadataResponse> __Marshaller_GetMetadataResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Aconcagua.Proto.GetMetadataResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Aconcagua.Proto.GetObservationsRequest> __Marshaller_GetObservationsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Aconcagua.Proto.GetObservationsRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Aconcagua.Proto.GetObservationsResponse> __Marshaller_GetObservationsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Aconcagua.Proto.GetObservationsResponse.Parser.ParseFrom);
+
+    static readonly grpc::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::Aconcagua.Proto.GetVersionResponse> __Method_GetVersion = new grpc::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::Aconcagua.Proto.GetVersionResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetVersion",
+        __Marshaller_Empty,
+        __Marshaller_GetVersionResponse);
+
+    static readonly grpc::Method<global::Aconcagua.Proto.GetMetadataRequest, global::Aconcagua.Proto.GetMetadataResponse> __Method_GetMetadata = new grpc::Method<global::Aconcagua.Proto.GetMetadataRequest, global::Aconcagua.Proto.GetMetadataResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetMetadata",
+        __Marshaller_GetMetadataRequest,
+        __Marshaller_GetMetadataResponse);
+
+    static readonly grpc::Method<global::Aconcagua.Proto.GetObservationsRequest, global::Aconcagua.Proto.GetObservationsResponse> __Method_GetObservations = new grpc::Method<global::Aconcagua.Proto.GetObservationsRequest, global::Aconcagua.Proto.GetObservationsResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetObservations",
+        __Marshaller_GetObservationsRequest,
+        __Marshaller_GetObservationsResponse);
+
+    /// <summary>Service descriptor</summary>
+    public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
+    {
+      get { return global::Aconcagua.Proto.AconcaguaReflection.Descriptor.Services[0]; }
+    }
+
+    /// <summary>Base class for server-side implementations of TimeseriesDataService</summary>
+    public abstract partial class TimeseriesDataServiceBase
+    {
+      public virtual global::System.Threading.Tasks.Task<global::Aconcagua.Proto.GetVersionResponse> GetVersion(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Aconcagua.Proto.GetMetadataResponse> GetMetadata(global::Aconcagua.Proto.GetMetadataRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Aconcagua.Proto.GetObservationsResponse> GetObservations(global::Aconcagua.Proto.GetObservationsRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+    }
+
+    /// <summary>Client for TimeseriesDataService</summary>
+    public partial class TimeseriesDataServiceClient : grpc::ClientBase<TimeseriesDataServiceClient>
+    {
+      /// <summary>Creates a new client for TimeseriesDataService</summary>
+      /// <param name="channel">The channel to use to make remote calls.</param>
+      public TimeseriesDataServiceClient(grpc::Channel channel) : base(channel)
+      {
+      }
+      /// <summary>Creates a new client for TimeseriesDataService that uses a custom <c>CallInvoker</c>.</summary>
+      /// <param name="callInvoker">The callInvoker to use to make remote calls.</param>
+      public TimeseriesDataServiceClient(grpc::CallInvoker callInvoker) : base(callInvoker)
+      {
+      }
+      /// <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
+      protected TimeseriesDataServiceClient() : base()
+      {
+      }
+      /// <summary>Protected constructor to allow creation of configured clients.</summary>
+      /// <param name="configuration">The client configuration.</param>
+      protected TimeseriesDataServiceClient(ClientBaseConfiguration configuration) : base(configuration)
+      {
+      }
+
+      public virtual global::Aconcagua.Proto.GetVersionResponse GetVersion(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetVersion(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Aconcagua.Proto.GetVersionResponse GetVersion(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetVersion, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::Aconcagua.Proto.GetVersionResponse> GetVersionAsync(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetVersionAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::Aconcagua.Proto.GetVersionResponse> GetVersionAsync(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetVersion, null, options, request);
+      }
+      public virtual global::Aconcagua.Proto.GetMetadataResponse GetMetadata(global::Aconcagua.Proto.GetMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetMetadata(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Aconcagua.Proto.GetMetadataResponse GetMetadata(global::Aconcagua.Proto.GetMetadataRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetMetadata, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::Aconcagua.Proto.GetMetadataResponse> GetMetadataAsync(global::Aconcagua.Proto.GetMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetMetadataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::Aconcagua.Proto.GetMetadataResponse> GetMetadataAsync(global::Aconcagua.Proto.GetMetadataRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetMetadata, null, options, request);
+      }
+      public virtual global::Aconcagua.Proto.GetObservationsResponse GetObservations(global::Aconcagua.Proto.GetObservationsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetObservations(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Aconcagua.Proto.GetObservationsResponse GetObservations(global::Aconcagua.Proto.GetObservationsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetObservations, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::Aconcagua.Proto.GetObservationsResponse> GetObservationsAsync(global::Aconcagua.Proto.GetObservationsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetObservationsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::Aconcagua.Proto.GetObservationsResponse> GetObservationsAsync(global::Aconcagua.Proto.GetObservationsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetObservations, null, options, request);
+      }
+      /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
+      protected override TimeseriesDataServiceClient NewInstance(ClientBaseConfiguration configuration)
+      {
+        return new TimeseriesDataServiceClient(configuration);
+      }
+    }
+
+    /// <summary>Creates service definition that can be registered with a server</summary>
+    /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+    public static grpc::ServerServiceDefinition BindService(TimeseriesDataServiceBase serviceImpl)
+    {
+      return grpc::ServerServiceDefinition.CreateBuilder()
+          .AddMethod(__Method_GetVersion, serviceImpl.GetVersion)
+          .AddMethod(__Method_GetMetadata, serviceImpl.GetMetadata)
+          .AddMethod(__Method_GetObservations, serviceImpl.GetObservations).Build();
+    }
+
   }
-
-  /// <summary>Base class for server-side implementations of Aconcagua</summary>
-  public abstract partial class AconcaguaBase
-  {
-    public virtual global::System.Threading.Tasks.Task<global::GetVersionResponse> GetVersion(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::ServerCallContext context)
-    {
-      throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-    }
-
-    public virtual global::System.Threading.Tasks.Task<global::GetMetadataResponse> GetMetadata(global::GetMetadataRequest request, grpc::ServerCallContext context)
-    {
-      throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-    }
-
-    public virtual global::System.Threading.Tasks.Task<global::GetObservationsResponse> GetObservations(global::GetObservationsRequest request, grpc::ServerCallContext context)
-    {
-      throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-    }
-
-  }
-
-  /// <summary>Client for Aconcagua</summary>
-  public partial class AconcaguaClient : grpc::ClientBase<AconcaguaClient>
-  {
-    /// <summary>Creates a new client for Aconcagua</summary>
-    /// <param name="channel">The channel to use to make remote calls.</param>
-    public AconcaguaClient(grpc::Channel channel) : base(channel)
-    {
-    }
-    /// <summary>Creates a new client for Aconcagua that uses a custom <c>CallInvoker</c>.</summary>
-    /// <param name="callInvoker">The callInvoker to use to make remote calls.</param>
-    public AconcaguaClient(grpc::CallInvoker callInvoker) : base(callInvoker)
-    {
-    }
-    /// <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
-    protected AconcaguaClient() : base()
-    {
-    }
-    /// <summary>Protected constructor to allow creation of configured clients.</summary>
-    /// <param name="configuration">The client configuration.</param>
-    protected AconcaguaClient(ClientBaseConfiguration configuration) : base(configuration)
-    {
-    }
-
-    public virtual global::GetVersionResponse GetVersion(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-    {
-      return GetVersion(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-    }
-    public virtual global::GetVersionResponse GetVersion(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::CallOptions options)
-    {
-      return CallInvoker.BlockingUnaryCall(__Method_GetVersion, null, options, request);
-    }
-    public virtual grpc::AsyncUnaryCall<global::GetVersionResponse> GetVersionAsync(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-    {
-      return GetVersionAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-    }
-    public virtual grpc::AsyncUnaryCall<global::GetVersionResponse> GetVersionAsync(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::CallOptions options)
-    {
-      return CallInvoker.AsyncUnaryCall(__Method_GetVersion, null, options, request);
-    }
-    public virtual global::GetMetadataResponse GetMetadata(global::GetMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-    {
-      return GetMetadata(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-    }
-    public virtual global::GetMetadataResponse GetMetadata(global::GetMetadataRequest request, grpc::CallOptions options)
-    {
-      return CallInvoker.BlockingUnaryCall(__Method_GetMetadata, null, options, request);
-    }
-    public virtual grpc::AsyncUnaryCall<global::GetMetadataResponse> GetMetadataAsync(global::GetMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-    {
-      return GetMetadataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-    }
-    public virtual grpc::AsyncUnaryCall<global::GetMetadataResponse> GetMetadataAsync(global::GetMetadataRequest request, grpc::CallOptions options)
-    {
-      return CallInvoker.AsyncUnaryCall(__Method_GetMetadata, null, options, request);
-    }
-    public virtual global::GetObservationsResponse GetObservations(global::GetObservationsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-    {
-      return GetObservations(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-    }
-    public virtual global::GetObservationsResponse GetObservations(global::GetObservationsRequest request, grpc::CallOptions options)
-    {
-      return CallInvoker.BlockingUnaryCall(__Method_GetObservations, null, options, request);
-    }
-    public virtual grpc::AsyncUnaryCall<global::GetObservationsResponse> GetObservationsAsync(global::GetObservationsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-    {
-      return GetObservationsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-    }
-    public virtual grpc::AsyncUnaryCall<global::GetObservationsResponse> GetObservationsAsync(global::GetObservationsRequest request, grpc::CallOptions options)
-    {
-      return CallInvoker.AsyncUnaryCall(__Method_GetObservations, null, options, request);
-    }
-    /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
-    protected override AconcaguaClient NewInstance(ClientBaseConfiguration configuration)
-    {
-      return new AconcaguaClient(configuration);
-    }
-  }
-
-  /// <summary>Creates service definition that can be registered with a server</summary>
-  /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
-  public static grpc::ServerServiceDefinition BindService(AconcaguaBase serviceImpl)
-  {
-    return grpc::ServerServiceDefinition.CreateBuilder()
-        .AddMethod(__Method_GetVersion, serviceImpl.GetVersion)
-        .AddMethod(__Method_GetMetadata, serviceImpl.GetMetadata)
-        .AddMethod(__Method_GetObservations, serviceImpl.GetObservations).Build();
-  }
-
 }
 #endregion

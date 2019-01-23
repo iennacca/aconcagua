@@ -19,10 +19,11 @@ using aconcagua.data;
 using aconcagua.data.factory;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
+using Aconcagua.Proto;
 
 namespace aconcagua.server
 {
-    internal class AconcaguaServer : Aconcagua.AconcaguaBase
+    internal class AconcaguaServer : TimeseriesDataService.TimeseriesDataServiceBase
     {
         public override Task<GetVersionResponse> GetVersion(Empty request, ServerCallContext context)
         {
@@ -134,7 +135,7 @@ namespace aconcagua.server
         {
             var server = new Server
             {
-                Services = { Aconcagua.BindService(new AconcaguaServer()) },
+                Services = { TimeseriesDataService.BindService(new AconcaguaServer()) },
                 Ports = { new ServerPort("localhost", Port, ServerCredentials.Insecure) }
             };
             server.Start();

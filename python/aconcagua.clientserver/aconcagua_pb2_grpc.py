@@ -5,7 +5,7 @@ import aconcagua_pb2 as aconcagua__pb2
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
-class AconcaguaStub(object):
+class TimeseriesDataServiceStub(object):
   # missing associated documentation comment in .proto file
   pass
 
@@ -16,23 +16,23 @@ class AconcaguaStub(object):
       channel: A grpc.Channel.
     """
     self.GetVersion = channel.unary_unary(
-        '/Aconcagua/GetVersion',
+        '/aconcagua.proto.TimeseriesDataService/GetVersion',
         request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
         response_deserializer=aconcagua__pb2.GetVersionResponse.FromString,
         )
     self.GetMetadata = channel.unary_unary(
-        '/Aconcagua/GetMetadata',
+        '/aconcagua.proto.TimeseriesDataService/GetMetadata',
         request_serializer=aconcagua__pb2.GetMetadataRequest.SerializeToString,
         response_deserializer=aconcagua__pb2.GetMetadataResponse.FromString,
         )
     self.GetObservations = channel.unary_unary(
-        '/Aconcagua/GetObservations',
+        '/aconcagua.proto.TimeseriesDataService/GetObservations',
         request_serializer=aconcagua__pb2.GetObservationsRequest.SerializeToString,
         response_deserializer=aconcagua__pb2.GetObservationsResponse.FromString,
         )
 
 
-class AconcaguaServicer(object):
+class TimeseriesDataServiceServicer(object):
   # missing associated documentation comment in .proto file
   pass
 
@@ -58,7 +58,7 @@ class AconcaguaServicer(object):
     raise NotImplementedError('Method not implemented!')
 
 
-def add_AconcaguaServicer_to_server(servicer, server):
+def add_TimeseriesDataServiceServicer_to_server(servicer, server):
   rpc_method_handlers = {
       'GetVersion': grpc.unary_unary_rpc_method_handler(
           servicer.GetVersion,
@@ -77,5 +77,5 @@ def add_AconcaguaServicer_to_server(servicer, server):
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
-      'Aconcagua', rpc_method_handlers)
+      'aconcagua.proto.TimeseriesDataService', rpc_method_handlers)
   server.add_generic_rpc_handlers((generic_handler,))
