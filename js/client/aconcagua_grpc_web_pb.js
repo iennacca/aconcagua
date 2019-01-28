@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for 
+ * @fileoverview gRPC-Web generated client stub for aconcagua.proto
  * @enhanceable
  * @public
  */
@@ -15,7 +15,9 @@ grpc.web = require('grpc-web');
 var google_api_annotations_pb = require('./google/api/annotations_pb.js')
 
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js')
-const proto = require('./aconcagua_pb.js');
+const proto = {};
+proto.aconcagua = {};
+proto.aconcagua.proto = require('./aconcagua_pb.js');
 
 /**
  * @param {string} hostname
@@ -25,7 +27,7 @@ const proto = require('./aconcagua_pb.js');
  * @struct
  * @final
  */
-proto.AconcaguaClient =
+proto.aconcagua.proto.TimeseriesDataServiceClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -61,15 +63,15 @@ proto.AconcaguaClient =
  * @struct
  * @final
  */
-proto.AconcaguaPromiseClient =
+proto.aconcagua.proto.TimeseriesDataServicePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
 
   /**
-   * @private @const {!proto.AconcaguaClient} The delegate callback based client
+   * @private @const {!proto.aconcagua.proto.TimeseriesDataServiceClient} The delegate callback based client
    */
-  this.delegateClient_ = new proto.AconcaguaClient(
+  this.delegateClient_ = new proto.aconcagua.proto.TimeseriesDataServiceClient(
       hostname, credentials, options);
 
 };
@@ -79,15 +81,15 @@ proto.AconcaguaPromiseClient =
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.google.protobuf.Empty,
- *   !proto.GetVersionResponse>}
+ *   !proto.aconcagua.proto.GetVersionResponse>}
  */
-const methodInfo_Aconcagua_GetVersion = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.GetVersionResponse,
+const methodInfo_TimeseriesDataService_GetVersion = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.aconcagua.proto.GetVersionResponse,
   /** @param {!proto.google.protobuf.Empty} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.GetVersionResponse.deserializeBinary
+  proto.aconcagua.proto.GetVersionResponse.deserializeBinary
 );
 
 
@@ -96,18 +98,18 @@ const methodInfo_Aconcagua_GetVersion = new grpc.web.AbstractClientBase.MethodIn
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.GetVersionResponse)}
+ * @param {function(?grpc.web.Error, ?proto.aconcagua.proto.GetVersionResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.GetVersionResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.aconcagua.proto.GetVersionResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.AconcaguaClient.prototype.getVersion =
+proto.aconcagua.proto.TimeseriesDataServiceClient.prototype.getVersion =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/Aconcagua/GetVersion',
+      '/aconcagua.proto.TimeseriesDataService/GetVersion',
       request,
       metadata,
-      methodInfo_Aconcagua_GetVersion,
+      methodInfo_TimeseriesDataService_GetVersion,
       callback);
 };
 
@@ -117,10 +119,10 @@ proto.AconcaguaClient.prototype.getVersion =
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.GetVersionResponse>}
+ * @return {!Promise<!proto.aconcagua.proto.GetVersionResponse>}
  *     The XHR Node Readable Stream
  */
-proto.AconcaguaPromiseClient.prototype.getVersion =
+proto.aconcagua.proto.TimeseriesDataServicePromiseClient.prototype.getVersion =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
     this.delegateClient_.getVersion(
@@ -134,49 +136,49 @@ proto.AconcaguaPromiseClient.prototype.getVersion =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.GetMetadataRequest,
- *   !proto.GetMetadataResponse>}
+ *   !proto.aconcagua.proto.GetMetadataRequest,
+ *   !proto.aconcagua.proto.GetMetadataResponse>}
  */
-const methodInfo_Aconcagua_GetMetadata = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.GetMetadataResponse,
-  /** @param {!proto.GetMetadataRequest} request */
+const methodInfo_TimeseriesDataService_GetMetadata = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.aconcagua.proto.GetMetadataResponse,
+  /** @param {!proto.aconcagua.proto.GetMetadataRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.GetMetadataResponse.deserializeBinary
+  proto.aconcagua.proto.GetMetadataResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.GetMetadataRequest} request The
+ * @param {!proto.aconcagua.proto.GetMetadataRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.GetMetadataResponse)}
+ * @param {function(?grpc.web.Error, ?proto.aconcagua.proto.GetMetadataResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.GetMetadataResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.aconcagua.proto.GetMetadataResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.AconcaguaClient.prototype.getMetadata =
+proto.aconcagua.proto.TimeseriesDataServiceClient.prototype.getMetadata =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/Aconcagua/GetMetadata',
+      '/aconcagua.proto.TimeseriesDataService/GetMetadata',
       request,
       metadata,
-      methodInfo_Aconcagua_GetMetadata,
+      methodInfo_TimeseriesDataService_GetMetadata,
       callback);
 };
 
 
 /**
- * @param {!proto.GetMetadataRequest} request The
+ * @param {!proto.aconcagua.proto.GetMetadataRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.GetMetadataResponse>}
+ * @return {!Promise<!proto.aconcagua.proto.GetMetadataResponse>}
  *     The XHR Node Readable Stream
  */
-proto.AconcaguaPromiseClient.prototype.getMetadata =
+proto.aconcagua.proto.TimeseriesDataServicePromiseClient.prototype.getMetadata =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
     this.delegateClient_.getMetadata(
@@ -190,49 +192,49 @@ proto.AconcaguaPromiseClient.prototype.getMetadata =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.GetObservationsRequest,
- *   !proto.GetObservationsResponse>}
+ *   !proto.aconcagua.proto.GetObservationsRequest,
+ *   !proto.aconcagua.proto.GetObservationsResponse>}
  */
-const methodInfo_Aconcagua_GetObservations = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.GetObservationsResponse,
-  /** @param {!proto.GetObservationsRequest} request */
+const methodInfo_TimeseriesDataService_GetObservations = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.aconcagua.proto.GetObservationsResponse,
+  /** @param {!proto.aconcagua.proto.GetObservationsRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.GetObservationsResponse.deserializeBinary
+  proto.aconcagua.proto.GetObservationsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.GetObservationsRequest} request The
+ * @param {!proto.aconcagua.proto.GetObservationsRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.GetObservationsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.aconcagua.proto.GetObservationsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.GetObservationsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.aconcagua.proto.GetObservationsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.AconcaguaClient.prototype.getObservations =
+proto.aconcagua.proto.TimeseriesDataServiceClient.prototype.getObservations =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/Aconcagua/GetObservations',
+      '/aconcagua.proto.TimeseriesDataService/GetObservations',
       request,
       metadata,
-      methodInfo_Aconcagua_GetObservations,
+      methodInfo_TimeseriesDataService_GetObservations,
       callback);
 };
 
 
 /**
- * @param {!proto.GetObservationsRequest} request The
+ * @param {!proto.aconcagua.proto.GetObservationsRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.GetObservationsResponse>}
+ * @return {!Promise<!proto.aconcagua.proto.GetObservationsResponse>}
  *     The XHR Node Readable Stream
  */
-proto.AconcaguaPromiseClient.prototype.getObservations =
+proto.aconcagua.proto.TimeseriesDataServicePromiseClient.prototype.getObservations =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
     this.delegateClient_.getObservations(
@@ -243,5 +245,5 @@ proto.AconcaguaPromiseClient.prototype.getObservations =
 };
 
 
-module.exports = proto;
+module.exports = proto.aconcagua.proto;
 

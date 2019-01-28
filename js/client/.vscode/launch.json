@@ -3,7 +3,9 @@
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
-    "configurations": [
+    "configurations": 
+    [
+        
         {
             "type": "node",
             "request": "launch",
@@ -13,8 +15,8 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch test.Node.js",
-            "program": "${workspaceFolder}/test.Node.js"
+            "name": "Launch client.Node.js",
+            "program": "${workspaceFolder}/client.Node.js"
         },
         {
             "type": "edge",
