@@ -1,5 +1,10 @@
+// aconcagua
+const {GetVersionReply} = require('./aconcagua_pb.js');
+const {TimeseriesDataServiceClient} = require('./aconcagua_grpc_web_pb.js');
+
 let wb = new $.ig.excel.Workbook($.ig.excel.WorkbookFormat.excel2007);
 let ws = wb.worksheets().add("Sheet1");
+
 
 $("#spreadsheet").igSpreadsheet({
     height: "600",
@@ -10,22 +15,25 @@ $("#spreadsheet").igSpreadsheet({
 
 let database, observations;
 
-$('button2').on("click", function () {
-    console.log('into button2');
-    const {GetVersionRequest, GetVersionReply} = require('./aconcagua_pb.js');
-    const {AconcaguaClient} = require('./aconcagua_grpc_web_pb.js');
-    
-    var client = new AconcaguaClient('http://localhost:50051');
-    
-    var request = new GetVersionRequest();
+$('button').on("click", function () {
+    // loadFromPOC();
+    loadFromAconcagua();
+});
+
+function loadFromAconcagua() {
+    console.log('Start aconcagua check');
+
+    var client = new TimeseriesDataServiceClient('http://localhost:50050', null, null);
+    var request = new proto.google.protobuf.Empty();
     
     client.getVersion(request, {}, (err, response) => {
       console.log(response.getVersion());
     });
-});
+    console.log('End aconcagua check');
+}
 
-
-$('button1').on("click", function () {
+function loadFromPOC() {
+    // original click handler from Infragistics POC
     let url = new URL('https://localhost:44397/api/testdata');
     observations = document.querySelector('#observations').value;
     database = document.querySelector('#database').value;
@@ -34,13 +42,13 @@ $('button1').on("click", function () {
         "observations": observations
     });
     url.search = searchParams;
-
+  
     fetch(url)
         .then(function (response) {
             return response.json();
         })
-        .then(loadData);
-});
+        .then(loadData);  
+}
 
 function loadData(data) {
     // add headers
