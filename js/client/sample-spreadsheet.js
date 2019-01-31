@@ -1,6 +1,10 @@
-// aconcagua
+// aconcagua block start
 const {GetVersionReply} = require('./aconcagua_pb.js');
 const {TimeseriesDataServiceClient} = require('./aconcagua_grpc_web_pb.js');
+
+var client = new TimeseriesDataServiceClient('http://localhost:50050', null, null);
+var request = new proto.google.protobuf.Empty();
+// aconcagua block end
 
 let wb = new $.ig.excel.Workbook($.ig.excel.WorkbookFormat.excel2007);
 let ws = wb.worksheets().add("Sheet1");
@@ -15,21 +19,22 @@ $("#spreadsheet").igSpreadsheet({
 
 let database, observations;
 
-$('button').on("click", function () {
+$('#getversion').on("click", function () {
     // loadFromPOC();
-    loadFromAconcagua();
+    aconcaguaGetVersion();
+    // aconcaguaLoadData();
 });
 
-function loadFromAconcagua() {
-    console.log('Start aconcagua check');
-
-    var client = new TimeseriesDataServiceClient('http://localhost:50050', null, null);
-    var request = new proto.google.protobuf.Empty();
-    
+function aconcaguaGetVersion() {
     client.getVersion(request, {}, (err, response) => {
-      console.log(response.getVersion());
+        var versionText = 'aconcagua.GetVersion(): ' + response.getVersion();
+        console.log(versionText);
+        $('#status').val(versionText);
     });
-    console.log('End aconcagua check');
+    console.log('aconcagua.GetVersion() called');
+}
+
+function aconcaguaLoadData() {
 }
 
 function loadFromPOC() {
