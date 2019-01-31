@@ -1,5 +1,5 @@
 // aconcagua block start
-const {GetVersionReply} = require('./aconcagua_pb.js');
+const {GetVersionReply, GetMetadataRequest} = require('./aconcagua_pb.js');
 const {TimeseriesDataServiceClient} = require('./aconcagua_grpc_web_pb.js');
 
 var client = new TimeseriesDataServiceClient('http://localhost:50050', null, null);
@@ -27,7 +27,7 @@ $('#getversion').on("click", function () {
 
 function aconcaguaGetVersion() {
     client.getVersion(request, {}, (err, response) => {
-        var versionText = 'aconcagua.GetVersion(): ' + response.getVersion();
+        var versionText = response.getVersion();
         console.log(versionText);
         $('#status').val(versionText);
     });
@@ -35,6 +35,7 @@ function aconcaguaGetVersion() {
 }
 
 function aconcaguaLoadData() {
+    var request = new GetMetadataRequest();
 }
 
 function loadFromPOC() {
