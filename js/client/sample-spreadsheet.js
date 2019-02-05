@@ -1,5 +1,5 @@
 // aconcagua block start
-const {GetVersionReply, GetMetadataRequest} = require('./aconcagua_pb.js');
+const {GetVersionReply, GetMetadataRequest, SourceSeriesKey} = require('./aconcagua_pb.js');
 const {TimeseriesDataServiceClient} = require('./aconcagua_grpc_web_pb.js');
 
 var client = new TimeseriesDataServiceClient('http://localhost:50050', null, null);
@@ -20,9 +20,9 @@ $("#spreadsheet").igSpreadsheet({
 let database, observations;
 
 $('#getversion').on("click", function () {
-    // loadFromPOC();
+    // pocLoadData();
     aconcaguaGetVersion();
-    // aconcaguaLoadData();
+    aconcaguaLoadMetadata();
 });
 
 function aconcaguaGetVersion() {
@@ -34,11 +34,35 @@ function aconcaguaGetVersion() {
     console.log('aconcagua.GetVersion() called');
 }
 
-function aconcaguaLoadData() {
-    var request = new GetMetadataRequest();
+function aconcaguaLoadMetadata() {
+    var r = createMetadataRequest();
+    console.log(r);
+    console.log('aconcagua.GetVersion() called');
+    return r;
+
+    function createMetadataRequest() {
+        var request = new GetMetadataRequest();
+        var rm = request.getRequestmetadataMap().set('version','0.9');
+        var mh = request.setMetadataheadersList(['scale','unit','description']);
+        var ssk = new SourceSeriesKey();
+        ssk.setSeriesname('911BE');
+        ssk.setSourcename('dmx:.\\..\\..\\..\\..\\data\\sample.dmx');
+        request.setKeysList([ssk]);
+
+        request.getKeysList();
+        console.log(request.getRequestmetadataMap().get('version'));
+        console.log(request.getMetadataheadersList()[1]);
+        console.log(ssk.getSourcename() + ':' + ssk.getSeriesname());
+        return request;
+    }
+
+    function showMetadataResponse() {
+
+    }
+    console.log('aconcagua.LoadMetadata() called');
 }
 
-function loadFromPOC() {
+function pocLoadData() {
     // original click handler from Infragistics POC
     let url = new URL('https://localhost:44397/api/testdata');
     observations = document.querySelector('#observations').value;
