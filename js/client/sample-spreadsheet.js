@@ -20,25 +20,32 @@ $("#spreadsheet").igSpreadsheet({
 let database, observations;
 
 $('#getversion').on("click", function () {
-    // pocLoadData();
-    aconcaguaGetVersion();
-    aconcaguaLoadMetadata();
+    try{
+        // pocLoadData();
+        aconcaguaGetVersion();
+        aconcaguaLoadMetadata();
+    }
+    catch(err) {
+        console.log('Error:' + err.message);
+    }
 });
 
 function aconcaguaGetVersion() {
     client.getVersion(request, {}, (err, response) => {
         var versionText = response.getVersion();
-        console.log(versionText);
         $('#status').val(versionText);
     });
     console.log('aconcagua.GetVersion() called');
 }
 
 function aconcaguaLoadMetadata() {
-    var r = createMetadataRequest();
-    console.log(r);
-    console.log('aconcagua.GetVersion() called');
-    return r;
+    var request = createMetadataRequest();
+    var response = client.getMetadata(request,{}, (err, response) => {
+        showMetadataResponse(response);
+    });
+
+    console.log('aconcagua.LoadMetadata() called');
+    return request;
 
     function createMetadataRequest() {
         var request = new GetMetadataRequest();
@@ -47,17 +54,17 @@ function aconcaguaLoadMetadata() {
         var ssk = new SourceSeriesKey();
         ssk.setSeriesname('911BE');
         ssk.setSourcename('dmx:.\\..\\..\\..\\..\\data\\sample.dmx');
-        request.setKeysList([ssk]);
 
-        request.getKeysList();
+        request.setKeysList([ssk]);
         console.log(request.getRequestmetadataMap().get('version'));
         console.log(request.getMetadataheadersList()[1]);
         console.log(ssk.getSourcename() + ':' + ssk.getSeriesname());
         return request;
     }
 
-    function showMetadataResponse() {
-
+    function showMetadataResponse(response) {
+        console.log('showMetadataResponse() : ');
+        console.log(response);
     }
     console.log('aconcagua.LoadMetadata() called');
 }
