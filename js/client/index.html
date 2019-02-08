@@ -27,11 +27,15 @@
 </head>
 <body>
     <form>
-        <label>Database: </label><input type="text" id="database" >
-        <label>Observations: </label><input type="text" id="observations" >
-        <button id="getdata" type="button">Get Data</button>
-        <label>Status: </label><input type="text" id="status" >
+        <label>Version: </label><input type="text" id="version" >
         <button id="getversion" type="button">Get Version</button>
+        <label id=getversionstatus></label>
+        <br><br>
+        <label>Database: </label><input type="text" id="database" >
+        <label>SeriesCode: </label><input type="text" id="seriescode" >
+        <label>Metadata: </label><input type="text" id="metadata" >
+        <button id="getdata" type="button">Get Data</button>
+        <label id=getdatastatus></label>
     </form>
     <div class="obsContainer">
         <div id="spreadsheet"></div>

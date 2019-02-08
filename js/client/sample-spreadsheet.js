@@ -3,7 +3,6 @@ const {GetVersionReply, GetMetadataRequest, SourceSeriesKey} = require('./aconca
 const {TimeseriesDataServiceClient} = require('./aconcagua_grpc_web_pb.js');
 
 var client = new TimeseriesDataServiceClient('http://localhost:50050', null, null);
-var request = new proto.google.protobuf.Empty();
 // aconcagua block end
 
 let wb = new $.ig.excel.Workbook($.ig.excel.WorkbookFormat.excel2007);
@@ -20,53 +19,64 @@ $("#spreadsheet").igSpreadsheet({
 let database, observations;
 
 $('#getversion').on("click", function () {
-    try{
-        // pocLoadData();
-        aconcaguaGetVersion();
-        aconcaguaLoadMetadata();
+    try {
+        var request = new proto.google.protobuf.Empty();
+        $('#getversionstatus').text('');
+        aconcaguaGetVersion(request, (err, response) => {
+            var versionText = response.getVersion();
+            $('#version').val(versionText);
+            $('#getversionstatus').text('Test ok!');
+        });
     }
     catch(err) {
-        console.log('Error:' + err.message);
+        msg = 'Error:' + err.message;
+        console.log(msg);
+        $('#getversionstatus').text(msg);
     }
 });
 
-function aconcaguaGetVersion() {
-    client.getVersion(request, {}, (err, response) => {
-        var versionText = response.getVersion();
-        $('#status').val(versionText);
-    });
-    console.log('aconcagua.GetVersion() called');
+$('#getdata').on("click", function () {
+    // pocLoadData();
+
+    try {
+        aconcaguaGetData(
+            'dmx:.\\..\\..\\..\\..\\data\\sample.dmx', 
+            '911BE', 
+            ['scale','unit','description'], 
+            (err, response) => {
+                console.log(response);
+                $('#getversionstatus').text('Ok');
+            });
+    }
+    catch(err) {
+        msg = 'Error:' + err.message;
+        console.log(msg);
+        $('#getdatastatus').text(msg);
+    }
+});
+
+function aconcaguaGetVersion(request, callback) {
+    client.getVersion(request, {}, callback);
 }
 
-function aconcaguaLoadMetadata() {
-    var request = createMetadataRequest();
-    var response = client.getMetadata(request,{}, (err, response) => {
-        showMetadataResponse(response);
-    });
+function aconcaguaGetData(databaseName, searchSeriesCode, metadataHeadersList, callback) {
+    var request = createrequest(databaseName, searchSeriesCode, metadataHeadersList);
+    client.getMetadata(request, {}, callback);
 
-    console.log('aconcagua.LoadMetadata() called');
-    return request;
-
-    function createMetadataRequest() {
-        var request = new GetMetadataRequest();
-        var rm = request.getRequestmetadataMap().set('version','0.9');
-        var mh = request.setMetadataheadersList(['scale','unit','description']);
+    function createrequest(databaseName, searchSeriesCode, metadataHeadersList) {
+        r = new GetMetadataRequest();
+        var rm = r.getRequestmetadataMap().set('version','0.9');
+        var mh = r.setMetadataheadersList(metadataHeadersList);
         var ssk = new SourceSeriesKey();
-        ssk.setSeriesname('911BE');
-        ssk.setSourcename('dmx:.\\..\\..\\..\\..\\data\\sample.dmx');
+        ssk.setSeriesname(searchSeriesCode);
+        ssk.setSourcename(databaseName);
 
-        request.setKeysList([ssk]);
-        console.log(request.getRequestmetadataMap().get('version'));
-        console.log(request.getMetadataheadersList()[1]);
+        r.setKeysList([ssk]);
+        console.log(r.getRequestmetadataMap().get('version'));
+        console.log(r.getMetadataheadersList()[1]);
         console.log(ssk.getSourcename() + ':' + ssk.getSeriesname());
-        return request;
-    }
-
-    function showMetadataResponse(response) {
-        console.log('showMetadataResponse() : ');
-        console.log(response);
-    }
-    console.log('aconcagua.LoadMetadata() called');
+        return r;
+    };
 }
 
 function pocLoadData() {
