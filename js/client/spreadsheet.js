@@ -1,5 +1,5 @@
 // aconcagua block start
-const {GetVersionReply, GetMetadataRequest, SourceSeriesKey} = require('./aconcagua_pb.js');
+const {GetMetadataRequest, SourceSeriesKey} = require('./aconcagua_pb.js');
 const {TimeseriesDataServiceClient} = require('./aconcagua_grpc_web_pb.js');
 
 var client = new TimeseriesDataServiceClient('http://localhost:50050', null, null);
@@ -36,7 +36,6 @@ $('#getversion').on("click", function () {
 });
 
 $('#getdata').on("click", function () {
-
     try {
         // pocLoadData();
         aconcaguaGetData(
@@ -46,7 +45,6 @@ $('#getdata').on("click", function () {
             ], 
             ['scale','unit','description'], 
             (err, response) => {
-                console.log(response);
                 $('#getversionstatus').text('Ok');
             });
     }
@@ -63,7 +61,7 @@ function aconcaguaGetVersion(request, callback) {
 
 function aconcaguaGetData(searchSeriesList, metadataHeadersList, callback) {
     var request = createrequest(searchSeriesList, metadataHeadersList);
-    client.getMetadata(request, {}, callback);
+    client.getMetadata(request, {}, showresponse);
 
     function createrequest(sourceSeriesList, metadataHeadersList) {
         r = new GetMetadataRequest();
@@ -85,6 +83,22 @@ function aconcaguaGetData(searchSeriesList, metadataHeadersList, callback) {
         console.log(r.getKeysList()[0]);
         return r;
     };
+
+    function showresponse(err, response) {
+        if (!err) {
+            // add headers
+            let firstRow = ws.rows(0);
+            let headers = ['source', 'series'].concat(response.getMetadataheadersList());
+
+            console.log(headers);
+            headers.forEach((header, colIndex) => {
+                firstRow.setCellValue(colIndex, header.trim());
+            });
+
+            // add data
+        }
+        callback(err, response);
+    }
 }
 
 function pocLoadData() {
