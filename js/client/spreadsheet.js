@@ -96,6 +96,18 @@ function aconcaguaGetData(searchSeriesList, metadataHeadersList, callback) {
             });
 
             // add data
+             var r = response.getDatalistList();
+             r.forEach((rowData, rowIndex) => {
+                let wsRow = ws.rows(rowIndex + 1);
+                let md = [
+                    rowData.getKey().getSourcename(),
+                    rowData.getKey().getSeriesname()
+                ].concat(rowData.getDataList());
+
+                md.forEach((cellData, cellIndex) => {
+                    wsRow.setCellValue(cellIndex, cellData);
+                });
+            });        
         }
         callback(err, response);
     }
