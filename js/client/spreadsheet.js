@@ -36,12 +36,14 @@ $('#getversion').on("click", function () {
 });
 
 $('#getdata').on("click", function () {
-    // pocLoadData();
 
     try {
+        // pocLoadData();
         aconcaguaGetData(
-            'dmx:.\\..\\..\\..\\..\\data\\sample.dmx', 
-            '911BE', 
+            [
+                ['dmx:.\\..\\..\\..\\..\\data\\sample.dmx', '911BE'],
+                ['dmx:.\\..\\..\\..\\..\\data\\sample.dmx', '911BE']
+            ], 
             ['scale','unit','description'], 
             (err, response) => {
                 console.log(response);
@@ -59,22 +61,28 @@ function aconcaguaGetVersion(request, callback) {
     client.getVersion(request, {}, callback);
 }
 
-function aconcaguaGetData(databaseName, searchSeriesCode, metadataHeadersList, callback) {
-    var request = createrequest(databaseName, searchSeriesCode, metadataHeadersList);
+function aconcaguaGetData(searchSeriesList, metadataHeadersList, callback) {
+    var request = createrequest(searchSeriesList, metadataHeadersList);
     client.getMetadata(request, {}, callback);
 
-    function createrequest(databaseName, searchSeriesCode, metadataHeadersList) {
+    function createrequest(sourceSeriesList, metadataHeadersList) {
         r = new GetMetadataRequest();
         var rm = r.getRequestmetadataMap().set('version','0.9');
         var mh = r.setMetadataheadersList(metadataHeadersList);
-        var ssk = new SourceSeriesKey();
-        ssk.setSeriesname(searchSeriesCode);
-        ssk.setSourcename(databaseName);
 
-        r.setKeysList([ssk]);
+        var sl = new Array();        
+        sourceSeriesList.forEach(s => {
+            var ssk = new SourceSeriesKey();
+            ssk.setSourcename(s[0]);
+            ssk.setSeriesname(s[1]);
+            sl.push(ssk);
+            console.log('sourceSeries:' + ssk.getSourcename() + '.' + ssk.getSeriesname());
+        });
+        r.setKeysList(sl);
+
         console.log(r.getRequestmetadataMap().get('version'));
         console.log(r.getMetadataheadersList()[1]);
-        console.log(ssk.getSourcename() + ':' + ssk.getSeriesname());
+        console.log(r.getKeysList()[0]);
         return r;
     };
 }
