@@ -72,8 +72,8 @@ namespace aconcagua.server
                                 Seriesname = ts.SeriesKey.Key
                             }
                         };
-                        m.Data.AddRange(ts.Metadata.Values);
-                        reply.Datalist.Add(m);
+                        m.Values.AddRange(ts.Metadata.Values);
+                        reply.Seriesdata.Add(m);
                     }
                 }
             }
@@ -113,9 +113,10 @@ namespace aconcagua.server
                             }
                         };
                         o.Values.Add(ts.Observations);
-                        reply.Datalist.Add(o);
+                        reply.Seriesdata.Add(o);
                     }                    
                 }
+                reply.Frequencies = request.Frequencies;
             }
             catch (Exception ex)
             {

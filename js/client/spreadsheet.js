@@ -38,7 +38,7 @@ $('#getversion').on("click", function () {
 $('#getdata').on("click", function () {
     try {
         // pocLoadData();
-        aconcaguaGetData(
+        aconcaguaGetMetadata(
             [
                 [$('#database').val(), $('#seriescode').val()]
             ], 
@@ -58,7 +58,7 @@ function aconcaguaGetVersion(request, callback) {
     client.getVersion(request, {}, callback);
 }
 
-function aconcaguaGetData(searchSeriesList, metadataHeadersList, callback) {
+function aconcaguaGetMetadata(searchSeriesList, metadataHeadersList, callback) {
     var request = createrequest(searchSeriesList, metadataHeadersList);
     client.getMetadata(request, {}, showresponse);
 
@@ -95,13 +95,13 @@ function aconcaguaGetData(searchSeriesList, metadataHeadersList, callback) {
             });
 
             // add data
-             var r = response.getDatalistList();
+             var r = response.getSeriesdataList();
              r.forEach((rowData, rowIndex) => {
                 let wsRow = ws.rows(rowIndex + 1);
                 let md = [
                     rowData.getKey().getSourcename(),
                     rowData.getKey().getSeriesname()
-                ].concat(rowData.getDataList());
+                ].concat(rowData.getValuesList());
 
                 md.forEach((cellData, cellIndex) => {
                     wsRow.setCellValue(cellIndex, cellData);

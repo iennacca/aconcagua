@@ -51,12 +51,13 @@ namespace aconcagua.client
         private static void ShowMetadataResponse(GetMetadataResponse response)
         {
             var i = 0;
-
-            foreach (var ts in response.Datalist)
+            var f = String.Join(",", response.Metadataheaders);
+            Console.WriteLine($"GetMetadata[{f}]");
+            foreach (var ts in response.Seriesdata)
             {
                 Console.WriteLine($"Sourcename[{i}]: {ts.Key.Sourcename}/{ts.Key.Seriesname}");
 
-                foreach (var pair in response.Metadataheaders.Zip(ts.Data, Tuple.Create))
+                foreach (var pair in response.Metadataheaders.Zip(ts.Values, Tuple.Create))
                     Console.WriteLine($"    {pair.Item1}: {pair.Item2}");
                 i++;
             }
@@ -66,7 +67,8 @@ namespace aconcagua.client
         {
             var i = 0;
 
-            foreach (var ts in response.Datalist)
+            Console.WriteLine($"GetObservations[{response.Frequencies}]");
+            foreach (var ts in response.Seriesdata)
             {
                 Console.WriteLine($"Sourcename[{i}]: {ts.Key.Sourcename}/{ts.Key.Seriesname}");
 

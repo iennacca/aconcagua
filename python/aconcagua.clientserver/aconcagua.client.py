@@ -38,16 +38,16 @@ def createobservationrequest(seriesSource, seriesCodes, frequencies):
 
 def showmetadataresponse(response):
     i = 0
-    for ts in response.datalist:
+    for ts in response.seriesdata:
         print('[%02d] source[series]: %s[%s]' % (i, ts.key.sourcename, ts.key.seriesname))
 
-        for m,d in zip(response.metadataheaders, ts.data):
+        for m,d in zip(response.metadataheaders, ts.values):
             print('    %s: %s' % (m,d))
         i += 1
 
 def showobservationsresponse(response):
     i = 0
-    for ts in response.datalist:
+    for ts in response.seriesdata:
         print('[%02d] source[series]: %s[%s]' % (i, ts.key.sourcename, ts.key.seriesname))
 
         for key in ts.values:
@@ -57,15 +57,15 @@ def showobservationsresponse(response):
 def converttodataframe(response):
     lts = []
     if isinstance(response, aconcagua_pb2.GetObservationsResponse):
-        for ts in response.datalist:
+        for ts in response.seriesdata:
             dts = {'source': ts.key.sourcename, 'series': ts.key.seriesname }
             dts.update(dict(ts.values))
             lts.append(dts)
     
     if isinstance(response, aconcagua_pb2.GetMetadataResponse):
-        for ts in response.datalist:
+        for ts in response.seriesdata:
             dts = {'source': ts.key.sourcename, 'series': ts.key.seriesname }
-            for m, v in zip(response.metadataheaders, ts.data):
+            for m, v in zip(response.metadataheaders, ts.values):
                 dts.update({m:v})
             lts.append(dts)
 

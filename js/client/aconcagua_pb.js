@@ -457,7 +457,7 @@ proto.aconcagua.proto.GetMetadataResponse.toObject = function(includeInstance, m
   var f, obj = {
     responsemetadataMap: (f = msg.getResponsemetadataMap()) ? f.toObject(includeInstance, undefined) : [],
     metadataheadersList: jspb.Message.getRepeatedField(msg, 2),
-    datalistList: jspb.Message.toObjectList(msg.getDatalistList(),
+    seriesdataList: jspb.Message.toObjectList(msg.getSeriesdataList(),
     proto.aconcagua.proto.MetadataList.toObject, includeInstance)
   };
 
@@ -508,7 +508,7 @@ proto.aconcagua.proto.GetMetadataResponse.deserializeBinaryFromReader = function
     case 3:
       var value = new proto.aconcagua.proto.MetadataList;
       reader.readMessage(value,proto.aconcagua.proto.MetadataList.deserializeBinaryFromReader);
-      msg.addDatalist(value);
+      msg.addSeriesdata(value);
       break;
     default:
       reader.skipField();
@@ -550,7 +550,7 @@ proto.aconcagua.proto.GetMetadataResponse.serializeBinaryToWriter = function(mes
       f
     );
   }
-  f = message.getDatalistList();
+  f = message.getSeriesdataList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       3,
@@ -609,17 +609,17 @@ proto.aconcagua.proto.GetMetadataResponse.prototype.clearMetadataheadersList = f
 
 
 /**
- * repeated MetadataList datalist = 3;
+ * repeated MetadataList seriesdata = 3;
  * @return {!Array.<!proto.aconcagua.proto.MetadataList>}
  */
-proto.aconcagua.proto.GetMetadataResponse.prototype.getDatalistList = function() {
+proto.aconcagua.proto.GetMetadataResponse.prototype.getSeriesdataList = function() {
   return /** @type{!Array.<!proto.aconcagua.proto.MetadataList>} */ (
     jspb.Message.getRepeatedWrapperField(this, proto.aconcagua.proto.MetadataList, 3));
 };
 
 
 /** @param {!Array.<!proto.aconcagua.proto.MetadataList>} value */
-proto.aconcagua.proto.GetMetadataResponse.prototype.setDatalistList = function(value) {
+proto.aconcagua.proto.GetMetadataResponse.prototype.setSeriesdataList = function(value) {
   jspb.Message.setRepeatedWrapperField(this, 3, value);
 };
 
@@ -629,13 +629,13 @@ proto.aconcagua.proto.GetMetadataResponse.prototype.setDatalistList = function(v
  * @param {number=} opt_index
  * @return {!proto.aconcagua.proto.MetadataList}
  */
-proto.aconcagua.proto.GetMetadataResponse.prototype.addDatalist = function(opt_value, opt_index) {
+proto.aconcagua.proto.GetMetadataResponse.prototype.addSeriesdata = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.aconcagua.proto.MetadataList, opt_index);
 };
 
 
-proto.aconcagua.proto.GetMetadataResponse.prototype.clearDatalistList = function() {
-  this.setDatalistList([]);
+proto.aconcagua.proto.GetMetadataResponse.prototype.clearSeriesdataList = function() {
+  this.setSeriesdataList([]);
 };
 
 
@@ -918,7 +918,8 @@ proto.aconcagua.proto.GetObservationsResponse.prototype.toObject = function(opt_
 proto.aconcagua.proto.GetObservationsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     responsemetadataMap: (f = msg.getResponsemetadataMap()) ? f.toObject(includeInstance, undefined) : [],
-    datalistList: jspb.Message.toObjectList(msg.getDatalistList(),
+    frequencies: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    seriesdataList: jspb.Message.toObjectList(msg.getSeriesdataList(),
     proto.aconcagua.proto.ObservationsList.toObject, includeInstance)
   };
 
@@ -962,10 +963,14 @@ proto.aconcagua.proto.GetObservationsResponse.deserializeBinaryFromReader = func
         jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readString);
          });
       break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setFrequencies(value);
+      break;
     case 3:
       var value = new proto.aconcagua.proto.ObservationsList;
       reader.readMessage(value,proto.aconcagua.proto.ObservationsList.deserializeBinaryFromReader);
-      msg.addDatalist(value);
+      msg.addSeriesdata(value);
       break;
     default:
       reader.skipField();
@@ -1000,7 +1005,14 @@ proto.aconcagua.proto.GetObservationsResponse.serializeBinaryToWriter = function
   if (f && f.getLength() > 0) {
     f.serializeBinary(1, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeString);
   }
-  f = message.getDatalistList();
+  f = message.getFrequencies();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getSeriesdataList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       3,
@@ -1030,17 +1042,32 @@ proto.aconcagua.proto.GetObservationsResponse.prototype.clearResponsemetadataMap
 
 
 /**
- * repeated ObservationsList datalist = 3;
+ * optional string frequencies = 2;
+ * @return {string}
+ */
+proto.aconcagua.proto.GetObservationsResponse.prototype.getFrequencies = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/** @param {string} value */
+proto.aconcagua.proto.GetObservationsResponse.prototype.setFrequencies = function(value) {
+  jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * repeated ObservationsList seriesdata = 3;
  * @return {!Array.<!proto.aconcagua.proto.ObservationsList>}
  */
-proto.aconcagua.proto.GetObservationsResponse.prototype.getDatalistList = function() {
+proto.aconcagua.proto.GetObservationsResponse.prototype.getSeriesdataList = function() {
   return /** @type{!Array.<!proto.aconcagua.proto.ObservationsList>} */ (
     jspb.Message.getRepeatedWrapperField(this, proto.aconcagua.proto.ObservationsList, 3));
 };
 
 
 /** @param {!Array.<!proto.aconcagua.proto.ObservationsList>} value */
-proto.aconcagua.proto.GetObservationsResponse.prototype.setDatalistList = function(value) {
+proto.aconcagua.proto.GetObservationsResponse.prototype.setSeriesdataList = function(value) {
   jspb.Message.setRepeatedWrapperField(this, 3, value);
 };
 
@@ -1050,13 +1077,13 @@ proto.aconcagua.proto.GetObservationsResponse.prototype.setDatalistList = functi
  * @param {number=} opt_index
  * @return {!proto.aconcagua.proto.ObservationsList}
  */
-proto.aconcagua.proto.GetObservationsResponse.prototype.addDatalist = function(opt_value, opt_index) {
+proto.aconcagua.proto.GetObservationsResponse.prototype.addSeriesdata = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.aconcagua.proto.ObservationsList, opt_index);
 };
 
 
-proto.aconcagua.proto.GetObservationsResponse.prototype.clearDatalistList = function() {
-  this.setDatalistList([]);
+proto.aconcagua.proto.GetObservationsResponse.prototype.clearSeriesdataList = function() {
+  this.setSeriesdataList([]);
 };
 
 
@@ -1115,7 +1142,7 @@ proto.aconcagua.proto.MetadataList.prototype.toObject = function(opt_includeInst
 proto.aconcagua.proto.MetadataList.toObject = function(includeInstance, msg) {
   var f, obj = {
     key: (f = msg.getKey()) && proto.aconcagua.proto.SourceSeriesKey.toObject(includeInstance, f),
-    dataList: jspb.Message.getRepeatedField(msg, 2)
+    valuesList: jspb.Message.getRepeatedField(msg, 2)
   };
 
   if (includeInstance) {
@@ -1159,7 +1186,7 @@ proto.aconcagua.proto.MetadataList.deserializeBinaryFromReader = function(msg, r
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.addData(value);
+      msg.addValues(value);
       break;
     default:
       reader.skipField();
@@ -1198,7 +1225,7 @@ proto.aconcagua.proto.MetadataList.serializeBinaryToWriter = function(message, w
       proto.aconcagua.proto.SourceSeriesKey.serializeBinaryToWriter
     );
   }
-  f = message.getDataList();
+  f = message.getValuesList();
   if (f.length > 0) {
     writer.writeRepeatedString(
       2,
@@ -1239,16 +1266,16 @@ proto.aconcagua.proto.MetadataList.prototype.hasKey = function() {
 
 
 /**
- * repeated string data = 2;
+ * repeated string values = 2;
  * @return {!Array.<string>}
  */
-proto.aconcagua.proto.MetadataList.prototype.getDataList = function() {
+proto.aconcagua.proto.MetadataList.prototype.getValuesList = function() {
   return /** @type {!Array.<string>} */ (jspb.Message.getRepeatedField(this, 2));
 };
 
 
 /** @param {!Array.<string>} value */
-proto.aconcagua.proto.MetadataList.prototype.setDataList = function(value) {
+proto.aconcagua.proto.MetadataList.prototype.setValuesList = function(value) {
   jspb.Message.setField(this, 2, value || []);
 };
 
@@ -1257,13 +1284,13 @@ proto.aconcagua.proto.MetadataList.prototype.setDataList = function(value) {
  * @param {!string} value
  * @param {number=} opt_index
  */
-proto.aconcagua.proto.MetadataList.prototype.addData = function(value, opt_index) {
+proto.aconcagua.proto.MetadataList.prototype.addValues = function(value, opt_index) {
   jspb.Message.addToRepeatedField(this, 2, value, opt_index);
 };
 
 
-proto.aconcagua.proto.MetadataList.prototype.clearDataList = function() {
-  this.setDataList([]);
+proto.aconcagua.proto.MetadataList.prototype.clearValuesList = function() {
+  this.setValuesList([]);
 };
 
 
