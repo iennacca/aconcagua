@@ -40,10 +40,9 @@ $('#getdata').on("click", function () {
         // pocLoadData();
         aconcaguaGetData(
             [
-                ['dmx:.\\..\\..\\..\\..\\data\\sample.dmx', '911BE'],
-                ['dmx:.\\..\\..\\..\\..\\data\\sample.dmx', '911BE']
+                [$('#database').val(), $('#seriescode').val()]
             ], 
-            ['scale','unit','description'], 
+            $('#metadata').val().split(','), 
             (err, response) => {
                 $('#getversionstatus').text('Ok');
             });
