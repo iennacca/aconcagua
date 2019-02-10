@@ -25,7 +25,7 @@ $('#getversion').on("click", function () {
         aconcaguaGetVersion(request, (err, response) => {
             var versionText = response.getVersion();
             $('#version').val(versionText);
-            $('#getversionstatus').text('Test ok!');
+            $('#getversionstatus').text('GetVersion() returned OK');
         });
     }
     catch(err) {
@@ -44,7 +44,7 @@ $('#getdata').on("click", function () {
             ], 
             $('#metadata').val().split(','), 
             (err, response) => {
-                $('#getversionstatus').text('Ok');
+                $('#getdatastatus').text('GetDataStatus() returned OK');
             });
     }
     catch(err) {
