@@ -136,6 +136,62 @@ proto.aconcagua.proto.TimeseriesDataServicePromiseClient.prototype.getVersion =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.aconcagua.proto.GetSeriesKeysRequest,
+ *   !proto.aconcagua.proto.GetSeriesKeysResponse>}
+ */
+const methodInfo_TimeseriesDataService_GetSeriesKeys = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.aconcagua.proto.GetSeriesKeysResponse,
+  /** @param {!proto.aconcagua.proto.GetSeriesKeysRequest} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.aconcagua.proto.GetSeriesKeysResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.aconcagua.proto.GetSeriesKeysRequest} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.aconcagua.proto.GetSeriesKeysResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.aconcagua.proto.GetSeriesKeysResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.aconcagua.proto.TimeseriesDataServiceClient.prototype.getSeriesKeys =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/aconcagua.proto.TimeseriesDataService/GetSeriesKeys',
+      request,
+      metadata,
+      methodInfo_TimeseriesDataService_GetSeriesKeys,
+      callback);
+};
+
+
+/**
+ * @param {!proto.aconcagua.proto.GetSeriesKeysRequest} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.aconcagua.proto.GetSeriesKeysResponse>}
+ *     The XHR Node Readable Stream
+ */
+proto.aconcagua.proto.TimeseriesDataServicePromiseClient.prototype.getSeriesKeys =
+    function(request, metadata) {
+  return new Promise((resolve, reject) => {
+    this.delegateClient_.getSeriesKeys(
+      request, metadata, (error, response) => {
+        error ? reject(error) : resolve(response);
+      });
+  });
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.aconcagua.proto.GetMetadataRequest,
  *   !proto.aconcagua.proto.GetMetadataResponse>}
  */

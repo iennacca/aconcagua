@@ -1,5 +1,5 @@
 // aconcagua block start
-const {GetMetadataRequest, SourceSeriesKey} = require('./aconcagua_pb.js');
+const {GetSeriesKeysRequest, GetMetadataRequest, SourceSeriesKey} = require('./aconcagua_pb.js');
 const {TimeseriesDataServiceClient} = require('./aconcagua_grpc_web_pb.js');
 
 var client = new TimeseriesDataServiceClient('http://localhost:50050', null, null);
@@ -21,41 +21,110 @@ let database, observations;
 $('#getversion').on("click", function () {
     try {
         var request = new proto.google.protobuf.Empty();
-        $('#getversionstatus').text('');
+        $('#getversion_status').text('');
         aconcaguaGetVersion(request, (err, response) => {
             var versionText = response.getVersion();
-            $('#version').val(versionText);
-            $('#getversionstatus').text('GetVersion() returned OK');
+            $('#getversion_version').val(versionText);
+            $('#getversion_status').text('GetVersion() returned OK');
         });
     }
     catch(err) {
         msg = 'Error:' + err.message;
         console.log(msg);
-        $('#getversionstatus').text(msg);
+        $('#getversion_status').text(msg);
+    }
+});
+
+$('#getserieskeys').on("click", function () {
+    try {
+        $('#getserieskeys_status').text('');
+        aconcaguaGetSeriesKeys(
+            $('#getserieskeys_databases').val().split(','), 
+            $('#getserieskeys_filters').val().split(','), 
+            (err, response) => {
+                $('#getserieskeys_status').text('GetSeriesKeys() returned OK');
+            });
+    }
+    catch(err) {
+        msg = 'Error:' + err.message;
+        console.log(msg);
+        $('#getserieskeys_status').text(msg);
     }
 });
 
 $('#getdata').on("click", function () {
     try {
         // pocLoadData();
+        $('#getdata_status').text('');
         aconcaguaGetMetadata(
             [
-                [$('#database').val(), $('#seriescode').val()]
+                [$('#getdata_database').val(), $('#getdata_seriescode').val()]
             ], 
-            $('#metadata').val().split(','), 
+            $('#getdata_metadata').val().split(','), 
             (err, response) => {
-                $('#getdatastatus').text('GetDataStatus() returned OK');
+                $('#getdata_status').text('GetDataStatus() returned OK');
             });
     }
     catch(err) {
         msg = 'Error:' + err.message;
         console.log(msg);
-        $('#getdatastatus').text(msg);
+        $('#getdata_status').text(msg);
     }
 });
 
 function aconcaguaGetVersion(request, callback) {
     client.getVersion(request, {}, callback);
+}
+
+function aconcaguaGetSeriesKeys(sourcenames, filters, callback) {
+    var request = createrequest(sourcenames, filters);
+    client.getSeriesKeys(request, {}, showresponse);
+
+    function createrequest(sourcenames, filters) {
+        r = new GetSeriesKeysRequest();
+        var rm = r.getRequestmetadataMap().set('version','0.9');
+        var mh = r.setSourcenamesList(sourcenames);
+
+        var sl = new Array();        
+        filters.forEach(f => {
+            var s = f.split(':');
+            r.getFiltersMap().set(s[0],s[1]);
+            console.log('filter: ' + s[0] + ': ' + s[1]);
+        });
+
+        console.log(r.getRequestmetadataMap().get('version'));
+        console.log(r.getSourcenamesList());
+        console.log(r.getFiltersMap());
+        return r;
+    };
+
+    function showresponse(err, response) {
+        if (!err) {
+            // add headers
+            let firstRow = ws.rows(0);
+            let headers = ['source', 'series'];
+
+            console.log(headers);
+            headers.forEach((header, colIndex) => {
+                firstRow.setCellValue(colIndex, header.trim());
+            });
+
+            // add data
+             var r = response.getKeysList();
+             r.forEach((rowData, rowIndex) => {
+                let wsRow = ws.rows(rowIndex + 1);
+                let md = [
+                    rowData.getSourcename(),
+                    rowData.getSeriesname()
+                ];
+
+                md.forEach((cellData, cellIndex) => {
+                    wsRow.setCellValue(cellIndex, cellData);
+                });
+            });        
+        }
+        callback(err, response);
+    }
 }
 
 function aconcaguaGetMetadata(searchSeriesList, metadataHeadersList, callback) {
