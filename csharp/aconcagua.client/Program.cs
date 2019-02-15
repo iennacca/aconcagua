@@ -36,16 +36,39 @@ namespace aconcagua.client
 
 
             var mrq = req.CreateMetadataRequest();
-            var mrs = client.GetMetadata(mrq);
-            ShowMetadataResponse(mrs);
+            var mr = client.GetMetadata(mrq);
+            ShowMetadataResponse(mr);
 
             var orq = req.CreateObservationsRequest();
             var or = client.GetObservations(orq);
             ShowObservationResponse(or);
 
+            // DMX request
+            req = new Request(
+                "dmx:.\\..\\..\\..\\..\\data\\sample.dmx",
+                new[] { "911%" },
+                new[] { "scale", "unit", "description" },
+                "MA"
+            );
+
+            var srq = req.CreateSeriesKeysRequest();
+            var sr = client.GetSeriesKeys(srq);
+            ShowSeriesKeysResponse(sr);
+
             channel.ShutdownAsync().Wait();
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
+        }
+
+        private static void ShowSeriesKeysResponse(GetSeriesKeysResponse response)
+        {
+            var i = 0;
+            Console.WriteLine($"GetSeriesKeys");
+            foreach (var ts in response.Keys)
+            {
+                Console.WriteLine($"Sourcename[{i}]: {ts.Sourcename}/{ts.Seriesname}");
+                i++;
+            }
         }
 
         private static void ShowMetadataResponse(GetMetadataResponse response)
@@ -94,6 +117,17 @@ namespace aconcagua.client
             _frequencyList = frequencyList;
         }
 
+        public GetSeriesKeysRequest CreateSeriesKeysRequest()
+        {
+            var request = new GetSeriesKeysRequest();
+            request.Requestmetadata.Add(new Dictionary<string, string>() { { "version", "0.9" } });
+
+            request.Sourcenames.Add(_sourceName);
+            foreach (var s in _seriesList)
+                request.Filters.Add("oname", s);
+
+            return request;
+        }
         public GetMetadataRequest CreateMetadataRequest()
         {
             var request = new GetMetadataRequest();

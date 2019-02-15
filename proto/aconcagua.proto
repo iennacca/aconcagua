@@ -25,13 +25,25 @@ import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 
 service TimeseriesDataService {
-	rpc GetVersion(google.protobuf.Empty) returns (GetVersionResponse) {}
+	rpc GetVersion (google.protobuf.Empty) returns (GetVersionResponse) {}
+	rpc GetSeriesKeys (GetSeriesKeysRequest) returns (GetSeriesKeysResponse) {}
 	rpc GetMetadata (GetMetadataRequest) returns (GetMetadataResponse) {}
 	rpc GetObservations (GetObservationsRequest) returns (GetObservationsResponse) {}
 }
 
 message GetVersionResponse {
 	string version = 1;
+}
+
+message GetSeriesKeysRequest {
+	map<string,string> requestmetadata = 1;
+	repeated string sourcenames = 2;
+	map<string,string> filters = 3;
+}
+
+message GetSeriesKeysResponse {
+	map<string,string> responsemetadata = 1;
+	repeated SourceSeriesKey keys = 3;
 }
 
 message GetMetadataRequest {

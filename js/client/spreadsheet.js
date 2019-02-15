@@ -128,26 +128,26 @@ function pocLoadData() {
             return response.json();
         })
         .then(loadData);  
-}
 
-function loadData(data) {
-    // add headers
-    let firstRow = ws.rows(0);
-    let headers = observations.split(',');
-
-    headers.forEach((header, colIndex) => {
-        firstRow.setCellValue(0, 'Database');
-        firstRow.setCellValue(colIndex + 1, header.trim());
-    });
-
-    // add data
-    data.forEach((rowData, rowIndex) => {
-        let wsRow = ws.rows(rowIndex + 1);
-        wsRow.setCellValue(0, database);
-        rowData.forEach((cellData, cellIndex) => {
-            wsRow.setCellValue(cellIndex + 1, cellData);
+    function loadData(data) {
+        // add headers
+        let firstRow = ws.rows(0);
+        let headers = observations.split(',');
+    
+        headers.forEach((header, colIndex) => {
+            firstRow.setCellValue(0, 'Database');
+            firstRow.setCellValue(colIndex + 1, header.trim());
         });
-    });
+    
+        // add data
+        data.forEach((rowData, rowIndex) => {
+            let wsRow = ws.rows(rowIndex + 1);
+            wsRow.setCellValue(0, database);
+            rowData.forEach((cellData, cellIndex) => {
+                wsRow.setCellValue(cellIndex + 1, cellData);
+            });
+        });
+    }        
 }
 
 function onSelectionChanged(evt, ui) {

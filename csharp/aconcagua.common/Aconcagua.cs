@@ -26,48 +26,64 @@ namespace Aconcagua.Proto {
           string.Concat(
             "Cg9hY29uY2FndWEucHJvdG8SD2Fjb25jYWd1YS5wcm90bxocZ29vZ2xlL2Fw",
             "aS9hbm5vdGF0aW9ucy5wcm90bxobZ29vZ2xlL3Byb3RvYnVmL2VtcHR5LnBy",
-            "b3RvIiUKEkdldFZlcnNpb25SZXNwb25zZRIPCgd2ZXJzaW9uGAEgASgJIugB",
-            "ChJHZXRNZXRhZGF0YVJlcXVlc3QSUQoPcmVxdWVzdG1ldGFkYXRhGAEgAygL",
-            "MjguYWNvbmNhZ3VhLnByb3RvLkdldE1ldGFkYXRhUmVxdWVzdC5SZXF1ZXN0",
-            "bWV0YWRhdGFFbnRyeRIXCg9tZXRhZGF0YWhlYWRlcnMYAiADKAkSLgoEa2V5",
-            "cxgDIAMoCzIgLmFjb25jYWd1YS5wcm90by5Tb3VyY2VTZXJpZXNLZXkaNgoU",
-            "UmVxdWVzdG1ldGFkYXRhRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIg",
-            "ASgJOgI4ASLwAQoTR2V0TWV0YWRhdGFSZXNwb25zZRJUChByZXNwb25zZW1l",
-            "dGFkYXRhGAEgAygLMjouYWNvbmNhZ3VhLnByb3RvLkdldE1ldGFkYXRhUmVz",
-            "cG9uc2UuUmVzcG9uc2VtZXRhZGF0YUVudHJ5EhcKD21ldGFkYXRhaGVhZGVy",
-            "cxgCIAMoCRIxCgpzZXJpZXNkYXRhGAMgAygLMh0uYWNvbmNhZ3VhLnByb3Rv",
-            "Lk1ldGFkYXRhTGlzdBo3ChVSZXNwb25zZW1ldGFkYXRhRW50cnkSCwoDa2V5",
-            "GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ASLsAQoWR2V0T2JzZXJ2YXRpb25z",
-            "UmVxdWVzdBJVCg9yZXF1ZXN0bWV0YWRhdGEYASADKAsyPC5hY29uY2FndWEu",
-            "cHJvdG8uR2V0T2JzZXJ2YXRpb25zUmVxdWVzdC5SZXF1ZXN0bWV0YWRhdGFF",
-            "bnRyeRITCgtmcmVxdWVuY2llcxgCIAEoCRIuCgRrZXlzGAMgAygLMiAuYWNv",
-            "bmNhZ3VhLnByb3RvLlNvdXJjZVNlcmllc0tleRo2ChRSZXF1ZXN0bWV0YWRh",
-            "dGFFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBIvgBChdH",
-            "ZXRPYnNlcnZhdGlvbnNSZXNwb25zZRJYChByZXNwb25zZW1ldGFkYXRhGAEg",
-            "AygLMj4uYWNvbmNhZ3VhLnByb3RvLkdldE9ic2VydmF0aW9uc1Jlc3BvbnNl",
-            "LlJlc3BvbnNlbWV0YWRhdGFFbnRyeRITCgtmcmVxdWVuY2llcxgCIAEoCRI1",
-            "CgpzZXJpZXNkYXRhGAMgAygLMiEuYWNvbmNhZ3VhLnByb3RvLk9ic2VydmF0",
-            "aW9uc0xpc3QaNwoVUmVzcG9uc2VtZXRhZGF0YUVudHJ5EgsKA2tleRgBIAEo",
-            "CRINCgV2YWx1ZRgCIAEoCToCOAEiTQoMTWV0YWRhdGFMaXN0Ei0KA2tleRgB",
-            "IAEoCzIgLmFjb25jYWd1YS5wcm90by5Tb3VyY2VTZXJpZXNLZXkSDgoGdmFs",
-            "dWVzGAIgAygJIq8BChBPYnNlcnZhdGlvbnNMaXN0Ei0KA2tleRgBIAEoCzIg",
-            "LmFjb25jYWd1YS5wcm90by5Tb3VyY2VTZXJpZXNLZXkSPQoGdmFsdWVzGAIg",
-            "AygLMi0uYWNvbmNhZ3VhLnByb3RvLk9ic2VydmF0aW9uc0xpc3QuVmFsdWVz",
-            "RW50cnkaLQoLVmFsdWVzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIg",
-            "ASgBOgI4ASI5Cg9Tb3VyY2VTZXJpZXNLZXkSEgoKc291cmNlbmFtZRgBIAEo",
-            "CRISCgpzZXJpZXNuYW1lGAIgASgJMqgCChVUaW1lc2VyaWVzRGF0YVNlcnZp",
-            "Y2USSwoKR2V0VmVyc2lvbhIWLmdvb2dsZS5wcm90b2J1Zi5FbXB0eRojLmFj",
-            "b25jYWd1YS5wcm90by5HZXRWZXJzaW9uUmVzcG9uc2UiABJaCgtHZXRNZXRh",
-            "ZGF0YRIjLmFjb25jYWd1YS5wcm90by5HZXRNZXRhZGF0YVJlcXVlc3QaJC5h",
-            "Y29uY2FndWEucHJvdG8uR2V0TWV0YWRhdGFSZXNwb25zZSIAEmYKD0dldE9i",
-            "c2VydmF0aW9ucxInLmFjb25jYWd1YS5wcm90by5HZXRPYnNlcnZhdGlvbnNS",
-            "ZXF1ZXN0GiguYWNvbmNhZ3VhLnByb3RvLkdldE9ic2VydmF0aW9uc1Jlc3Bv",
-            "bnNlIgBCKwoRaW8uZ3JwYy5hY29uY2FndWFCDkFjb25jYWd1YVByb3RvUAGi",
-            "AgNBQ0FiBnByb3RvMw=="));
+            "b3RvIiUKEkdldFZlcnNpb25SZXNwb25zZRIPCgd2ZXJzaW9uGAEgASgJIq0C",
+            "ChRHZXRTZXJpZXNLZXlzUmVxdWVzdBJTCg9yZXF1ZXN0bWV0YWRhdGEYASAD",
+            "KAsyOi5hY29uY2FndWEucHJvdG8uR2V0U2VyaWVzS2V5c1JlcXVlc3QuUmVx",
+            "dWVzdG1ldGFkYXRhRW50cnkSEwoLc291cmNlbmFtZXMYAiADKAkSQwoHZmls",
+            "dGVycxgDIAMoCzIyLmFjb25jYWd1YS5wcm90by5HZXRTZXJpZXNLZXlzUmVx",
+            "dWVzdC5GaWx0ZXJzRW50cnkaNgoUUmVxdWVzdG1ldGFkYXRhRW50cnkSCwoD",
+            "a2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ARouCgxGaWx0ZXJzRW50cnkS",
+            "CwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ASLYAQoVR2V0U2VyaWVz",
+            "S2V5c1Jlc3BvbnNlElYKEHJlc3BvbnNlbWV0YWRhdGEYASADKAsyPC5hY29u",
+            "Y2FndWEucHJvdG8uR2V0U2VyaWVzS2V5c1Jlc3BvbnNlLlJlc3BvbnNlbWV0",
+            "YWRhdGFFbnRyeRIuCgRrZXlzGAMgAygLMiAuYWNvbmNhZ3VhLnByb3RvLlNv",
+            "dXJjZVNlcmllc0tleRo3ChVSZXNwb25zZW1ldGFkYXRhRW50cnkSCwoDa2V5",
+            "GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ASLoAQoSR2V0TWV0YWRhdGFSZXF1",
+            "ZXN0ElEKD3JlcXVlc3RtZXRhZGF0YRgBIAMoCzI4LmFjb25jYWd1YS5wcm90",
+            "by5HZXRNZXRhZGF0YVJlcXVlc3QuUmVxdWVzdG1ldGFkYXRhRW50cnkSFwoP",
+            "bWV0YWRhdGFoZWFkZXJzGAIgAygJEi4KBGtleXMYAyADKAsyIC5hY29uY2Fn",
+            "dWEucHJvdG8uU291cmNlU2VyaWVzS2V5GjYKFFJlcXVlc3RtZXRhZGF0YUVu",
+            "dHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCToCOAEi8AEKE0dldE1l",
+            "dGFkYXRhUmVzcG9uc2USVAoQcmVzcG9uc2VtZXRhZGF0YRgBIAMoCzI6LmFj",
+            "b25jYWd1YS5wcm90by5HZXRNZXRhZGF0YVJlc3BvbnNlLlJlc3BvbnNlbWV0",
+            "YWRhdGFFbnRyeRIXCg9tZXRhZGF0YWhlYWRlcnMYAiADKAkSMQoKc2VyaWVz",
+            "ZGF0YRgDIAMoCzIdLmFjb25jYWd1YS5wcm90by5NZXRhZGF0YUxpc3QaNwoV",
+            "UmVzcG9uc2VtZXRhZGF0YUVudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgC",
+            "IAEoCToCOAEi7AEKFkdldE9ic2VydmF0aW9uc1JlcXVlc3QSVQoPcmVxdWVz",
+            "dG1ldGFkYXRhGAEgAygLMjwuYWNvbmNhZ3VhLnByb3RvLkdldE9ic2VydmF0",
+            "aW9uc1JlcXVlc3QuUmVxdWVzdG1ldGFkYXRhRW50cnkSEwoLZnJlcXVlbmNp",
+            "ZXMYAiABKAkSLgoEa2V5cxgDIAMoCzIgLmFjb25jYWd1YS5wcm90by5Tb3Vy",
+            "Y2VTZXJpZXNLZXkaNgoUUmVxdWVzdG1ldGFkYXRhRW50cnkSCwoDa2V5GAEg",
+            "ASgJEg0KBXZhbHVlGAIgASgJOgI4ASL4AQoXR2V0T2JzZXJ2YXRpb25zUmVz",
+            "cG9uc2USWAoQcmVzcG9uc2VtZXRhZGF0YRgBIAMoCzI+LmFjb25jYWd1YS5w",
+            "cm90by5HZXRPYnNlcnZhdGlvbnNSZXNwb25zZS5SZXNwb25zZW1ldGFkYXRh",
+            "RW50cnkSEwoLZnJlcXVlbmNpZXMYAiABKAkSNQoKc2VyaWVzZGF0YRgDIAMo",
+            "CzIhLmFjb25jYWd1YS5wcm90by5PYnNlcnZhdGlvbnNMaXN0GjcKFVJlc3Bv",
+            "bnNlbWV0YWRhdGFFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6",
+            "AjgBIk0KDE1ldGFkYXRhTGlzdBItCgNrZXkYASABKAsyIC5hY29uY2FndWEu",
+            "cHJvdG8uU291cmNlU2VyaWVzS2V5Eg4KBnZhbHVlcxgCIAMoCSKvAQoQT2Jz",
+            "ZXJ2YXRpb25zTGlzdBItCgNrZXkYASABKAsyIC5hY29uY2FndWEucHJvdG8u",
+            "U291cmNlU2VyaWVzS2V5Ej0KBnZhbHVlcxgCIAMoCzItLmFjb25jYWd1YS5w",
+            "cm90by5PYnNlcnZhdGlvbnNMaXN0LlZhbHVlc0VudHJ5Gi0KC1ZhbHVlc0Vu",
+            "dHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoAToCOAEiOQoPU291cmNl",
+            "U2VyaWVzS2V5EhIKCnNvdXJjZW5hbWUYASABKAkSEgoKc2VyaWVzbmFtZRgC",
+            "IAEoCTKKAwoVVGltZXNlcmllc0RhdGFTZXJ2aWNlEksKCkdldFZlcnNpb24S",
+            "Fi5nb29nbGUucHJvdG9idWYuRW1wdHkaIy5hY29uY2FndWEucHJvdG8uR2V0",
+            "VmVyc2lvblJlc3BvbnNlIgASYAoNR2V0U2VyaWVzS2V5cxIlLmFjb25jYWd1",
+            "YS5wcm90by5HZXRTZXJpZXNLZXlzUmVxdWVzdBomLmFjb25jYWd1YS5wcm90",
+            "by5HZXRTZXJpZXNLZXlzUmVzcG9uc2UiABJaCgtHZXRNZXRhZGF0YRIjLmFj",
+            "b25jYWd1YS5wcm90by5HZXRNZXRhZGF0YVJlcXVlc3QaJC5hY29uY2FndWEu",
+            "cHJvdG8uR2V0TWV0YWRhdGFSZXNwb25zZSIAEmYKD0dldE9ic2VydmF0aW9u",
+            "cxInLmFjb25jYWd1YS5wcm90by5HZXRPYnNlcnZhdGlvbnNSZXF1ZXN0Gigu",
+            "YWNvbmNhZ3VhLnByb3RvLkdldE9ic2VydmF0aW9uc1Jlc3BvbnNlIgBCKwoR",
+            "aW8uZ3JwYy5hY29uY2FndWFCDkFjb25jYWd1YVByb3RvUAGiAgNBQ0FiBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Aconcagua.Proto.GetVersionResponse), global::Aconcagua.Proto.GetVersionResponse.Parser, new[]{ "Version" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Aconcagua.Proto.GetSeriesKeysRequest), global::Aconcagua.Proto.GetSeriesKeysRequest.Parser, new[]{ "Requestmetadata", "Sourcenames", "Filters" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Aconcagua.Proto.GetSeriesKeysResponse), global::Aconcagua.Proto.GetSeriesKeysResponse.Parser, new[]{ "Responsemetadata", "Keys" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Aconcagua.Proto.GetMetadataRequest), global::Aconcagua.Proto.GetMetadataRequest.Parser, new[]{ "Requestmetadata", "Metadataheaders", "Keys" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Aconcagua.Proto.GetMetadataResponse), global::Aconcagua.Proto.GetMetadataResponse.Parser, new[]{ "Responsemetadata", "Metadataheaders", "Seriesdata" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Aconcagua.Proto.GetObservationsRequest), global::Aconcagua.Proto.GetObservationsRequest.Parser, new[]{ "Requestmetadata", "Frequencies", "Keys" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
@@ -210,6 +226,308 @@ namespace Aconcagua.Proto {
 
   }
 
+  public sealed partial class GetSeriesKeysRequest : pb::IMessage<GetSeriesKeysRequest> {
+    private static readonly pb::MessageParser<GetSeriesKeysRequest> _parser = new pb::MessageParser<GetSeriesKeysRequest>(() => new GetSeriesKeysRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GetSeriesKeysRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Aconcagua.Proto.AconcaguaReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetSeriesKeysRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetSeriesKeysRequest(GetSeriesKeysRequest other) : this() {
+      requestmetadata_ = other.requestmetadata_.Clone();
+      sourcenames_ = other.sourcenames_.Clone();
+      filters_ = other.filters_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetSeriesKeysRequest Clone() {
+      return new GetSeriesKeysRequest(this);
+    }
+
+    /// <summary>Field number for the "requestmetadata" field.</summary>
+    public const int RequestmetadataFieldNumber = 1;
+    private static readonly pbc::MapField<string, string>.Codec _map_requestmetadata_codec
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 10);
+    private readonly pbc::MapField<string, string> requestmetadata_ = new pbc::MapField<string, string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::MapField<string, string> Requestmetadata {
+      get { return requestmetadata_; }
+    }
+
+    /// <summary>Field number for the "sourcenames" field.</summary>
+    public const int SourcenamesFieldNumber = 2;
+    private static readonly pb::FieldCodec<string> _repeated_sourcenames_codec
+        = pb::FieldCodec.ForString(18);
+    private readonly pbc::RepeatedField<string> sourcenames_ = new pbc::RepeatedField<string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<string> Sourcenames {
+      get { return sourcenames_; }
+    }
+
+    /// <summary>Field number for the "filters" field.</summary>
+    public const int FiltersFieldNumber = 3;
+    private static readonly pbc::MapField<string, string>.Codec _map_filters_codec
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 26);
+    private readonly pbc::MapField<string, string> filters_ = new pbc::MapField<string, string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::MapField<string, string> Filters {
+      get { return filters_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GetSeriesKeysRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GetSeriesKeysRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!Requestmetadata.Equals(other.Requestmetadata)) return false;
+      if(!sourcenames_.Equals(other.sourcenames_)) return false;
+      if (!Filters.Equals(other.Filters)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= Requestmetadata.GetHashCode();
+      hash ^= sourcenames_.GetHashCode();
+      hash ^= Filters.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      requestmetadata_.WriteTo(output, _map_requestmetadata_codec);
+      sourcenames_.WriteTo(output, _repeated_sourcenames_codec);
+      filters_.WriteTo(output, _map_filters_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += requestmetadata_.CalculateSize(_map_requestmetadata_codec);
+      size += sourcenames_.CalculateSize(_repeated_sourcenames_codec);
+      size += filters_.CalculateSize(_map_filters_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GetSeriesKeysRequest other) {
+      if (other == null) {
+        return;
+      }
+      requestmetadata_.Add(other.requestmetadata_);
+      sourcenames_.Add(other.sourcenames_);
+      filters_.Add(other.filters_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            requestmetadata_.AddEntriesFrom(input, _map_requestmetadata_codec);
+            break;
+          }
+          case 18: {
+            sourcenames_.AddEntriesFrom(input, _repeated_sourcenames_codec);
+            break;
+          }
+          case 26: {
+            filters_.AddEntriesFrom(input, _map_filters_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GetSeriesKeysResponse : pb::IMessage<GetSeriesKeysResponse> {
+    private static readonly pb::MessageParser<GetSeriesKeysResponse> _parser = new pb::MessageParser<GetSeriesKeysResponse>(() => new GetSeriesKeysResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GetSeriesKeysResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Aconcagua.Proto.AconcaguaReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetSeriesKeysResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetSeriesKeysResponse(GetSeriesKeysResponse other) : this() {
+      responsemetadata_ = other.responsemetadata_.Clone();
+      keys_ = other.keys_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetSeriesKeysResponse Clone() {
+      return new GetSeriesKeysResponse(this);
+    }
+
+    /// <summary>Field number for the "responsemetadata" field.</summary>
+    public const int ResponsemetadataFieldNumber = 1;
+    private static readonly pbc::MapField<string, string>.Codec _map_responsemetadata_codec
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 10);
+    private readonly pbc::MapField<string, string> responsemetadata_ = new pbc::MapField<string, string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::MapField<string, string> Responsemetadata {
+      get { return responsemetadata_; }
+    }
+
+    /// <summary>Field number for the "keys" field.</summary>
+    public const int KeysFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::Aconcagua.Proto.SourceSeriesKey> _repeated_keys_codec
+        = pb::FieldCodec.ForMessage(26, global::Aconcagua.Proto.SourceSeriesKey.Parser);
+    private readonly pbc::RepeatedField<global::Aconcagua.Proto.SourceSeriesKey> keys_ = new pbc::RepeatedField<global::Aconcagua.Proto.SourceSeriesKey>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Aconcagua.Proto.SourceSeriesKey> Keys {
+      get { return keys_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GetSeriesKeysResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GetSeriesKeysResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!Responsemetadata.Equals(other.Responsemetadata)) return false;
+      if(!keys_.Equals(other.keys_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= Responsemetadata.GetHashCode();
+      hash ^= keys_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      responsemetadata_.WriteTo(output, _map_responsemetadata_codec);
+      keys_.WriteTo(output, _repeated_keys_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += responsemetadata_.CalculateSize(_map_responsemetadata_codec);
+      size += keys_.CalculateSize(_repeated_keys_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GetSeriesKeysResponse other) {
+      if (other == null) {
+        return;
+      }
+      responsemetadata_.Add(other.responsemetadata_);
+      keys_.Add(other.keys_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            responsemetadata_.AddEntriesFrom(input, _map_responsemetadata_codec);
+            break;
+          }
+          case 26: {
+            keys_.AddEntriesFrom(input, _repeated_keys_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public sealed partial class GetMetadataRequest : pb::IMessage<GetMetadataRequest> {
     private static readonly pb::MessageParser<GetMetadataRequest> _parser = new pb::MessageParser<GetMetadataRequest>(() => new GetMetadataRequest());
     private pb::UnknownFieldSet _unknownFields;
@@ -218,7 +536,7 @@ namespace Aconcagua.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Aconcagua.Proto.AconcaguaReflection.Descriptor.MessageTypes[1]; }
+      get { return global::Aconcagua.Proto.AconcaguaReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -379,7 +697,7 @@ namespace Aconcagua.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Aconcagua.Proto.AconcaguaReflection.Descriptor.MessageTypes[2]; }
+      get { return global::Aconcagua.Proto.AconcaguaReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -540,7 +858,7 @@ namespace Aconcagua.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Aconcagua.Proto.AconcaguaReflection.Descriptor.MessageTypes[3]; }
+      get { return global::Aconcagua.Proto.AconcaguaReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -709,7 +1027,7 @@ namespace Aconcagua.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Aconcagua.Proto.AconcaguaReflection.Descriptor.MessageTypes[4]; }
+      get { return global::Aconcagua.Proto.AconcaguaReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -878,7 +1196,7 @@ namespace Aconcagua.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Aconcagua.Proto.AconcaguaReflection.Descriptor.MessageTypes[5]; }
+      get { return global::Aconcagua.Proto.AconcaguaReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1033,7 +1351,7 @@ namespace Aconcagua.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Aconcagua.Proto.AconcaguaReflection.Descriptor.MessageTypes[6]; }
+      get { return global::Aconcagua.Proto.AconcaguaReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1188,7 +1506,7 @@ namespace Aconcagua.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Aconcagua.Proto.AconcaguaReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Aconcagua.Proto.AconcaguaReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

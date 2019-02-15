@@ -29,6 +29,8 @@ namespace Aconcagua.Proto {
 
     static readonly grpc::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_Empty = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.WellKnownTypes.Empty.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Aconcagua.Proto.GetVersionResponse> __Marshaller_GetVersionResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Aconcagua.Proto.GetVersionResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Aconcagua.Proto.GetSeriesKeysRequest> __Marshaller_GetSeriesKeysRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Aconcagua.Proto.GetSeriesKeysRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Aconcagua.Proto.GetSeriesKeysResponse> __Marshaller_GetSeriesKeysResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Aconcagua.Proto.GetSeriesKeysResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Aconcagua.Proto.GetMetadataRequest> __Marshaller_GetMetadataRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Aconcagua.Proto.GetMetadataRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Aconcagua.Proto.GetMetadataResponse> __Marshaller_GetMetadataResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Aconcagua.Proto.GetMetadataResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Aconcagua.Proto.GetObservationsRequest> __Marshaller_GetObservationsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Aconcagua.Proto.GetObservationsRequest.Parser.ParseFrom);
@@ -40,6 +42,13 @@ namespace Aconcagua.Proto {
         "GetVersion",
         __Marshaller_Empty,
         __Marshaller_GetVersionResponse);
+
+    static readonly grpc::Method<global::Aconcagua.Proto.GetSeriesKeysRequest, global::Aconcagua.Proto.GetSeriesKeysResponse> __Method_GetSeriesKeys = new grpc::Method<global::Aconcagua.Proto.GetSeriesKeysRequest, global::Aconcagua.Proto.GetSeriesKeysResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetSeriesKeys",
+        __Marshaller_GetSeriesKeysRequest,
+        __Marshaller_GetSeriesKeysResponse);
 
     static readonly grpc::Method<global::Aconcagua.Proto.GetMetadataRequest, global::Aconcagua.Proto.GetMetadataResponse> __Method_GetMetadata = new grpc::Method<global::Aconcagua.Proto.GetMetadataRequest, global::Aconcagua.Proto.GetMetadataResponse>(
         grpc::MethodType.Unary,
@@ -65,6 +74,11 @@ namespace Aconcagua.Proto {
     public abstract partial class TimeseriesDataServiceBase
     {
       public virtual global::System.Threading.Tasks.Task<global::Aconcagua.Proto.GetVersionResponse> GetVersion(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Aconcagua.Proto.GetSeriesKeysResponse> GetSeriesKeys(global::Aconcagua.Proto.GetSeriesKeysRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -120,6 +134,22 @@ namespace Aconcagua.Proto {
       {
         return CallInvoker.AsyncUnaryCall(__Method_GetVersion, null, options, request);
       }
+      public virtual global::Aconcagua.Proto.GetSeriesKeysResponse GetSeriesKeys(global::Aconcagua.Proto.GetSeriesKeysRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetSeriesKeys(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Aconcagua.Proto.GetSeriesKeysResponse GetSeriesKeys(global::Aconcagua.Proto.GetSeriesKeysRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetSeriesKeys, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::Aconcagua.Proto.GetSeriesKeysResponse> GetSeriesKeysAsync(global::Aconcagua.Proto.GetSeriesKeysRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetSeriesKeysAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::Aconcagua.Proto.GetSeriesKeysResponse> GetSeriesKeysAsync(global::Aconcagua.Proto.GetSeriesKeysRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetSeriesKeys, null, options, request);
+      }
       public virtual global::Aconcagua.Proto.GetMetadataResponse GetMetadata(global::Aconcagua.Proto.GetMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return GetMetadata(request, new grpc::CallOptions(headers, deadline, cancellationToken));
@@ -165,6 +195,7 @@ namespace Aconcagua.Proto {
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_GetVersion, serviceImpl.GetVersion)
+          .AddMethod(__Method_GetSeriesKeys, serviceImpl.GetSeriesKeys)
           .AddMethod(__Method_GetMetadata, serviceImpl.GetMetadata)
           .AddMethod(__Method_GetObservations, serviceImpl.GetObservations).Build();
     }

@@ -39,6 +39,23 @@ namespace aconcagua.data.dmx
 
         #endregion
 
+        #region GetSeriesKeys
+
+        public IQueryable<TimeseriesKey> GetSeriesKeys(IReadOnlyDictionary<string, string> filters)
+        {
+            var command = _connection.CreateCommand();
+            command.CommandText = GetSeriesKeysQuery.Create(filters);
+            var reader = command.ExecuteReader();
+
+            var keys = new List<TimeseriesKey>();
+            while (reader.Read())
+                keys.Add(new TimeseriesKey(reader.GetString(0)));
+            reader.Close();
+            return keys.AsQueryable();
+        }
+
+        #endregion
+
         #region GetMetadata
 
         public IQueryable<ITimeseriesMetadata> GetMetadata(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList)
@@ -62,7 +79,7 @@ namespace aconcagua.data.dmx
                 }
                 seriesList.Add(new DMXTimeseries(SourceKey, seriesKey, metadataDictionary));
             }
-
+            reader.Close();
             return seriesList.AsQueryable();
         }
 
@@ -102,7 +119,7 @@ namespace aconcagua.data.dmx
                         series.Observations[$"{orowid}:{columnName}"] = reader.GetDouble(i);
                 }
             }
-
+            reader.Close();
             return seriesList.Values.AsQueryable();
         }
 
@@ -134,6 +151,8 @@ namespace aconcagua.data.dmx
 
         #endregion
 
+        #region DMXTimeseries
+
         private class DMXTimeseries : ITimeseriesMetadata, ITimeseriesObservations
         {
             public TimeseriesSourceKey SourceKey { get; }
@@ -160,6 +179,21 @@ namespace aconcagua.data.dmx
                 _observations = observations;
             }
         }
+
+        #endregion
+    }
+
+    internal static class GetSeriesKeysQuery
+    {
+        public static string Create(IReadOnlyDictionary<string, string> filter)
+        {
+            var selectQuery = $"SELECT onm.oname FROM tbl_ONames onm ";
+
+            var whereClause = $" WHERE " +
+                string.Join(" OR ",
+                    filter.Select(p => $"({p.Key} LIKE '{p.Value}')")
+               );
+            return selectQuery + whereClause;        }
     }
 
     internal static class GetObservationsQuery

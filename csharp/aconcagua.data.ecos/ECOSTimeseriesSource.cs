@@ -41,13 +41,56 @@ namespace aconcagua.data.ecos
             return (timeseriesSource != null);
         }
 
+        public IQueryable<TimeseriesKey> GetSeriesKeys(IReadOnlyDictionary<string, string> filters)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<ITimeseriesMetadata> GetMetadata(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList)
+        {
+            var seriesList = new List<ITimeseriesMetadata>();
+
+            _client = new SDMXServiceClient();
+            var genericMetadata = _client.GetTimeSeriesAttributes(GetMetadataQuery.BuildMetadataQuery(DatabaseID, seriesKeys.ToTimeseriesKeyString(QuotedSplitStringOptions.Quoted)));
+            var metadataSet = genericMetadata.Element(Progm + "DataSet");
+
+            if (metadataSet != null)
+            {
+                var seriesElements = metadataSet.Elements(Progg + "Series");
+                foreach (var seriesElement in seriesElements)
+                {
+                    var seriesAttr = seriesElement.Element(Progg + "SeriesKey");
+                    var seriesAttributes = seriesElement.Element(Progg + "Attributes");
+                    var metadataDictionary = new Dictionary<string, string>();
+                    //string seriesKey = ((TimeseriesKey[])seriesKeys)[0].Key;
+                    var seriesKey = new TimeseriesKey(((TimeseriesKey[])seriesKeys)[0].Key);
+
+                    foreach (var value in seriesAttr.Elements())
+                    {
+                        var conceptAtt = value.Attribute("concept");
+                        var valueAtt = value.Attribute("value");
+                        if (headerList.Any(str => str.Contains(conceptAtt.Value)))
+                            metadataDictionary[conceptAtt.Value] = valueAtt.Value;
+                    }
+
+                    foreach (var value in seriesAttributes.Elements())
+                    {
+                        var conceptAtt = value.Attribute("concept");
+                        var valueAtt = value.Attribute("value");
+                        if (headerList.Any(str => str.Contains(conceptAtt.Value)))
+                            metadataDictionary[conceptAtt.Value] = valueAtt.Value;
+                    }
+                    seriesList.Add(new EcOSTimeseries(SourceKey, seriesKey, metadataDictionary));
+                }
+            }
+            return seriesList.AsQueryable();
+        }
+
         public IQueryable<ITimeseriesObservations> GetObservations(IEnumerable<TimeseriesKey> seriesKeys, string frequencies)
         {
             var seriesList = new Dictionary<TimeseriesKey, ITimeseriesObservations>();
 
             _client = new SDMXServiceClient();
-
-
             var genericDataSet = _client.GetGenericData(GetObservationsQuery.BuildObservationQuery(DatabaseID, seriesKeys.ToTimeseriesKeyString(QuotedSplitStringOptions.Quoted)));
 
             var dataSet = genericDataSet.Element(Progm + "DataSet");
@@ -56,7 +99,7 @@ namespace aconcagua.data.ecos
                 var seriesElements = dataSet.Elements(Progg + "Series");
                 foreach (var seriesElement in seriesElements)
                 {
-                   // string seriesKey1 = ((TimeseriesKey[])seriesKeys)[0].Key;
+                    // string seriesKey1 = ((TimeseriesKey[])seriesKeys)[0].Key;
                     var seriesKey = new TimeseriesKey(((TimeseriesKey[])seriesKeys)[0].Key);
                     var seriesAttributes = seriesElement.Element(Progg + "Attributes");
                     var seriesObservation = seriesElement.Elements(Progg + "Obs");
@@ -69,7 +112,6 @@ namespace aconcagua.data.ecos
                     else
                         series = seriesList[seriesKey];
 
-
                     foreach (var observation in seriesObservation)
                     {
                         var time = observation.Element(Progg + "Time");
@@ -77,74 +119,14 @@ namespace aconcagua.data.ecos
                         if (obsEl != null && time != null)
                         {
                             var obs = obsEl.Attribute("value");
-                            if (obs != null) series.Observations[time.Value] = Convert.ToDouble(obs.Value);
-                            ;
+                            if (obs != null)
+                                series.Observations[time.Value] = Convert.ToDouble(obs.Value);
                         }
                     }
-
-
                 }
             }
-
             return seriesList.Values.AsQueryable();
-
         }
-
-        public IQueryable<ITimeseriesMetadata> GetMetadata(IEnumerable<TimeseriesKey> seriesKeys, IEnumerable<string> headerList)
-        {
-           
-            var seriesList = new List<ITimeseriesMetadata>();
-
-
-            _client = new SDMXServiceClient();
-
-            var genericMetadata = _client.GetTimeSeriesAttributes(GetMetadataQuery.BuildMetadataQuery(DatabaseID, seriesKeys.ToTimeseriesKeyString(QuotedSplitStringOptions.Quoted)));
-
-            var metadataSet = genericMetadata.Element(Progm + "DataSet");
-
-            if (metadataSet != null)
-            {
-                var seriesElements = metadataSet.Elements(Progg + "Series");
-                foreach (var seriesElement in seriesElements)
-                {
-
-                    var seriesAttr = seriesElement.Element(Progg + "SeriesKey");
-                    var seriesAttributes = seriesElement.Element(Progg + "Attributes");
-                    var metadataDictionary = new Dictionary<string, string>();
-                    //string seriesKey = ((TimeseriesKey[])seriesKeys)[0].Key;
-                    var seriesKey = new TimeseriesKey(((TimeseriesKey[])seriesKeys)[0].Key);
-
-                    foreach (var value in seriesAttr.Elements())
-                    {
-
-                        var conceptAtt = value.Attribute("concept");
-                        var valueAtt = value.Attribute("value");
-                        if (headerList.Any(str => str.Contains(conceptAtt.Value)))
-                        {
-                            metadataDictionary[conceptAtt.Value] = valueAtt.Value;
-                        }
-
-                    }
-
-                    foreach (var value in seriesAttributes.Elements())
-                    {
-                        var conceptAtt = value.Attribute("concept");
-                        var valueAtt = value.Attribute("value");
-                        if (headerList.Any(str => str.Contains(conceptAtt.Value)))
-                        {
-                            metadataDictionary[conceptAtt.Value] = valueAtt.Value;
-                        }
-                    }
-
-                    seriesList.Add(new EcOSTimeseries(SourceKey, seriesKey, metadataDictionary));
-
-
-                }
-            }
-
-            return seriesList.AsQueryable();
-        }
-
 
         #region IDisposable
 
@@ -169,9 +151,7 @@ namespace aconcagua.data.ecos
                 _handle.Dispose();
             }
         }
-
         #endregion
-
 
         private class EcOSTimeseries : ITimeseriesMetadata, ITimeseriesObservations
         {
@@ -199,16 +179,13 @@ namespace aconcagua.data.ecos
                 _observations = observations;
             }
         }
-
     }
 
 
     internal static class GetObservationsQuery
     {
-
         public static XElement BuildObservationQuery(string dataSetId, string seriescode)
         {
-
             var attributeList = new StringBuilder();
 
             attributeList.AppendLine("<Or>");
@@ -220,8 +197,6 @@ namespace aconcagua.data.ecos
             }
 
             attributeList.AppendLine("</Or>");
-
-
             var queryText =
                 String.Format(
                     @"<QueryMessage xmlns=""http://www.SDMX.org/resources/SDMXML/schemas/v2_0/message"">
@@ -238,14 +213,11 @@ namespace aconcagua.data.ecos
 
             return XElement.Parse(queryText);
         }
-
     }
 
 
     internal static class GetMetadataQuery
     {
-
-
         public static XElement BuildMetadataQuery(string dataSetId, string seriesCode)
         {
             var attributeList = new StringBuilder();
@@ -259,8 +231,6 @@ namespace aconcagua.data.ecos
             }
 
             attributeList.AppendLine("</Or>");
-
-
             var queryText =
                 String.Format(
                     @"<QueryMessage xmlns=""http://www.SDMX.org/resources/SDMXML/schemas/v2_0/message"">
@@ -278,6 +248,4 @@ namespace aconcagua.data.ecos
             return XElement.Parse(queryText);
         }
     }
-
-
 }

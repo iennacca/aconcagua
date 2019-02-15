@@ -13,6 +13,7 @@
 // limitations under the License.
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using aconcagua.data;
@@ -31,6 +32,12 @@ namespace aconcagua.server
             return Task.FromResult(new GetVersionResponse(){ Version="1.0" });
         }
 
+        public override Task<GetSeriesKeysResponse> GetSeriesKeys(GetSeriesKeysRequest request, ServerCallContext context)
+        {
+            Console.WriteLine("GetSeriesKeys() called");
+            return Task.FromResult(CreateSeriesKeysResponse(request));
+        }
+
         public override Task<GetMetadataResponse> GetMetadata(GetMetadataRequest request, ServerCallContext context)
         {
             Console.WriteLine("GetMetadata() called");
@@ -43,8 +50,36 @@ namespace aconcagua.server
             return Task.FromResult(CreateObservationsResponse(request));
         }
 
+        #region Helper functions
 
-        // Helper functions
+        private static GetSeriesKeysResponse CreateSeriesKeysResponse(GetSeriesKeysRequest request)
+        {
+            var reply = new GetSeriesKeysResponse();
+            try
+            {
+                var tssFactory = TimeseriesSourceFactory.Factory;
+
+                reply.Responsemetadata.Add(request.Requestmetadata);
+                
+                foreach (var sourcename in request.Sourcenames)
+                {
+                    var d = new Dictionary<string, string>();
+                    foreach (var kv in request.Filters)
+                        d[kv.Key] = kv.Value;
+
+                    reply.Keys.AddRange(
+                        tssFactory[sourcename].GetSeriesKeys(d).Select(
+                            t => new SourceSeriesKey() { Seriesname = t.Key, Sourcename = sourcename }));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            return reply;
+        }
+
         private static GetMetadataResponse CreateMetadataResponse(GetMetadataRequest request)
         {
             var reply = new GetMetadataResponse();
@@ -126,6 +161,7 @@ namespace aconcagua.server
             return reply;
         }
 
+        #endregion
     }
 
     internal class Program
