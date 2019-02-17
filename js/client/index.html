@@ -31,16 +31,16 @@
         <button id="getversion" type="button">Get version</button>
         <label id="getversion_status"></label>
         <br><br>
-        <label>Database: </label><input type="text" id="getdata_database" value='dmx:.\..\..\..\..\data\sample.dmx'>
-        <label>SeriesCode: </label><input type="text" id="getdata_seriescode" value='911BE'>
-        <label>Metadata: </label><input type="text" id="getdata_metadata" value='description'>
-        <button id="getdata" type="button">Get data</button>
-        <label id="getdata_status"></label>
-        <br><br>
-        <label>Database: </label><input type="text" id="getserieskeys_databases" value='dmx:.\..\..\..\..\data\sample.dmx'>
-        <label>SeriesCode: </label><input type="text" id="getserieskeys_filters" value='oname:911%'>
+        <label>Sources: </label><input type="text" id="getserieskeys_sources" value='dmx:.\..\..\..\..\data\sample.dmx'>
+        <label>Filters: </label><input type="text" id="getserieskeys_filters" value='oname:911%'>
         <button id="getserieskeys" type="button">Get series keys</button>
         <label id="getserieskeys_status"></label>
+        <br><br>
+        <label>Source: </label><input type="text" id="getdata_source" value='dmx:.\..\..\..\..\data\sample.dmx'>
+        <label>SeriesCodes: </label><input type="text" id="getdata_seriescodes" value='911BE,911BEA'>
+        <label>Metadata: </label><input type="text" id="getdata_metadata" value='description,scale'>
+        <button id="getdata" type="button">Get data</button>
+        <label id="getdata_status"></label>
         <br><br>
     </form>
     <div class="obsContainer">

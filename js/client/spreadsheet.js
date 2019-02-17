@@ -20,18 +20,16 @@ let database, observations;
 
 $('#getversion').on("click", function () {
     try {
-        var request = new proto.google.protobuf.Empty();
         $('#getversion_status').text('');
-        aconcaguaGetVersion(request, (err, response) => {
-            var versionText = response.getVersion();
-            $('#getversion_version').val(versionText);
-            $('#getversion_status').text('GetVersion() returned OK');
+        aconcaguaGetVersion((err, response) => {
+            $('#getversion_status').text(
+                (err ? err : 'OK')
+            );
         });
     }
     catch(err) {
-        msg = 'Error:' + err.message;
-        console.log(msg);
-        $('#getversion_status').text(msg);
+        console.log(err.message);
+        $('#getversion_status').text(err.message);
     }
 });
 
@@ -39,16 +37,17 @@ $('#getserieskeys').on("click", function () {
     try {
         $('#getserieskeys_status').text('');
         aconcaguaGetSeriesKeys(
-            $('#getserieskeys_databases').val().split(','), 
+            $('#getserieskeys_sources').val().split(','), 
             $('#getserieskeys_filters').val().split(','), 
             (err, response) => {
-                $('#getserieskeys_status').text('GetSeriesKeys() returned OK');
+                $('#getserieskeys_status').text(
+                    (err ? err : 'OK')
+                );
             });
     }
     catch(err) {
-        msg = 'Error:' + err.message;
-        console.log(msg);
-        $('#getserieskeys_status').text(msg);
+        console.log(err.message);
+        $('#getserieskeys_status').text(err.message);
     }
 });
 
@@ -57,23 +56,42 @@ $('#getdata').on("click", function () {
         // pocLoadData();
         $('#getdata_status').text('');
         aconcaguaGetMetadata(
-            [
-                [$('#getdata_database').val(), $('#getdata_seriescode').val()]
-            ], 
+            $('#getdata_source').val(), 
+            $('#getdata_seriescodes').val().split(','),
             $('#getdata_metadata').val().split(','), 
             (err, response) => {
-                $('#getdata_status').text('GetDataStatus() returned OK');
+                $('#getdata_status').text(' OK');
             });
     }
     catch(err) {
-        msg = 'Error:' + err.message;
-        console.log(msg);
-        $('#getdata_status').text(msg);
+        console.log(err.message);
+        $('#getdata_status').text(err.message);
+    }
+
+    function createSourceSeriesCodeList(sourceList,seriescodeList) {
+        foreach 
+        return 
+        [
+            [$('#getdata_database').val(), $('#getdata_seriescode').val()]
+        ]
     }
 });
 
-function aconcaguaGetVersion(request, callback) {
-    client.getVersion(request, {}, callback);
+function aconcaguaGetVersion(callback) {
+    var request = createrequest();
+    client.getVersion(request, {}, showresponse);
+
+    function createrequest() {
+        return new proto.google.protobuf.Empty();
+    }
+
+    function showresponse(err, response) {
+        if (!err) {
+            var versionText = response.getVersion();
+            $('#getversion_version').val(versionText);
+        }
+        callback(err, response);
+    }
 }
 
 function aconcaguaGetSeriesKeys(sourcenames, filters, callback) {
@@ -127,20 +145,20 @@ function aconcaguaGetSeriesKeys(sourcenames, filters, callback) {
     }
 }
 
-function aconcaguaGetMetadata(searchSeriesList, metadataHeadersList, callback) {
-    var request = createrequest(searchSeriesList, metadataHeadersList);
+function aconcaguaGetMetadata(source, seriesCodeList, metadataHeadersList, callback) {
+    var request = createrequest(source, seriesCodeList, metadataHeadersList);
     client.getMetadata(request, {}, showresponse);
 
-    function createrequest(sourceSeriesList, metadataHeadersList) {
+    function createrequest(source, seriesCodeList, metadataHeadersList) {
         r = new GetMetadataRequest();
         var rm = r.getRequestmetadataMap().set('version','0.9');
         var mh = r.setMetadataheadersList(metadataHeadersList);
 
         var sl = new Array();        
-        sourceSeriesList.forEach(s => {
+        seriesCodeList.forEach(s => {
             var ssk = new SourceSeriesKey();
-            ssk.setSourcename(s[0]);
-            ssk.setSeriesname(s[1]);
+            ssk.setSourcename(source);
+            ssk.setSeriesname(s);
             sl.push(ssk);
             console.log('sourceSeries:' + ssk.getSourcename() + '.' + ssk.getSeriesname());
         });

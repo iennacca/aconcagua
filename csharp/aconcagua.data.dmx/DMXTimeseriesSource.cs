@@ -187,13 +187,21 @@ namespace aconcagua.data.dmx
     {
         public static string Create(IReadOnlyDictionary<string, string> filter)
         {
-            var selectQuery = $"SELECT onm.oname FROM tbl_ONames onm ";
+            if (filter.Count == 0)
+                return "SELECT oname FROM tbl_ONames";
+
+            var selectQuery = $"SELECT onm.oname, " +
+                              string.Join(", ", filter.Select(p => $"{p.Key}"));
+
+            var joinClause = $" FROM tbl_ONames onm " +
+                             "INNER JOIN tbl_ODPs odp on onm.oid = odp.oid ";
 
             var whereClause = $" WHERE " +
                 string.Join(" OR ",
                     filter.Select(p => $"({p.Key} LIKE '{p.Value}')")
                );
-            return selectQuery + whereClause;        }
+            return selectQuery + joinClause + whereClause;
+        }
     }
 
     internal static class GetObservationsQuery

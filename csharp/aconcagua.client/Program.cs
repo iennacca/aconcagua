@@ -18,49 +18,65 @@ namespace aconcagua.client
             var vrs = client.GetVersion(empty);
             Console.WriteLine($"Version: {vrs.Version}");
 
-            // DMX request
-            var req = new Request(
+            var srq = GetSeriesKeys.CreateRequest(
+                new[] { "dmx:.\\..\\..\\..\\..\\data\\sample.dmx" },
+                new[] { "description:%" }
+            );
+            var sr = client.GetSeriesKeys(srq);
+            GetSeriesKeys.ShowResponse(sr);
+
+            var mrq = GetMetadata.CreateRequest(
                 "dmx:.\\..\\..\\..\\..\\data\\sample.dmx",
                 new[] { "911BE", "911BEA", "BCA_GDP" },
-                new[] { "scale", "unit", "description" },
-                "MA"
-                );
-
-            // ECOS request
-            //var req = new Request(
+                new[] { "scale", "unit", "description" }
+            );
+            //var mrq = GetMetadata.CreateRequest(
             //    "ecos:\\ECDATA_CPI",
             //    new[] { "312PCPIFBT_IX.A", "612PCPIFBT_IX.M", "612PCPIFBT_IX.Q" },
-            //    new[] { "SCALE", "INDICATOR", "COUNTRY" },
+            //    new[] { "SCALE", "INDICATOR", "COUNTRY" }
+            //);
+
+            var mr = client.GetMetadata(mrq);
+            GetMetadata.ShowResponse(mr);
+
+            var orq = GetObservations.CreateRequest(
+                "dmx:.\\..\\..\\..\\..\\data\\sample.dmx",
+                new[] { "911BE", "911BEA", "BCA_GDP" },
+                "MA"
+            );
+            //var orq = GetObservations.CreateRequest(
+            //    "ecos:\\ECDATA_CPI",
+            //    new[] { "312PCPIFBT_IX.A", "612PCPIFBT_IX.M", "612PCPIFBT_IX.Q" },
             //    "MA"
             //);
 
-
-            var mrq = req.CreateMetadataRequest();
-            var mr = client.GetMetadata(mrq);
-            ShowMetadataResponse(mr);
-
-            var orq = req.CreateObservationsRequest();
             var or = client.GetObservations(orq);
-            ShowObservationResponse(or);
-
-            // DMX request
-            req = new Request(
-                "dmx:.\\..\\..\\..\\..\\data\\sample.dmx",
-                new[] { "911%" },
-                new[] { "scale", "unit", "description" },
-                "MA"
-            );
-
-            var srq = req.CreateSeriesKeysRequest();
-            var sr = client.GetSeriesKeys(srq);
-            ShowSeriesKeysResponse(sr);
+            GetObservations.ShowResponse(or);
 
             channel.ShutdownAsync().Wait();
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
         }
+    }
 
-        private static void ShowSeriesKeysResponse(GetSeriesKeysResponse response)
+    internal static class GetSeriesKeys
+    {
+        public static GetSeriesKeysRequest CreateRequest(IEnumerable<string> sourceNames, IEnumerable<string> filters)
+        {
+            var request = new GetSeriesKeysRequest();
+            request.Requestmetadata.Add(new Dictionary<string, string>() { { "version", "0.9" } });
+
+            request.Sourcenames.Add(sourceNames);
+            foreach (var s in filters)
+            {
+                var ss = s.Split(':');
+                request.Filters.Add(ss[0], ss[1]);
+            }
+
+            return request;
+        }
+
+        public static void ShowResponse(GetSeriesKeysResponse response)
         {
             var i = 0;
             Console.WriteLine($"GetSeriesKeys");
@@ -70,11 +86,25 @@ namespace aconcagua.client
                 i++;
             }
         }
+    }
 
-        private static void ShowMetadataResponse(GetMetadataResponse response)
+    internal static class GetMetadata
+    {
+        public static GetMetadataRequest CreateRequest(string source, IEnumerable<string> seriesList, IEnumerable<string> headerList)
+        {
+            var request = new GetMetadataRequest();
+            request.Requestmetadata.Add(new Dictionary<string, string>() { { "version", "0.9" } });
+
+            request.Metadataheaders.Add(headerList);
+            request.Keys.Add(SourceSeriesKeyList.Create(source, seriesList));
+
+            return request;
+        }
+
+        public static void ShowResponse(GetMetadataResponse response)
         {
             var i = 0;
-            var f = String.Join(",", response.Metadataheaders);
+            var f = string.Join(",", response.Metadataheaders);
             Console.WriteLine($"GetMetadata[{f}]");
             foreach (var ts in response.Seriesdata)
             {
@@ -85,8 +115,22 @@ namespace aconcagua.client
                 i++;
             }
         }
+    }
 
-        private static void ShowObservationResponse(GetObservationsResponse response)
+    internal static class GetObservations
+    {
+        public static GetObservationsRequest CreateRequest(string source, IEnumerable<string> seriesList, string frequencyList)
+        {
+            var request = new GetObservationsRequest();
+            request.Requestmetadata.Add(new Dictionary<string, string>() { { "version", "0.9" } });
+
+            request.Frequencies = frequencyList;
+            request.Keys.Add(SourceSeriesKeyList.Create(source, seriesList));
+
+            return request;
+        }
+
+        public static void ShowResponse(GetObservationsResponse response)
         {
             var i = 0;
 
@@ -100,57 +144,12 @@ namespace aconcagua.client
                 i++;
             }
         }
+
     }
 
-    internal class Request
+    internal static class SourceSeriesKeyList
     {
-        private readonly string _sourceName;
-        private readonly IEnumerable<string> _seriesList;
-        private readonly IEnumerable<string> _headerList;
-        private readonly string _frequencyList;
-
-        public Request(string sourceName, IEnumerable<string> seriesList, IEnumerable<string> headerList, string frequencyList)
-        {
-            _sourceName = sourceName;
-            _seriesList = seriesList;
-            _headerList = headerList;
-            _frequencyList = frequencyList;
-        }
-
-        public GetSeriesKeysRequest CreateSeriesKeysRequest()
-        {
-            var request = new GetSeriesKeysRequest();
-            request.Requestmetadata.Add(new Dictionary<string, string>() { { "version", "0.9" } });
-
-            request.Sourcenames.Add(_sourceName);
-            foreach (var s in _seriesList)
-                request.Filters.Add("oname", s);
-
-            return request;
-        }
-        public GetMetadataRequest CreateMetadataRequest()
-        {
-            var request = new GetMetadataRequest();
-            request.Requestmetadata.Add(new Dictionary<string, string>() { { "version", "0.9" } });
-
-            request.Metadataheaders.Add(_headerList);
-            request.Keys.Add(CreateSourceSeriesKeyListFrom(_sourceName, _seriesList));
-
-            return request;
-        }
-
-        public GetObservationsRequest CreateObservationsRequest()
-        {
-            var request = new GetObservationsRequest();
-            request.Requestmetadata.Add(new Dictionary<string, string>() { { "version", "0.9" } });
-
-            request.Frequencies = _frequencyList;
-            request.Keys.Add(CreateSourceSeriesKeyListFrom(_sourceName, _seriesList));
-
-            return request;
-        }
-
-        private IEnumerable<SourceSeriesKey> CreateSourceSeriesKeyListFrom(string sourceName, IEnumerable<string> _seriesList)
+        public static IEnumerable<SourceSeriesKey> Create(string sourceName, IEnumerable<string> _seriesList)
         {
             return _seriesList.Select(s => new SourceSeriesKey() { Sourcename = sourceName, Seriesname = s }).ToList();
         }
