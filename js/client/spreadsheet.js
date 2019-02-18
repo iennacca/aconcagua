@@ -56,7 +56,7 @@ $('#getdata').on("click", function () {
         // pocLoadData();
         $('#getdata_status').text('');
         aconcaguaGetMetadata(
-            $('#getdata_source').val(), 
+            $('#getdata_sources').val().split(','), 
             $('#getdata_seriescodes').val().split(','),
             $('#getdata_metadata').val().split(','), 
             (err, response) => {
@@ -66,14 +66,6 @@ $('#getdata').on("click", function () {
     catch(err) {
         console.log(err.message);
         $('#getdata_status').text(err.message);
-    }
-
-    function createSourceSeriesCodeList(sourceList,seriescodeList) {
-        foreach 
-        return 
-        [
-            [$('#getdata_database').val(), $('#getdata_seriescode').val()]
-        ]
     }
 });
 
@@ -145,22 +137,24 @@ function aconcaguaGetSeriesKeys(sourcenames, filters, callback) {
     }
 }
 
-function aconcaguaGetMetadata(source, seriesCodeList, metadataHeadersList, callback) {
-    var request = createrequest(source, seriesCodeList, metadataHeadersList);
+function aconcaguaGetMetadata(sourceList, seriesCodeList, metadataHeadersList, callback) {
+    var request = createrequest(sourceList, seriesCodeList, metadataHeadersList);
     client.getMetadata(request, {}, showresponse);
 
-    function createrequest(source, seriesCodeList, metadataHeadersList) {
+    function createrequest(sourceList, seriesCodeList, metadataHeadersList) {
         r = new GetMetadataRequest();
         var rm = r.getRequestmetadataMap().set('version','0.9');
         var mh = r.setMetadataheadersList(metadataHeadersList);
 
-        var sl = new Array();        
-        seriesCodeList.forEach(s => {
-            var ssk = new SourceSeriesKey();
-            ssk.setSourcename(source);
-            ssk.setSeriesname(s);
-            sl.push(ssk);
-            console.log('sourceSeries:' + ssk.getSourcename() + '.' + ssk.getSeriesname());
+        var sl = new Array(); 
+        sourceList.forEach(s => {       
+            seriesCodeList.forEach(sc => {
+                var ssk = new SourceSeriesKey();
+                ssk.setSourcename(s);
+                ssk.setSeriesname(sc);
+                sl.push(ssk);
+                console.log('sourceSeries:' + ssk.getSourcename() + '.' + ssk.getSeriesname());
+            })
         });
         r.setKeysList(sl);
 
