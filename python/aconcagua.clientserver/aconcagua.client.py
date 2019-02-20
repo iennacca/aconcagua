@@ -86,10 +86,10 @@ def run():
     headerList  = ['scale','unit','description']
     frequencyList = 'MA'
 
-    source = 'ecos:\\ECDATA_CPI'
-    seriesList = ['312PCPIFBT_IX.A', '612PCPIFBT_IX.M', '612PCPIFBT_IX.Q']
-    headerList  = ['SCALE', 'INDICATOR', 'COUNTRY']
-    frequencyList = 'MA'
+    #source = 'ecos:\\ECDATA_CPI'
+    #seriesList = ['312PCPIFBT_IX.A', '612PCPIFBT_IX.M', '612PCPIFBT_IX.Q']
+    #headerList  = ['SCALE', 'INDICATOR', 'COUNTRY']
+    #frequencyList = 'MA'
 
     request = createobservationrequest(
         source,
