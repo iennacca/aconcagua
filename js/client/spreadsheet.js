@@ -21,10 +21,10 @@ let database, observations;
 $('#getversion').on("click", function () {
     try {
         $('#getversion_status').text('');
-        aconcaguaGetVersion((err, response) => {
-            $('#getversion_status').text(
-                (err ? err : 'OK')
-            );
+        var query = new GetVersion();
+        query.Run((err, response) => {
+            query.ShowResponse(err, response);
+            $('#getversion_status').text((err ? err.message : 'OK'));
         });
     }
     catch(err) {
@@ -36,14 +36,14 @@ $('#getversion').on("click", function () {
 $('#getserieskeys').on("click", function () {
     try {
         $('#getserieskeys_status').text('');
-        aconcaguaGetSeriesKeys(
+        var query = new GetSeriesKeys();
+        query.Run(
             $('#getserieskeys_sources').val().split(','), 
             $('#getserieskeys_filters').val().split(','), 
             (err, response) => {
-                $('#getserieskeys_status').text(
-                    (err ? err : 'OK')
-                );
-            });
+                query.ShowResponse(err, response);
+                $('#getserieskeys_status').text((err ? err.message : 'OK'));
+        });
     }
     catch(err) {
         console.log(err.message);
@@ -55,12 +55,14 @@ $('#getdata').on("click", function () {
     try {
         // pocLoadData();
         $('#getdata_status').text('');
-        aconcaguaGetMetadata(
+        var query = new GetMetadata();
+        query.Run(
             $('#getdata_sources').val().split(','), 
             $('#getdata_seriescodes').val().split(','),
             $('#getdata_metadata').val().split(','), 
             (err, response) => {
-                $('#getdata_status').text(' OK');
+                query.ShowResponse(err, response);
+                $('#getdata_status').text((err ? err.message : 'OK'));
             });
     }
     catch(err) {
@@ -69,52 +71,77 @@ $('#getdata').on("click", function () {
     }
 });
 
-function aconcaguaGetVersion(callback) {
-    var request = createrequest();
-    client.getVersion(request, {}, showresponse);
+$('#getsheetdata').on("click", function () {
+    try {
+        $('#getsheetdata_status').text('');
+        var keysquery = new GetSeriesKeys();
+        keysquery.Run(
+            [$('#getsheetdata_source').val()], 
+            $('#getsheetdata_filters').val().split(','), 
+            (err, response) => {
+                keysquery.ShowResponse(err, response);
 
-    function createrequest() {
+                var dataquery = new GetMetadata();
+                dataquery.Run(
+                    [$('#getsheetdata_source').val()], 
+                    response.getKeysList().map(k => k.getSeriesname()),
+                    $('#getsheetdata_metadata').val().split(','), 
+                    (err, response) => {
+                        dataquery.ShowResponse(err, response);
+                        $('#getsheetdata_status').text((err ? err.message : 'OK'));
+                    });
+                $('#getsheetdata_status').text((err ? err.message : 'OK'));                
+        });
+    }
+    catch(err) {
+        console.log(err.message);
+        $('#getsheetdata_status').text(err.message);
+    }
+});
+
+
+function GetVersion() {
+    this.Run = function(callback) {
+        var request = this.CreateRequest();
+        client.getVersion(request, {}, callback);
+    }
+
+    this.CreateRequest = function() {
         return new proto.google.protobuf.Empty();
     }
 
-    function showresponse(err, response) {
+    this.ShowResponse = function(err, response) {
         if (!err) {
             var versionText = response.getVersion();
             $('#getversion_version').val(versionText);
         }
-        callback(err, response);
     }
 }
 
-function aconcaguaGetSeriesKeys(sourcenames, filters, callback) {
-    var request = createrequest(sourcenames, filters);
-    client.getSeriesKeys(request, {}, showresponse);
+function GetSeriesKeys() {
+    this.Run = function (sourcenames, filters, callback) {
+        var request = this.CreateRequest(sourcenames, filters);
+        client.getSeriesKeys(request, {}, callback);
+    }
 
-    function createrequest(sourcenames, filters) {
+    this.CreateRequest = function(sourcenames, filters) {
         r = new GetSeriesKeysRequest();
-        var rm = r.getRequestmetadataMap().set('version','0.9');
-        var mh = r.setSourcenamesList(sourcenames);
+        r.getRequestmetadataMap().set('version','0.9');
+        r.setSourcenamesList(sourcenames);
 
-        var sl = new Array();        
         filters.forEach(f => {
             var s = f.split(':');
             r.getFiltersMap().set(s[0],s[1]);
-            console.log('filter: ' + s[0] + ': ' + s[1]);
         });
-
-        console.log(r.getRequestmetadataMap().get('version'));
-        console.log(r.getSourcenamesList());
-        console.log(r.getFiltersMap());
         return r;
-    };
+    }
 
-    function showresponse(err, response) {
+    this.ShowResponse = function(err, response) {
         if (!err) {
             // add headers
             let firstRow = ws.rows(0);
             let headers = ['source', 'series'];
 
-            console.log(headers);
             headers.forEach((header, colIndex) => {
                 firstRow.setCellValue(colIndex, header.trim());
             });
@@ -133,15 +160,16 @@ function aconcaguaGetSeriesKeys(sourcenames, filters, callback) {
                 });
             });        
         }
-        callback(err, response);
     }
 }
 
-function aconcaguaGetMetadata(sourceList, seriesCodeList, metadataHeadersList, callback) {
-    var request = createrequest(sourceList, seriesCodeList, metadataHeadersList);
-    client.getMetadata(request, {}, showresponse);
+function GetMetadata() {
+    this.Run = function(sourceList, seriesCodeList, metadataHeadersList, callback) {
+        var request = this.CreateRequest(sourceList, seriesCodeList, metadataHeadersList);
+        client.getMetadata(request, {}, callback);
+    }
 
-    function createrequest(sourceList, seriesCodeList, metadataHeadersList) {
+    this.CreateRequest = function(sourceList, seriesCodeList, metadataHeadersList) {
         r = new GetMetadataRequest();
         var rm = r.getRequestmetadataMap().set('version','0.9');
         var mh = r.setMetadataheadersList(metadataHeadersList);
@@ -162,9 +190,9 @@ function aconcaguaGetMetadata(sourceList, seriesCodeList, metadataHeadersList, c
         console.log(r.getMetadataheadersList()[1]);
         console.log(r.getKeysList()[0]);
         return r;
-    };
+    }
 
-    function showresponse(err, response) {
+    this.ShowResponse = function(err, response) {
         if (!err) {
             // add headers
             let firstRow = ws.rows(0);
@@ -189,7 +217,6 @@ function aconcaguaGetMetadata(sourceList, seriesCodeList, metadataHeadersList, c
                 });
             });        
         }
-        callback(err, response);
     }
 }
 
