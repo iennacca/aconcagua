@@ -39,7 +39,7 @@ $('#getserieskeys').on("click", function () {
         var query = new GetSeriesKeys();
         query.Run(
             $('#getserieskeys_sources').val().split(','), 
-            $('#getserieskeys_filters').val().split(','), 
+            $('#getserieskeys_filters').val(), 
             (err, response) => {
                 query.ShowResponse(err, response);
                 $('#getserieskeys_status').text((err ? err.message : 'OK'));
@@ -77,7 +77,7 @@ $('#getsheetdata').on("click", function () {
         var keysquery = new GetSeriesKeys();
         keysquery.Run(
             [$('#getsheetdata_source').val()], 
-            $('#getsheetdata_filters').val().split(','), 
+            $('#getsheetdata_filters').val(), 
             (err, response) => {
                 keysquery.ShowResponse(err, response);
 
@@ -129,9 +129,8 @@ function GetSeriesKeys() {
         r.getRequestmetadataMap().set('version','0.9');
         r.setSourcenamesList(sourcenames);
 
-        filters.forEach(f => {
-            var s = f.split(':');
-            r.getFiltersMap().set(s[0],s[1]);
+        transformFilterString(filters).forEach(f => {
+            r.getFiltersMap().set(f[0],f[1]);
         });
         return r;
     }
@@ -181,14 +180,9 @@ function GetMetadata() {
                 ssk.setSourcename(s);
                 ssk.setSeriesname(sc);
                 sl.push(ssk);
-                console.log('sourceSeries:' + ssk.getSourcename() + '.' + ssk.getSeriesname());
             })
         });
         r.setKeysList(sl);
-
-        console.log(r.getRequestmetadataMap().get('version'));
-        console.log(r.getMetadataheadersList()[1]);
-        console.log(r.getKeysList()[0]);
         return r;
     }
 
@@ -198,7 +192,6 @@ function GetMetadata() {
             let firstRow = ws.rows(0);
             let headers = ['source', 'series'].concat(response.getMetadataheadersList());
 
-            console.log(headers);
             headers.forEach((header, colIndex) => {
                 firstRow.setCellValue(colIndex, header.trim());
             });
@@ -218,6 +211,18 @@ function GetMetadata() {
             });        
         }
     }
+}
+
+function transformFilterString(filters) {
+    //in = 'oname : "912%", oname:"911a%",   description  :  "test%"';
+    //out = [['oname','912%'], ['oname', '911%], ['description', 'test%']]
+    var regex = /\s*(.+?)\s*:\s*"(.+?)"\W*/g;
+    var f = new Array();
+
+    while(found = regex.exec(filters)) {
+      f.push([found[1], found[2]]);
+    } 
+    return f;
 }
 
 function pocLoadData() {
