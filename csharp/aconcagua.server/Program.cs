@@ -166,7 +166,7 @@ namespace aconcagua.server
 
     internal class Program
     {
-        private const int Port = 50051;
+        private const int Port = 50451;
 
         public static void Main(string[] args)
         {

@@ -75,7 +75,7 @@ def converttodataframe(response):
 
 def run():
 
-    channel = grpc.insecure_channel('localhost:50051')
+    channel = grpc.insecure_channel('localhost:50451')
     client = aconcagua_pb2_grpc.TimeseriesDataServiceStub(channel)
 
     response = client.GetVersion(googleEmpty.Empty())    

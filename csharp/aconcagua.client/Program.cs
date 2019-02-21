@@ -8,10 +8,9 @@ namespace aconcagua.client
 {
     internal class Program
     {
-
         public static void Main(string[] args)
         {
-            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+            var channel = new Channel("127.0.0.1:50451", ChannelCredentials.Insecure);
             var client = new TimeseriesDataService.TimeseriesDataServiceClient(channel);
             var empty = new Google.Protobuf.WellKnownTypes.Empty();
 

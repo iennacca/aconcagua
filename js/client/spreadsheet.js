@@ -2,7 +2,7 @@
 const {GetSeriesKeysRequest, GetMetadataRequest, SourceSeriesKey} = require('./aconcagua_pb.js');
 const {TimeseriesDataServiceClient} = require('./aconcagua_grpc_web_pb.js');
 
-var client = new TimeseriesDataServiceClient('http://localhost:50050', null, null);
+var client = new TimeseriesDataServiceClient('http://localhost:50450', null, null);
 // aconcagua block end
 
 let wb = new $.ig.excel.Workbook($.ig.excel.WorkbookFormat.excel2007);
