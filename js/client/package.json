@@ -13,6 +13,7 @@
     "webpack-cli": "^3.1.0"
   },
   "dependencies": {
+    "@infragistics/ignite-ui-full": "^18.2.83",
     "grpc-tools": "^1.6.6"
   }
 }
