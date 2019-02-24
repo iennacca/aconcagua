@@ -22,10 +22,14 @@ $('#getversion').on("click", function () {
     try {
         $('#getversion_status').text('');
         var query = new GetVersion();
-        query.Run((err, response) => {
-            query.ShowResponse(err, response);
-            $('#getversion_status').text((err ? err.message : 'OK'));
-        });
+
+        query.Run().
+            then((response) => {
+                $('#getversion_status').text(response);
+            }).
+            catch((err) => {
+                $('#getversion_status').text(err.message);
+            });
     }
     catch(err) {
         console.log(err.message);
@@ -102,19 +106,47 @@ $('#getsheetdata').on("click", function () {
 
 function GetVersion() {
     this.Run = function(callback) {
-        var request = this.CreateRequest();
-        client.getVersion(request, {}, callback);
+        return this.CreateRequest().
+            then(this.RunQuery).
+            then(this.ShowResponse);
     }
 
     this.CreateRequest = function() {
-        return new proto.google.protobuf.Empty();
+        return new Promise(function(resolve, reject) {
+            try {
+                resolve( new proto.google.protobuf.Empty());
+            }
+            catch (err) {
+                reject(err);
+            };
+        });
     }
 
-    this.ShowResponse = function(err, response) {
-        if (!err) {
-            var versionText = response.getVersion();
-            $('#getversion_version').val(versionText);
-        }
+    this.RunQuery = function(request) {
+        return new Promise(function(resolve, reject) {
+            try {
+                client.getVersion(request, {}, function(err, response) {
+                    if (err) reject(err);
+                    else resolve(response);                    
+                });
+            }
+            catch (err) {
+                reject(err);
+            };
+        });
+    }
+
+    this.ShowResponse = function(request) {
+        return new Promise(function(resolve, reject) {
+            try {
+                var versionText = request.getVersion();
+                $('#getversion_version').val(versionText);
+                resolve('OK');
+            }
+            catch (err) {
+                reject(err);
+            };
+        });
     }
 }
 
