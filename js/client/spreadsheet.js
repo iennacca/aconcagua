@@ -26,8 +26,7 @@ $('#getversion').on("click", function () {
         query.Run().
             then((response) => {
                 $('#getversion_status').text(response);
-            }).
-            catch((err) => {
+            }).catch((err) => {
                 $('#getversion_status').text(err.message);
             });
     }
@@ -43,10 +42,11 @@ $('#getserieskeys').on("click", function () {
         var query = new GetSeriesKeys();
         query.Run(
             $('#getserieskeys_sources').val().split(','), 
-            $('#getserieskeys_filters').val(), 
-            (err, response) => {
-                query.ShowResponse(err, response);
-                $('#getserieskeys_status').text((err ? err.message : 'OK'));
+            $('#getserieskeys_filters').val()
+        ).then((response) => {
+            $('#getserieskeys_status').text(response);
+        }).catch((err) => {
+            $('#getserieskeys_status').text(err.message);
         });
     }
     catch(err) {
@@ -105,7 +105,7 @@ $('#getsheetdata').on("click", function () {
 
 
 function GetVersion() {
-    this.Run = function(callback) {
+    this.Run = function() {
         return this.CreateRequest().
             then(this.RunQuery).
             then(this.ShowResponse);
@@ -114,11 +114,11 @@ function GetVersion() {
     this.CreateRequest = function() {
         return new Promise(function(resolve, reject) {
             try {
-                resolve( new proto.google.protobuf.Empty());
+                resolve(new proto.google.protobuf.Empty());
             }
-            catch (err) {
+            catch(err) {
                 reject(err);
-            };
+            }
         });
     }
 
@@ -130,67 +130,95 @@ function GetVersion() {
                     else resolve(response);                    
                 });
             }
-            catch (err) {
+            catch(err) {
                 reject(err);
-            };
+            }
         });
     }
 
-    this.ShowResponse = function(request) {
+    this.ShowResponse = function(response) {
         return new Promise(function(resolve, reject) {
             try {
-                var versionText = request.getVersion();
+                var versionText = response.getVersion();
                 $('#getversion_version').val(versionText);
                 resolve('OK');
             }
-            catch (err) {
+            catch(err) {
                 reject(err);
-            };
+            }
         });
     }
 }
 
 function GetSeriesKeys() {
-    this.Run = function (sourcenames, filters, callback) {
-        var request = this.CreateRequest(sourcenames, filters);
-        client.getSeriesKeys(request, {}, callback);
+    this.Run = function (sourcenames, filters) {
+        return this.CreateRequest(sourcenames, filters).
+            then(this.RunQuery).
+            then(this.ShowResponse);
     }
 
     this.CreateRequest = function(sourcenames, filters) {
-        r = new GetSeriesKeysRequest();
-        r.getRequestmetadataMap().set('version','0.9');
-        r.setSourcenamesList(sourcenames);
-
-        transformFilterString(filters).forEach(f => {
-            r.getFiltersMap().set(f[0],f[1]);
+        return new Promise(function(resolve, reject) {
+            try{
+                r = new GetSeriesKeysRequest();
+                r.getRequestmetadataMap().set('version','0.9');
+                r.setSourcenamesList(sourcenames);
+        
+                transformFilterString(filters).forEach(f => {
+                    r.getFiltersMap().set(f[0],f[1]);
+                });
+                resolve(r);        
+            }
+            catch(err) {
+                reject(err);
+            }
         });
-        return r;
     }
 
-    this.ShowResponse = function(err, response) {
-        if (!err) {
-            // add headers
-            let firstRow = ws.rows(0);
-            let headers = ['source', 'series'];
-
-            headers.forEach((header, colIndex) => {
-                firstRow.setCellValue(colIndex, header.trim());
-            });
-
-            // add data
-             var r = response.getKeysList();
-             r.forEach((rowData, rowIndex) => {
-                let wsRow = ws.rows(rowIndex + 1);
-                let md = [
-                    rowData.getSourcename(),
-                    rowData.getSeriesname()
-                ];
-
-                md.forEach((cellData, cellIndex) => {
-                    wsRow.setCellValue(cellIndex, cellData);
+    this.RunQuery = function(request) {
+        return new Promise(function(resolve, reject) {
+            try {
+                client.getSeriesKeys(request, {}, function(err, response) {
+                    if (err) reject(err);
+                    else resolve(response);                    
                 });
-            });        
-        }
+            }
+            catch(err) {
+                reject(err);
+            }
+        })
+    }
+
+    this.ShowResponse = function(response) {
+        return new Promise(function(resolve, reject) {
+            try {
+                // add headers
+                let firstRow = ws.rows(0);
+                let headers = ['source', 'series'];
+
+                headers.forEach((header, colIndex) => {
+                    firstRow.setCellValue(colIndex, header.trim());
+                });
+
+                // add data
+                var r = response.getKeysList();
+                r.forEach((rowData, rowIndex) => {
+                    let wsRow = ws.rows(rowIndex + 1);
+                    let md = [
+                        rowData.getSourcename(),
+                        rowData.getSeriesname()
+                    ];
+
+                    md.forEach((cellData, cellIndex) => {
+                        wsRow.setCellValue(cellIndex, cellData);
+                    });
+                });
+                resolve('OK');        
+            }
+            catch(err) {
+                reject(err);
+            }
+        });
     }
 }
 
