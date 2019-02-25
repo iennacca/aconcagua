@@ -3,4 +3,4 @@
 @rem Currently for documentation purposes only; npx doesn't seem to work if invoked in batch
 
 npm install
-npx webpack spreadsheet.js
+npx webpack main.js
