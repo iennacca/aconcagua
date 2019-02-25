@@ -63,11 +63,12 @@ $('#getdata').on("click", function () {
         query.Run(
             $('#getdata_sources').val().split(','), 
             $('#getdata_seriescodes').val().split(','),
-            $('#getdata_metadata').val().split(','), 
-            (err, response) => {
-                query.ShowResponse(err, response);
-                $('#getdata_status').text((err ? err.message : 'OK'));
-            });
+            $('#getdata_metadata').val().split(',')
+        ).then((response) => { 
+            $('#getdata_status').text(response);
+        }).catch((err) => {
+            $('#getdata_status').text(err.message);
+        });
     }
     catch(err) {
         console.log(err.message);
@@ -186,7 +187,7 @@ function GetSeriesKeys() {
             catch(err) {
                 reject(err);
             }
-        })
+        });
     }
 
     this.ShowResponse = function(response) {
@@ -223,53 +224,81 @@ function GetSeriesKeys() {
 }
 
 function GetMetadata() {
-    this.Run = function(sourceList, seriesCodeList, metadataHeadersList, callback) {
-        var request = this.CreateRequest(sourceList, seriesCodeList, metadataHeadersList);
-        client.getMetadata(request, {}, callback);
+    this.Run = function(sourceList, seriesCodeList, metadataHeadersList) {
+        return this.CreateRequest(sourceList, seriesCodeList, metadataHeadersList).
+            then(this.RunQuery).
+            then(this.ShowResponse);
     }
 
     this.CreateRequest = function(sourceList, seriesCodeList, metadataHeadersList) {
-        r = new GetMetadataRequest();
-        var rm = r.getRequestmetadataMap().set('version','0.9');
-        var mh = r.setMetadataheadersList(metadataHeadersList);
-
-        var sl = new Array(); 
-        sourceList.forEach(s => {       
-            seriesCodeList.forEach(sc => {
-                var ssk = new SourceSeriesKey();
-                ssk.setSourcename(s);
-                ssk.setSeriesname(sc);
-                sl.push(ssk);
-            })
+        return new Promise(function(resolve, reject) {
+            try {
+                r = new GetMetadataRequest();
+                var rm = r.getRequestmetadataMap().set('version','0.9');
+                var mh = r.setMetadataheadersList(metadataHeadersList);
+    
+                var sl = new Array(); 
+                sourceList.forEach(s => {       
+                    seriesCodeList.forEach(sc => {
+                        var ssk = new SourceSeriesKey();
+                        ssk.setSourcename(s);
+                        ssk.setSeriesname(sc);
+                        sl.push(ssk);
+                    })
+                });
+                r.setKeysList(sl);
+                resolve(r);
+            }
+            catch(err) {
+                reject(err);
+            }
         });
-        r.setKeysList(sl);
-        return r;
     }
 
-    this.ShowResponse = function(err, response) {
-        if (!err) {
-            // add headers
-            let firstRow = ws.rows(0);
-            let headers = ['source', 'series'].concat(response.getMetadataheadersList());
-
-            headers.forEach((header, colIndex) => {
-                firstRow.setCellValue(colIndex, header.trim());
-            });
-
-            // add data
-             var r = response.getSeriesdataList();
-             r.forEach((rowData, rowIndex) => {
-                let wsRow = ws.rows(rowIndex + 1);
-                let md = [
-                    rowData.getKey().getSourcename(),
-                    rowData.getKey().getSeriesname()
-                ].concat(rowData.getValuesList());
-
-                md.forEach((cellData, cellIndex) => {
-                    wsRow.setCellValue(cellIndex, cellData);
+    this.RunQuery = function(request) {
+        return new Promise(function(resolve, reject) {
+            try {
+                client.getMetadata(request, {}, function(err, response) {
+                    if (err) reject(err);
+                    else resolve(response);                    
                 });
-            });        
-        }
+            }
+            catch(err) {
+                reject(err);
+            }
+        })
+    }
+
+    this.ShowResponse = function(response) {
+        return new Promise(function(resolve, reject) {
+            try {
+                // add headers
+                let firstRow = ws.rows(0);
+                let headers = ['source', 'series'].concat(response.getMetadataheadersList());
+
+                headers.forEach((header, colIndex) => {
+                    firstRow.setCellValue(colIndex, header.trim());
+                });
+
+                // add data
+                var r = response.getSeriesdataList();
+                r.forEach((rowData, rowIndex) => {
+                    let wsRow = ws.rows(rowIndex + 1);
+                    let md = [
+                        rowData.getKey().getSourcename(),
+                        rowData.getKey().getSeriesname()
+                    ].concat(rowData.getValuesList());
+
+                    md.forEach((cellData, cellIndex) => {
+                        wsRow.setCellValue(cellIndex, cellData);
+                    });
+                });
+                resolve('OK');        
+            }
+            catch(err) {
+                reject(err);
+            }
+        });
     }
 }
 
