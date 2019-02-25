@@ -25,7 +25,7 @@ $('#getversion').on("click", function () {
 
         query.Run().
             then((response) => {
-                $('#getversion_status').text(response);
+                $('#getversion_status').text('Ok');
             }).catch((err) => {
                 $('#getversion_status').text(err.message);
             });
@@ -44,7 +44,7 @@ $('#getserieskeys').on("click", function () {
             $('#getserieskeys_sources').val().split(','), 
             $('#getserieskeys_filters').val()
         ).then((response) => {
-            $('#getserieskeys_status').text(response);
+            $('#getserieskeys_status').text('Ok');
         }).catch((err) => {
             $('#getserieskeys_status').text(err.message);
         });
@@ -65,7 +65,7 @@ $('#getdata').on("click", function () {
             $('#getdata_seriescodes').val().split(','),
             $('#getdata_metadata').val().split(',')
         ).then((response) => { 
-            $('#getdata_status').text(response);
+            $('#getdata_status').text('Ok');
         }).catch((err) => {
             $('#getdata_status').text(err.message);
         });
@@ -82,20 +82,21 @@ $('#getsheetdata').on("click", function () {
         var keysquery = new GetSeriesKeys();
         keysquery.Run(
             [$('#getsheetdata_source').val()], 
-            $('#getsheetdata_filters').val(), 
-            (err, response) => {
-                keysquery.ShowResponse(err, response);
-
-                var dataquery = new GetMetadata();
-                dataquery.Run(
-                    [$('#getsheetdata_source').val()], 
-                    response.getKeysList().map(k => k.getSeriesname()),
-                    $('#getsheetdata_metadata').val().split(','), 
-                    (err, response) => {
-                        dataquery.ShowResponse(err, response);
-                        $('#getsheetdata_status').text((err ? err.message : 'OK'));
-                    });
-                $('#getsheetdata_status').text((err ? err.message : 'OK'));                
+            $('#getsheetdata_filters').val(),
+        ).then((response) => {
+            var dataquery = new GetMetadata();
+            dataquery.Run(
+                [$('#getsheetdata_source').val()], 
+                response.getKeysList().map(k => k.getSeriesname()),
+                $('#getsheetdata_metadata').val().split(',')
+            ).then((response) => {
+                $('#getsheetdata_status').text('Ok');
+            }).catch((err) => {
+                $('#getsheetdata_status').text(err.message);
+            });                
+        }).catch((err) => {
+            console.log(err.message);
+            $('#getsheetdata_status').text(err.message);    
         });
     }
     catch(err) {
@@ -142,7 +143,7 @@ function GetVersion() {
             try {
                 var versionText = response.getVersion();
                 $('#getversion_version').val(versionText);
-                resolve('OK');
+                resolve(response);
             }
             catch(err) {
                 reject(err);
@@ -214,7 +215,7 @@ function GetSeriesKeys() {
                         wsRow.setCellValue(cellIndex, cellData);
                     });
                 });
-                resolve('OK');        
+                resolve(response);        
             }
             catch(err) {
                 reject(err);
@@ -293,7 +294,7 @@ function GetMetadata() {
                         wsRow.setCellValue(cellIndex, cellData);
                     });
                 });
-                resolve('OK');        
+                resolve(response);        
             }
             catch(err) {
                 reject(err);
