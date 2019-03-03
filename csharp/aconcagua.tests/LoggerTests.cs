@@ -25,7 +25,7 @@ namespace aconcagua.tests
 
             // kernel.Load("infrastructure*.dll");
             kernel.Bind(x => x
-                .FromAssembliesMatching("ioc/infra*.dll")
+                .FromAssembliesMatching("infra*.dll")
                 .SelectAllClasses()
                 .BindAllInterfaces()
                 .Configure(b => b.InSingletonScope()));
