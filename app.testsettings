@@ -2,7 +2,7 @@
 <TestSettings name="aconcagua" id="278fa8b6-a206-48f0-91cf-10f563e22697" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
   <Description>These are default test settings for a local test run.</Description>
   <Deployment>
-    <DeploymentItem filename="csharp\infrastructure\NLog.config" />
+    <DeploymentItem filename="csharp\aconcagua.tests\app.config" />
   </Deployment>
   <Execution hostProcessPlatform="MSIL">
     <TestTypeSpecific>
