@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IOCContainer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -88,6 +89,10 @@
     <ProjectReference Include="..\aconcagua.data\aconcagua.data.csproj">
       <Project>{1c4b2b35-c7cc-41c5-bbff-5861b3b6df09}</Project>
       <Name>aconcagua.data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\infrastructure\infrastructure.csproj">
+      <Project>{7AF567DA-A794-4DC7-ACFB-DC03263B9DE3}</Project>
+      <Name>infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

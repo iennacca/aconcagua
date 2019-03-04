@@ -28,25 +28,25 @@ namespace aconcagua.server
     {
         public override Task<GetVersionResponse> GetVersion(Empty request, ServerCallContext context)
         {
-            Console.WriteLine("GetVersion() called");
+            IOCContainer.Logger.Info("GetVersion() called");
             return Task.FromResult(new GetVersionResponse(){ Version="1.0" });
         }
 
         public override Task<GetSeriesKeysResponse> GetSeriesKeys(GetSeriesKeysRequest request, ServerCallContext context)
         {
-            Console.WriteLine("GetSeriesKeys() called");
+            IOCContainer.Logger.Info("GetSeriesKeys() called");
             return Task.FromResult(CreateSeriesKeysResponse(request));
         }
 
         public override Task<GetMetadataResponse> GetMetadata(GetMetadataRequest request, ServerCallContext context)
         {
-            Console.WriteLine("GetMetadata() called");
+            IOCContainer.Logger.Info("GetMetadata() called");
             return Task.FromResult(CreateMetadataResponse(request));
         }
 
         public override Task<GetObservationsResponse> GetObservations(GetObservationsRequest request, ServerCallContext context)
         {
-            Console.WriteLine("GetObservations() called");
+            IOCContainer.Logger.Info("GetObservations() called");
             return Task.FromResult(CreateObservationsResponse(request));
         }
 
@@ -74,7 +74,7 @@ namespace aconcagua.server
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                IOCContainer.Logger.Error(ex.Message);
                 throw;
             }
             return reply;
@@ -114,7 +114,7 @@ namespace aconcagua.server
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                IOCContainer.Logger.Error(ex.Message);
                 throw;
             }
             return reply;
@@ -155,7 +155,7 @@ namespace aconcagua.server
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                IOCContainer.Logger.Error(ex.Message);
                 throw;
             }
             return reply;
@@ -177,11 +177,11 @@ namespace aconcagua.server
             };
             server.Start();
 
-            Console.WriteLine($"Aconcagua server running");
-            Console.WriteLine($"Port: {Port}");
-            Console.WriteLine($"UserName: {Environment.UserName}");
-            Console.WriteLine($"UserDomainName: {Environment.UserDomainName}");
-            Console.WriteLine("Press any key to stop the server...");
+            IOCContainer.Logger.Info($"Aconcagua server running");
+            IOCContainer.Logger.Info($"Port: {Port}");
+            IOCContainer.Logger.Info($"UserName: {Environment.UserName}");
+            IOCContainer.Logger.Info($"UserDomainName: {Environment.UserDomainName}");
+            IOCContainer.Logger.Info("Press any key to stop the server...");
             Console.ReadKey();
 
             server.ShutdownAsync().Wait();
