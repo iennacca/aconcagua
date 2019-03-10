@@ -24,35 +24,65 @@ using Aconcagua.Proto;
 
 namespace aconcagua.server
 {
+    internal class Program
+    {
+        private const int Port = 50451;
+
+        public static void Main(string[] args)
+        {
+            var server = new Server
+            {
+                Services = { TimeseriesDataService.BindService(new AconcaguaServer()) },
+                Ports = { new ServerPort("localhost", Port, ServerCredentials.Insecure) }
+            };
+
+            IOCContainer.Logger.Info($"Aconcagua server running");
+            IOCContainer.Logger.Info($"Port: {Port}");
+            IOCContainer.Logger.Info($"UserName: {Environment.UserName}");
+            IOCContainer.Logger.Info($"UserDomainName: {Environment.UserDomainName}");
+            IOCContainer.Logger.Info("Press any key to stop the server...");
+            server.Start();
+            Console.ReadKey();
+
+            server.ShutdownAsync().Wait();
+        }
+    }
+
     internal class AconcaguaServer : TimeseriesDataService.TimeseriesDataServiceBase
     {
         public override Task<GetVersionResponse> GetVersion(Empty request, ServerCallContext context)
         {
             IOCContainer.Logger.Info("GetVersion() called");
-            return Task.FromResult(new GetVersionResponse(){ Version="1.0" });
+            return Task.FromResult(ServerHandler.CallGetVersion(request));
         }
 
         public override Task<GetSeriesKeysResponse> GetSeriesKeys(GetSeriesKeysRequest request, ServerCallContext context)
         {
             IOCContainer.Logger.Info("GetSeriesKeys() called");
-            return Task.FromResult(CreateSeriesKeysResponse(request));
+            return Task.FromResult(ServerHandler.CallGetSeriesKeys(request));
         }
 
         public override Task<GetMetadataResponse> GetMetadata(GetMetadataRequest request, ServerCallContext context)
         {
             IOCContainer.Logger.Info("GetMetadata() called");
-            return Task.FromResult(CreateMetadataResponse(request));
+            return Task.FromResult(ServerHandler.CallGetMetadata(request));
         }
 
         public override Task<GetObservationsResponse> GetObservations(GetObservationsRequest request, ServerCallContext context)
         {
             IOCContainer.Logger.Info("GetObservations() called");
-            return Task.FromResult(CreateObservationsResponse(request));
+            return Task.FromResult(ServerHandler.CallGetObservations(request));
+        }
+    }
+
+    internal class ServerHandler
+    {
+        public static GetVersionResponse CallGetVersion(Empty request)
+        {
+            return new GetVersionResponse() { Version = "1.0" };
         }
 
-        #region Helper functions
-
-        private static GetSeriesKeysResponse CreateSeriesKeysResponse(GetSeriesKeysRequest request)
+        public static GetSeriesKeysResponse CallGetSeriesKeys(GetSeriesKeysRequest request)
         {
             var reply = new GetSeriesKeysResponse();
             try
@@ -60,7 +90,7 @@ namespace aconcagua.server
                 var tssFactory = TimeseriesSourceFactory.Factory;
 
                 reply.Responsemetadata.Add(request.Requestmetadata);
-                
+
                 foreach (var sourcename in request.Sourcenames)
                 {
                     var d = new Dictionary<string, string>();
@@ -80,7 +110,7 @@ namespace aconcagua.server
             return reply;
         }
 
-        private static GetMetadataResponse CreateMetadataResponse(GetMetadataRequest request)
+        public static GetMetadataResponse CallGetMetadata(GetMetadataRequest request)
         {
             var reply = new GetMetadataResponse();
             try
@@ -94,7 +124,7 @@ namespace aconcagua.server
                 foreach (var ssKey in request.Keys)
                 {
                     var tsList = tssFactory[ssKey.Sourcename].GetMetadata(
-                        new[] {new TimeseriesKey(ssKey.Seriesname)},
+                        new[] { new TimeseriesKey(ssKey.Seriesname) },
                         request.Metadataheaders);
 
                     foreach (var ts in tsList)
@@ -120,7 +150,7 @@ namespace aconcagua.server
             return reply;
         }
 
-        private static GetObservationsResponse CreateObservationsResponse(GetObservationsRequest request)
+        public static GetObservationsResponse CallGetObservations(GetObservationsRequest request)
         {
             var reply = new GetObservationsResponse();
             try
@@ -136,7 +166,7 @@ namespace aconcagua.server
                         new[] { new TimeseriesKey(ssKey.Seriesname) },
                         request.Frequencies);
 
-                    
+
                     foreach (var ts in tsList)
                     {
                         var o = new ObservationsList
@@ -149,7 +179,7 @@ namespace aconcagua.server
                         };
                         o.Values.Add(ts.Observations);
                         reply.Seriesdata.Add(o);
-                    }                    
+                    }
                 }
                 reply.Frequencies = request.Frequencies;
             }
@@ -159,32 +189,6 @@ namespace aconcagua.server
                 throw;
             }
             return reply;
-        }
-
-        #endregion
-    }
-
-    internal class Program
-    {
-        private const int Port = 50451;
-
-        public static void Main(string[] args)
-        {
-            var server = new Server
-            {
-                Services = { TimeseriesDataService.BindService(new AconcaguaServer()) },
-                Ports = { new ServerPort("localhost", Port, ServerCredentials.Insecure) }
-            };
-            server.Start();
-
-            IOCContainer.Logger.Info($"Aconcagua server running");
-            IOCContainer.Logger.Info($"Port: {Port}");
-            IOCContainer.Logger.Info($"UserName: {Environment.UserName}");
-            IOCContainer.Logger.Info($"UserDomainName: {Environment.UserDomainName}");
-            IOCContainer.Logger.Info("Press any key to stop the server...");
-            Console.ReadKey();
-
-            server.ShutdownAsync().Wait();
         }
     }
 }

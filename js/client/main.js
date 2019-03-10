@@ -3,6 +3,7 @@ const { wb, ws } = require("./uiassets");
 const { GetVersion } = require("./GetVersion");
 const { GetSeriesKeys } = require("./GetSeriesKeys");
 const { GetMetadata } = require("./GetMetadata");
+const { GetObservations } = require("./GetObservations");
 
 
 $("#spreadsheet").igSpreadsheet({
@@ -88,6 +89,48 @@ $('#getsheetdata').on("click", function () {
                 response.getKeysList().map(k => k.getSeriesname()),
                 $('#getsheetdata_metadata').val().split(',')
             ).then((response) => {
+                $('#getsheetdata_status').text('Ok');
+            }).catch((err) => {
+                $('#getsheetdata_status').text(err.message);
+            });
+        }).catch((err) => {
+            console.log(err.message);
+            $('#getsheetdata_status').text(err.message);    
+        });
+    }
+    catch(err) {
+        console.log(err.message);
+        $('#getsheetdata_status').text(err.message);
+    }
+});
+
+$('#getsheetvalues').on("click", function () {
+    try {
+        $('#getsheetdata_status').text('');
+        var keysquery = new GetSeriesKeys();
+        keysquery.Run(
+            [$('#getsheetdata_source').val()], 
+            $('#getsheetdata_filters').val(),
+        ).then((response) => {
+            var dataquery = new GetMetadata();
+            return dataquery.Run(
+                [$('#getsheetdata_source').val()], 
+                response.getKeysList().map(k => k.getSeriesname()),
+                $('#getsheetdata_metadata').val().split(',')
+            ).then((response) => {
+                $('#getsheetdata_status').text('Ok');
+                return response;
+            }).catch((err) => {
+                $('#getsheetdata_status').text(err.message);
+            });
+        }).then((response) => {
+            var dataquery = new GetObservations();
+            dataquery.Run(
+                [$('#getsheetdata_source').val()], 
+                response.getSeriesdataList().map(k => k.getKey().getSeriesname()),
+                $('#getsheetdata_frequency').val()
+            ).then((response) => {
+                console.log(response);
                 $('#getsheetdata_status').text('Ok');
             }).catch((err) => {
                 $('#getsheetdata_status').text(err.message);

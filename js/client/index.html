@@ -43,9 +43,16 @@
         <label id="getdata_status"></label>
         <br><br>
         <label>Source: </label><input type="text" id="getsheetdata_source" value='dmx:.\..\..\..\..\data\sample.dmx'>
-        <label>Filters: </label><input type="text" id="getsheetdata_filters" value='oname:"911%",description:"Ex%"'>
+        <label>Filters: </label><input type="text" id="getsheetdata_filters" value='oname:"911BE%",description:"Ex%"'>
         <label>Metadata: </label><input type="text" id="getsheetdata_metadata" value='description,scale'>
+        <label>Frequency: </label>
+        <select id="getsheetdata_frequency">
+            <option value="M">Monthly</option>
+            <option value="Q">Quarterly</option>
+            <option value="A" selected="selected">Annual</option>
+        </select>
         <button id="getsheetdata" type="button">Get sheet data</button>
+        <button id="getsheetvalues" type="button">Get sheet values</button>
         <label id="getsheetdata_status"></label>
         <br><br>
     </form>

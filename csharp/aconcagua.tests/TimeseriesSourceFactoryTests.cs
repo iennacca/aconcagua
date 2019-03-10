@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using aconcagua.data;
@@ -101,6 +99,26 @@ namespace aconcagua.tests
             actualresult = GetObservationsQuery.CreateOValueFieldNamesFrom(FrequencyIndicator.Quarterly);
             expectedresult = "OValue13 AS Q1, OValue14 AS Q2, OValue15 AS Q3, OValue16 AS Q4";
             Assert.AreEqual(actualresult, expectedresult);
+        }
+
+        [TestMethod]
+        public void CanCallGetObservations()
+        {
+            // Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Jerry\Projects\aconcagua\data\sample.dmx
+            const string tsSource = "dmx:.\\..\\..\\..\\..\\data\\sample.dmx";
+            const string seriesNames = "911BE,911BEA,BCA_GDP";
+            // const string filters = "oname:\"911%\",description:\"Ex%\"";
+            const string headers = "description,scale";
+            const string frequencies = "M";
+
+            var tsKeys = seriesNames.ToTimeseriesKeys();
+            var headerList = headers.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+
+            var tss = TimeseriesSourceFactory.Factory[tsSource];
+            Assert.IsInstanceOfType(tss, typeof(DMXTimeseriesSource));
+
+            var result = tss.GetObservations(tsKeys, frequencies);
+            Assert.IsTrue(result.Any());
         }
     }
 }
