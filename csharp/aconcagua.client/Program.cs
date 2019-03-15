@@ -4,14 +4,22 @@ using System.Linq;
 using Grpc.Core;
 using Google.Protobuf.WellKnownTypes;
 using Aconcagua.Proto;
+using infrastructure;
 
 namespace aconcagua.client
 {
     internal class Program
     {
+        private const int Port = 50451;
+
         public static void Main(string[] args)
         {
-            var channel = new Channel("127.0.0.1:50451", ChannelCredentials.Insecure);
+            IOCContainer.Logger.Info($"Aconcagua client running");
+            IOCContainer.Logger.Info($"Port: {Port}");
+            IOCContainer.Logger.Info($"UserName: {Environment.UserName}");
+            IOCContainer.Logger.Info($"UserDomainName: {Environment.UserDomainName}");
+
+            var channel = new Channel($"127.0.0.1:{Port}", ChannelCredentials.Insecure);
             var client = new TimeseriesDataService.TimeseriesDataServiceClient(channel);
 
             var response = client.GetVersion(ClientHandler.GetVersion.CreateRequest());

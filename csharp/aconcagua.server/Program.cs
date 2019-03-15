@@ -21,6 +21,7 @@ using aconcagua.data.factory;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Aconcagua.Proto;
+using infrastructure;
 
 namespace aconcagua.server
 {

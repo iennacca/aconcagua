@@ -1,8 +1,7 @@
-﻿using infrastructure;
-using Ninject;
+﻿using Ninject;
 using Ninject.Extensions.Conventions;
 
-namespace aconcagua.server
+namespace infrastructure
 {
     public static class IOCContainer
     {

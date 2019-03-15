@@ -34,8 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Google.Protobuf, Version=3.6.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Google.Protobuf.3.6.0\lib\net45\Google.Protobuf.dll</HintPath>
+    <Reference Include="Google.Protobuf, Version=3.7.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Google.Protobuf.3.7.0\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
     <Reference Include="Grpc.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d754f35622e28bad, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Grpc.Core.1.13.0\lib\net45\Grpc.Core.dll</HintPath>
@@ -64,6 +64,10 @@
     <ProjectReference Include="..\aconcagua.common\aconcagua.common.csproj">
       <Project>{28a7a29b-e8b7-40de-827c-4134d0697cc3}</Project>
       <Name>aconcagua.common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\infrastructure\infrastructure.csproj">
+      <Project>{7AF567DA-A794-4DC7-ACFB-DC03263B9DE3}</Project>
+      <Name>infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
