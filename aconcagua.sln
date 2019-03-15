@@ -39,6 +39,28 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "infrastructure.log.nlog", "csharp\infrastructure.log.nlog\infrastructure.log.nlog.csproj", "{2F4EED49-804B-47AB-82EE-367CE1BC734F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{57E05535-C88D-46FA-BB1F-2FFE40FF5581}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "client", "js\client\", "{4CD44204-276A-42A8-A651-8169D0F082E0}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_57201"
+		Debug.AspNetCompiler.PhysicalPath = "js\client\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57201\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_57201"
+		Release.AspNetCompiler.PhysicalPath = "js\client\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57201\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "57201"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +109,10 @@ Global
 		{2F4EED49-804B-47AB-82EE-367CE1BC734F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F4EED49-804B-47AB-82EE-367CE1BC734F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F4EED49-804B-47AB-82EE-367CE1BC734F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CD44204-276A-42A8-A651-8169D0F082E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CD44204-276A-42A8-A651-8169D0F082E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CD44204-276A-42A8-A651-8169D0F082E0}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CD44204-276A-42A8-A651-8169D0F082E0}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,6 +129,7 @@ Global
 		{5789ACD1-0F42-4E9B-B4A4-6DCC47CB30B0} = {08B1C1DD-7CC5-4535-AA9F-A33A722F7703}
 		{7AF567DA-A794-4DC7-ACFB-DC03263B9DE3} = {08B1C1DD-7CC5-4535-AA9F-A33A722F7703}
 		{2F4EED49-804B-47AB-82EE-367CE1BC734F} = {08B1C1DD-7CC5-4535-AA9F-A33A722F7703}
+		{4CD44204-276A-42A8-A651-8169D0F082E0} = {57E05535-C88D-46FA-BB1F-2FFE40FF5581}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D9FA2CB5-A404-4E81-B746-92925E7800FF}
