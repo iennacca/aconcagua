@@ -1,10 +1,5 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using infrastructure;
-using Ninject;
-using Ninject.Extensions.Conventions;
 
 namespace aconcagua.tests
 {
@@ -21,17 +16,7 @@ namespace aconcagua.tests
             // Console.WriteLine($"TestContext DeploymentDirectory: {TestContext.DeploymentDirectory}");
             // Console.WriteLine($"AppDomain BaseDirectory: {AppDomain.CurrentDomain.BaseDirectory}");
 
-            var kernel = new StandardKernel();
-
-            // kernel.Load("infrastructure*.dll");
-            kernel.Bind(x => x
-                .FromAssembliesMatching("infra*.dll")
-                .SelectAllClasses()
-                .BindAllInterfaces()
-                .Configure(b => b.InSingletonScope()));
-
-            var args = new Ninject.Parameters.ConstructorArgument("classType", typeof(LoggerTests));
-            _logger = kernel.Get<ILogService>(args);
+            _logger = IOCContainer.Logger;
         }
 
         /// <summary>
