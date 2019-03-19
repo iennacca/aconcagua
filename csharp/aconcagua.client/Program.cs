@@ -5,6 +5,7 @@ using Grpc.Core;
 using Google.Protobuf.WellKnownTypes;
 using Aconcagua.Proto;
 using infrastructure;
+using Ninject.Injection;
 
 namespace aconcagua.client
 {
@@ -161,6 +162,9 @@ namespace aconcagua.client
                 foreach (var ts in response.Seriesdata)
                 {
                     Console.WriteLine($"Sourcename[{i}]: {ts.Key.Sourcename}/{ts.Key.Seriesname}");
+
+                    var info = ts.Messagestatus.Code == 0 ? "Code" : "Error";
+                    Console.WriteLine($"    {info} {ts.Messagestatus.Code}: {ts.Messagestatus.Message}");
 
                     foreach (var pair in ts.Values.Keys.Zip(ts.Values.Values, Tuple.Create))
                         Console.WriteLine($"    {pair.Item1}: {pair.Item2}");

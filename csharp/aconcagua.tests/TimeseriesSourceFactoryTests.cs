@@ -35,7 +35,7 @@ namespace aconcagua.tests
             var tss = TimeseriesSourceFactory.Factory[tsSource];
             var tsList = tss.GetMetadata(new[] {tsKey}, new[] {"header01", "header02"}).ToList();
 
-            Assert.IsTrue(tsList.Count() == 1);
+            Assert.AreEqual(tsList.Count(),1);
             Assert.IsTrue(tsList.ElementAt(0).SeriesKey.Equals(tsKey));
         }
 

@@ -170,7 +170,21 @@ namespace aconcagua.tests
             ClientHandler.GetObservations.ShowResponse(goResponse);
 
             var duration = DateTime.Now - start;
-            Console.Write($"StressTest done in {duration}");
+            Console.WriteLine($"StressTest done in {duration}");
+        }
+
+        [TestMethod]
+        public void CanHandleTimeseriesLevelErrors()
+        {
+            var goRequest = ClientHandler.GetObservations.CreateRequest(
+                "dmx:.\\..\\..\\..\\..\\data\\tcd.dmx",
+                new []{ "628NGP" },
+                "MQA"
+            );
+            var goResponse = ServerHandler.CallGetObservations(goRequest);
+            ClientHandler.GetObservations.ShowResponse(goResponse);
+            Assert.IsNotNull(goResponse);
+            Assert.IsTrue(goResponse.Seriesdata.Count > 0);
         }
     }
 }

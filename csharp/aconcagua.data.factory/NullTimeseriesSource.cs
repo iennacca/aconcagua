@@ -57,6 +57,9 @@ namespace aconcagua.data.factory
         public TimeseriesKey SeriesKey { get; }
         public IDictionary<string, string> Metadata => _metadata;
         public IDictionary<string, double> Observations => _observations;
+        public StatusInformation Status { get; }
+
+        StatusInformation ITimeseriesObservations.Status => throw new NotImplementedException();
 
         private readonly Dictionary<string, string> _metadata = new Dictionary<string, string>();
         private readonly Dictionary<string, double> _observations = new Dictionary<string, double>();

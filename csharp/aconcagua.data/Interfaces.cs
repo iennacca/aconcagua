@@ -65,6 +65,13 @@ namespace aconcagua.data
         public IEnumerable<FrequencyIndicator> Frequencies;
     }
 
+    public class StatusInformation
+    {
+        public int Code = 0;
+        public string Message = "OK";
+        public Exception InnerException;
+    }
+
     public interface ITimeseriesMetadata
     {
         TimeseriesSourceKey SourceKey { get; }
@@ -77,6 +84,7 @@ namespace aconcagua.data
         TimeseriesSourceKey SourceKey { get; }
         TimeseriesKey SeriesKey { get; }
         IDictionary<string, double> Observations { get; }
+        StatusInformation Status { get; }
     }
 
     public interface ITimeseriesSource

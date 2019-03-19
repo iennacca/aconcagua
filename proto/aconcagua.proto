@@ -23,6 +23,7 @@ option objc_class_prefix = "ACA";
 
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
+import "google/rpc/status.proto";
 
 service TimeseriesDataService {
 	rpc GetVersion (google.protobuf.Empty) returns (GetVersionResponse) {}
@@ -71,13 +72,15 @@ message GetObservationsResponse {
 }
 
 message MetadataList {
-	SourceSeriesKey key = 1;
-	repeated string values = 2;
+	google.rpc.Status messagestatus = 1;
+	SourceSeriesKey key = 2;
+	repeated string values = 3;
 }
 
 message ObservationsList {
-	SourceSeriesKey key = 1;
-	map<string,double> values = 2;
+	google.rpc.Status messagestatus = 1;
+	SourceSeriesKey key = 2;
+	map<string,double> values = 3;
 }
 
 message SourceSeriesKey {

@@ -21,6 +21,7 @@ using aconcagua.data.factory;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Aconcagua.Proto;
+using Google.Rpc;
 using infrastructure;
 
 namespace aconcagua.server
@@ -154,41 +155,40 @@ namespace aconcagua.server
         public static GetObservationsResponse CallGetObservations(GetObservationsRequest request)
         {
             var reply = new GetObservationsResponse();
-            try
+            var tssFactory = TimeseriesSourceFactory.Factory;
+
+            //TODO [jc]: what do we do with the requestmetadata?
+            reply.Responsemetadata.Add(request.Requestmetadata);
+
+            foreach (var ssKey in request.Keys)
             {
-                var tssFactory = TimeseriesSourceFactory.Factory;
+                var tsList = tssFactory[ssKey.Sourcename].GetObservations(
+                    new[] { new TimeseriesKey(ssKey.Seriesname) },
+                    request.Frequencies);
 
-                //TODO [jc]: what do we do with the requestmetadata?
-                reply.Responsemetadata.Add(request.Requestmetadata);
 
-                foreach (var ssKey in request.Keys)
+                foreach (var ts in tsList)
                 {
-                    var tsList = tssFactory[ssKey.Sourcename].GetObservations(
-                        new[] { new TimeseriesKey(ssKey.Seriesname) },
-                        request.Frequencies);
-
-
-                    foreach (var ts in tsList)
+                    var o = new ObservationsList
                     {
-                        var o = new ObservationsList
+                        Key = new SourceSeriesKey()
                         {
-                            Key = new SourceSeriesKey()
-                            {
-                                Sourcename = ts.SourceKey.Key.ToString(),
-                                Seriesname = ts.SeriesKey.Key
-                            }
-                        };
-                        o.Values.Add(ts.Observations);
-                        reply.Seriesdata.Add(o);
-                    }
+                            Sourcename = ts.SourceKey.Key.ToString(),
+                            Seriesname = ts.SeriesKey.Key
+                        }
+                    };
+                    o.Values.Add(ts.Observations);
+                    o.Messagestatus = new Google.Rpc.Status();
+                    o.Messagestatus = new Google.Rpc.Status
+                    {
+                        Code = ts.Status.Code,
+                        Message = ts.Status.Message
+                    };
+
+                    reply.Seriesdata.Add(o);
                 }
-                reply.Frequencies = request.Frequencies;
             }
-            catch (Exception ex)
-            {
-                IOCContainer.Logger.Error(ex.Message);
-                throw;
-            }
+            reply.Frequencies = request.Frequencies;
             return reply;
         }
     }

@@ -89,7 +89,7 @@ namespace aconcagua.data.dmx
 
         public IQueryable<ITimeseriesObservations> GetObservations(IEnumerable<TimeseriesKey> seriesKeys, string frequencies)
         {
-            var seriesList = new Dictionary<TimeseriesKey, ITimeseriesObservations>();
+            var seriesList = new Dictionary<TimeseriesKey, DMXTimeseries>();
 
             var command = _connection.CreateCommand();
             command.CommandText = GetObservationsQuery.Create(seriesKeys, frequencies);
@@ -98,8 +98,7 @@ namespace aconcagua.data.dmx
             while (reader.Read())
             {
                 var seriesKey = new TimeseriesKey(reader.GetString(0));
-                var orowid = reader.GetInt32(1).ToString();
-                ITimeseriesObservations series;
+                DMXTimeseries series;
 
                 if (!seriesList.ContainsKey(seriesKey))
                 {
@@ -109,14 +108,27 @@ namespace aconcagua.data.dmx
                 else
                     series = seriesList[seriesKey];
 
-                foreach (var i in Enumerable.Range(2, reader.FieldCount - 2))
+                try
                 {
-                    var columnName = reader.GetName(i);
+                    var orowid = reader.GetInt32(1).ToString();
+                    foreach (var i in Enumerable.Range(2, reader.FieldCount - 2))
+                    {
+                        var columnName = reader.GetName(i);
 
 
-                    // TODO [jc]: Implement nullable type (Google.WellKnownTypes.Value ?)
-                    if (!reader.IsDBNull(i))
-                        series.Observations[$"{orowid}:{columnName}"] = reader.GetDouble(i);
+                        // TODO [jc]: Implement nullable type (Google.WellKnownTypes.Value ?)
+                        if (!reader.IsDBNull(i))
+                            series.Observations[$"{orowid}:{columnName}"] = reader.GetDouble(i);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    series.Status = new StatusInformation()
+                    {
+                        Code = ex.HResult,
+                        Message =  ex.Message,
+                        InnerException = ex
+                    };
                 }
             }
             reader.Close();
@@ -159,6 +171,7 @@ namespace aconcagua.data.dmx
             public TimeseriesKey SeriesKey { get; }
             public IDictionary<string, string> Metadata  => _metadata;
             public IDictionary<string, double> Observations => _observations;
+            public StatusInformation Status { get; set; }
 
             private readonly Dictionary<string, string> _metadata = new Dictionary<string, string>();
             private readonly Dictionary<string, double> _observations = new Dictionary<string, double>();
@@ -167,6 +180,8 @@ namespace aconcagua.data.dmx
             {
                 SourceKey = sourceKey;
                 SeriesKey = seriesKey;
+                Status = new StatusInformation();
+
             }
 
             internal DMXTimeseries(TimeseriesSourceKey sourceKey, TimeseriesKey seriesKey, Dictionary<string,string> metadata) : this(sourceKey, seriesKey)

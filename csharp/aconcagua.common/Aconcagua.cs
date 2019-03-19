@@ -26,60 +26,62 @@ namespace Aconcagua.Proto {
           string.Concat(
             "Cg9hY29uY2FndWEucHJvdG8SD2Fjb25jYWd1YS5wcm90bxocZ29vZ2xlL2Fw",
             "aS9hbm5vdGF0aW9ucy5wcm90bxobZ29vZ2xlL3Byb3RvYnVmL2VtcHR5LnBy",
-            "b3RvIiUKEkdldFZlcnNpb25SZXNwb25zZRIPCgd2ZXJzaW9uGAEgASgJIq0C",
-            "ChRHZXRTZXJpZXNLZXlzUmVxdWVzdBJTCg9yZXF1ZXN0bWV0YWRhdGEYASAD",
-            "KAsyOi5hY29uY2FndWEucHJvdG8uR2V0U2VyaWVzS2V5c1JlcXVlc3QuUmVx",
-            "dWVzdG1ldGFkYXRhRW50cnkSEwoLc291cmNlbmFtZXMYAiADKAkSQwoHZmls",
-            "dGVycxgDIAMoCzIyLmFjb25jYWd1YS5wcm90by5HZXRTZXJpZXNLZXlzUmVx",
-            "dWVzdC5GaWx0ZXJzRW50cnkaNgoUUmVxdWVzdG1ldGFkYXRhRW50cnkSCwoD",
-            "a2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ARouCgxGaWx0ZXJzRW50cnkS",
-            "CwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ASLYAQoVR2V0U2VyaWVz",
-            "S2V5c1Jlc3BvbnNlElYKEHJlc3BvbnNlbWV0YWRhdGEYASADKAsyPC5hY29u",
-            "Y2FndWEucHJvdG8uR2V0U2VyaWVzS2V5c1Jlc3BvbnNlLlJlc3BvbnNlbWV0",
-            "YWRhdGFFbnRyeRIuCgRrZXlzGAMgAygLMiAuYWNvbmNhZ3VhLnByb3RvLlNv",
-            "dXJjZVNlcmllc0tleRo3ChVSZXNwb25zZW1ldGFkYXRhRW50cnkSCwoDa2V5",
-            "GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ASLoAQoSR2V0TWV0YWRhdGFSZXF1",
-            "ZXN0ElEKD3JlcXVlc3RtZXRhZGF0YRgBIAMoCzI4LmFjb25jYWd1YS5wcm90",
-            "by5HZXRNZXRhZGF0YVJlcXVlc3QuUmVxdWVzdG1ldGFkYXRhRW50cnkSFwoP",
-            "bWV0YWRhdGFoZWFkZXJzGAIgAygJEi4KBGtleXMYAyADKAsyIC5hY29uY2Fn",
-            "dWEucHJvdG8uU291cmNlU2VyaWVzS2V5GjYKFFJlcXVlc3RtZXRhZGF0YUVu",
-            "dHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCToCOAEi8AEKE0dldE1l",
-            "dGFkYXRhUmVzcG9uc2USVAoQcmVzcG9uc2VtZXRhZGF0YRgBIAMoCzI6LmFj",
-            "b25jYWd1YS5wcm90by5HZXRNZXRhZGF0YVJlc3BvbnNlLlJlc3BvbnNlbWV0",
-            "YWRhdGFFbnRyeRIXCg9tZXRhZGF0YWhlYWRlcnMYAiADKAkSMQoKc2VyaWVz",
-            "ZGF0YRgDIAMoCzIdLmFjb25jYWd1YS5wcm90by5NZXRhZGF0YUxpc3QaNwoV",
-            "UmVzcG9uc2VtZXRhZGF0YUVudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgC",
-            "IAEoCToCOAEi7AEKFkdldE9ic2VydmF0aW9uc1JlcXVlc3QSVQoPcmVxdWVz",
-            "dG1ldGFkYXRhGAEgAygLMjwuYWNvbmNhZ3VhLnByb3RvLkdldE9ic2VydmF0",
-            "aW9uc1JlcXVlc3QuUmVxdWVzdG1ldGFkYXRhRW50cnkSEwoLZnJlcXVlbmNp",
-            "ZXMYAiABKAkSLgoEa2V5cxgDIAMoCzIgLmFjb25jYWd1YS5wcm90by5Tb3Vy",
-            "Y2VTZXJpZXNLZXkaNgoUUmVxdWVzdG1ldGFkYXRhRW50cnkSCwoDa2V5GAEg",
-            "ASgJEg0KBXZhbHVlGAIgASgJOgI4ASL4AQoXR2V0T2JzZXJ2YXRpb25zUmVz",
-            "cG9uc2USWAoQcmVzcG9uc2VtZXRhZGF0YRgBIAMoCzI+LmFjb25jYWd1YS5w",
-            "cm90by5HZXRPYnNlcnZhdGlvbnNSZXNwb25zZS5SZXNwb25zZW1ldGFkYXRh",
-            "RW50cnkSEwoLZnJlcXVlbmNpZXMYAiABKAkSNQoKc2VyaWVzZGF0YRgDIAMo",
-            "CzIhLmFjb25jYWd1YS5wcm90by5PYnNlcnZhdGlvbnNMaXN0GjcKFVJlc3Bv",
-            "bnNlbWV0YWRhdGFFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6",
-            "AjgBIk0KDE1ldGFkYXRhTGlzdBItCgNrZXkYASABKAsyIC5hY29uY2FndWEu",
-            "cHJvdG8uU291cmNlU2VyaWVzS2V5Eg4KBnZhbHVlcxgCIAMoCSKvAQoQT2Jz",
-            "ZXJ2YXRpb25zTGlzdBItCgNrZXkYASABKAsyIC5hY29uY2FndWEucHJvdG8u",
-            "U291cmNlU2VyaWVzS2V5Ej0KBnZhbHVlcxgCIAMoCzItLmFjb25jYWd1YS5w",
-            "cm90by5PYnNlcnZhdGlvbnNMaXN0LlZhbHVlc0VudHJ5Gi0KC1ZhbHVlc0Vu",
-            "dHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoAToCOAEiOQoPU291cmNl",
-            "U2VyaWVzS2V5EhIKCnNvdXJjZW5hbWUYASABKAkSEgoKc2VyaWVzbmFtZRgC",
-            "IAEoCTKKAwoVVGltZXNlcmllc0RhdGFTZXJ2aWNlEksKCkdldFZlcnNpb24S",
-            "Fi5nb29nbGUucHJvdG9idWYuRW1wdHkaIy5hY29uY2FndWEucHJvdG8uR2V0",
-            "VmVyc2lvblJlc3BvbnNlIgASYAoNR2V0U2VyaWVzS2V5cxIlLmFjb25jYWd1",
-            "YS5wcm90by5HZXRTZXJpZXNLZXlzUmVxdWVzdBomLmFjb25jYWd1YS5wcm90",
-            "by5HZXRTZXJpZXNLZXlzUmVzcG9uc2UiABJaCgtHZXRNZXRhZGF0YRIjLmFj",
-            "b25jYWd1YS5wcm90by5HZXRNZXRhZGF0YVJlcXVlc3QaJC5hY29uY2FndWEu",
-            "cHJvdG8uR2V0TWV0YWRhdGFSZXNwb25zZSIAEmYKD0dldE9ic2VydmF0aW9u",
-            "cxInLmFjb25jYWd1YS5wcm90by5HZXRPYnNlcnZhdGlvbnNSZXF1ZXN0Gigu",
-            "YWNvbmNhZ3VhLnByb3RvLkdldE9ic2VydmF0aW9uc1Jlc3BvbnNlIgBCKwoR",
-            "aW8uZ3JwYy5hY29uY2FndWFCDkFjb25jYWd1YVByb3RvUAGiAgNBQ0FiBnBy",
-            "b3RvMw=="));
+            "b3RvGhdnb29nbGUvcnBjL3N0YXR1cy5wcm90byIlChJHZXRWZXJzaW9uUmVz",
+            "cG9uc2USDwoHdmVyc2lvbhgBIAEoCSKtAgoUR2V0U2VyaWVzS2V5c1JlcXVl",
+            "c3QSUwoPcmVxdWVzdG1ldGFkYXRhGAEgAygLMjouYWNvbmNhZ3VhLnByb3Rv",
+            "LkdldFNlcmllc0tleXNSZXF1ZXN0LlJlcXVlc3RtZXRhZGF0YUVudHJ5EhMK",
+            "C3NvdXJjZW5hbWVzGAIgAygJEkMKB2ZpbHRlcnMYAyADKAsyMi5hY29uY2Fn",
+            "dWEucHJvdG8uR2V0U2VyaWVzS2V5c1JlcXVlc3QuRmlsdGVyc0VudHJ5GjYK",
+            "FFJlcXVlc3RtZXRhZGF0YUVudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgC",
+            "IAEoCToCOAEaLgoMRmlsdGVyc0VudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1",
+            "ZRgCIAEoCToCOAEi2AEKFUdldFNlcmllc0tleXNSZXNwb25zZRJWChByZXNw",
+            "b25zZW1ldGFkYXRhGAEgAygLMjwuYWNvbmNhZ3VhLnByb3RvLkdldFNlcmll",
+            "c0tleXNSZXNwb25zZS5SZXNwb25zZW1ldGFkYXRhRW50cnkSLgoEa2V5cxgD",
+            "IAMoCzIgLmFjb25jYWd1YS5wcm90by5Tb3VyY2VTZXJpZXNLZXkaNwoVUmVz",
+            "cG9uc2VtZXRhZGF0YUVudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEo",
+            "CToCOAEi6AEKEkdldE1ldGFkYXRhUmVxdWVzdBJRCg9yZXF1ZXN0bWV0YWRh",
+            "dGEYASADKAsyOC5hY29uY2FndWEucHJvdG8uR2V0TWV0YWRhdGFSZXF1ZXN0",
+            "LlJlcXVlc3RtZXRhZGF0YUVudHJ5EhcKD21ldGFkYXRhaGVhZGVycxgCIAMo",
+            "CRIuCgRrZXlzGAMgAygLMiAuYWNvbmNhZ3VhLnByb3RvLlNvdXJjZVNlcmll",
+            "c0tleRo2ChRSZXF1ZXN0bWV0YWRhdGFFbnRyeRILCgNrZXkYASABKAkSDQoF",
+            "dmFsdWUYAiABKAk6AjgBIvABChNHZXRNZXRhZGF0YVJlc3BvbnNlElQKEHJl",
+            "c3BvbnNlbWV0YWRhdGEYASADKAsyOi5hY29uY2FndWEucHJvdG8uR2V0TWV0",
+            "YWRhdGFSZXNwb25zZS5SZXNwb25zZW1ldGFkYXRhRW50cnkSFwoPbWV0YWRh",
+            "dGFoZWFkZXJzGAIgAygJEjEKCnNlcmllc2RhdGEYAyADKAsyHS5hY29uY2Fn",
+            "dWEucHJvdG8uTWV0YWRhdGFMaXN0GjcKFVJlc3BvbnNlbWV0YWRhdGFFbnRy",
+            "eRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBIuwBChZHZXRPYnNl",
+            "cnZhdGlvbnNSZXF1ZXN0ElUKD3JlcXVlc3RtZXRhZGF0YRgBIAMoCzI8LmFj",
+            "b25jYWd1YS5wcm90by5HZXRPYnNlcnZhdGlvbnNSZXF1ZXN0LlJlcXVlc3Rt",
+            "ZXRhZGF0YUVudHJ5EhMKC2ZyZXF1ZW5jaWVzGAIgASgJEi4KBGtleXMYAyAD",
+            "KAsyIC5hY29uY2FndWEucHJvdG8uU291cmNlU2VyaWVzS2V5GjYKFFJlcXVl",
+            "c3RtZXRhZGF0YUVudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCToC",
+            "OAEi+AEKF0dldE9ic2VydmF0aW9uc1Jlc3BvbnNlElgKEHJlc3BvbnNlbWV0",
+            "YWRhdGEYASADKAsyPi5hY29uY2FndWEucHJvdG8uR2V0T2JzZXJ2YXRpb25z",
+            "UmVzcG9uc2UuUmVzcG9uc2VtZXRhZGF0YUVudHJ5EhMKC2ZyZXF1ZW5jaWVz",
+            "GAIgASgJEjUKCnNlcmllc2RhdGEYAyADKAsyIS5hY29uY2FndWEucHJvdG8u",
+            "T2JzZXJ2YXRpb25zTGlzdBo3ChVSZXNwb25zZW1ldGFkYXRhRW50cnkSCwoD",
+            "a2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ASJ4CgxNZXRhZGF0YUxpc3QS",
+            "KQoNbWVzc2FnZXN0YXR1cxgBIAEoCzISLmdvb2dsZS5ycGMuU3RhdHVzEi0K",
+            "A2tleRgCIAEoCzIgLmFjb25jYWd1YS5wcm90by5Tb3VyY2VTZXJpZXNLZXkS",
+            "DgoGdmFsdWVzGAMgAygJItoBChBPYnNlcnZhdGlvbnNMaXN0EikKDW1lc3Nh",
+            "Z2VzdGF0dXMYASABKAsyEi5nb29nbGUucnBjLlN0YXR1cxItCgNrZXkYAiAB",
+            "KAsyIC5hY29uY2FndWEucHJvdG8uU291cmNlU2VyaWVzS2V5Ej0KBnZhbHVl",
+            "cxgDIAMoCzItLmFjb25jYWd1YS5wcm90by5PYnNlcnZhdGlvbnNMaXN0LlZh",
+            "bHVlc0VudHJ5Gi0KC1ZhbHVlc0VudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1",
+            "ZRgCIAEoAToCOAEiOQoPU291cmNlU2VyaWVzS2V5EhIKCnNvdXJjZW5hbWUY",
+            "ASABKAkSEgoKc2VyaWVzbmFtZRgCIAEoCTKKAwoVVGltZXNlcmllc0RhdGFT",
+            "ZXJ2aWNlEksKCkdldFZlcnNpb24SFi5nb29nbGUucHJvdG9idWYuRW1wdHka",
+            "Iy5hY29uY2FndWEucHJvdG8uR2V0VmVyc2lvblJlc3BvbnNlIgASYAoNR2V0",
+            "U2VyaWVzS2V5cxIlLmFjb25jYWd1YS5wcm90by5HZXRTZXJpZXNLZXlzUmVx",
+            "dWVzdBomLmFjb25jYWd1YS5wcm90by5HZXRTZXJpZXNLZXlzUmVzcG9uc2Ui",
+            "ABJaCgtHZXRNZXRhZGF0YRIjLmFjb25jYWd1YS5wcm90by5HZXRNZXRhZGF0",
+            "YVJlcXVlc3QaJC5hY29uY2FndWEucHJvdG8uR2V0TWV0YWRhdGFSZXNwb25z",
+            "ZSIAEmYKD0dldE9ic2VydmF0aW9ucxInLmFjb25jYWd1YS5wcm90by5HZXRP",
+            "YnNlcnZhdGlvbnNSZXF1ZXN0GiguYWNvbmNhZ3VhLnByb3RvLkdldE9ic2Vy",
+            "dmF0aW9uc1Jlc3BvbnNlIgBCKwoRaW8uZ3JwYy5hY29uY2FndWFCDkFjb25j",
+            "YWd1YVByb3RvUAGiAgNBQ0FiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Rpc.StatusReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Aconcagua.Proto.GetVersionResponse), global::Aconcagua.Proto.GetVersionResponse.Parser, new[]{ "Version" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Aconcagua.Proto.GetSeriesKeysRequest), global::Aconcagua.Proto.GetSeriesKeysRequest.Parser, new[]{ "Requestmetadata", "Sourcenames", "Filters" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, }),
@@ -88,8 +90,8 @@ namespace Aconcagua.Proto {
             new pbr::GeneratedClrTypeInfo(typeof(global::Aconcagua.Proto.GetMetadataResponse), global::Aconcagua.Proto.GetMetadataResponse.Parser, new[]{ "Responsemetadata", "Metadataheaders", "Seriesdata" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Aconcagua.Proto.GetObservationsRequest), global::Aconcagua.Proto.GetObservationsRequest.Parser, new[]{ "Requestmetadata", "Frequencies", "Keys" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Aconcagua.Proto.GetObservationsResponse), global::Aconcagua.Proto.GetObservationsResponse.Parser, new[]{ "Responsemetadata", "Frequencies", "Seriesdata" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Aconcagua.Proto.MetadataList), global::Aconcagua.Proto.MetadataList.Parser, new[]{ "Key", "Values" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Aconcagua.Proto.ObservationsList), global::Aconcagua.Proto.ObservationsList.Parser, new[]{ "Key", "Values" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Aconcagua.Proto.MetadataList), global::Aconcagua.Proto.MetadataList.Parser, new[]{ "Messagestatus", "Key", "Values" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Aconcagua.Proto.ObservationsList), global::Aconcagua.Proto.ObservationsList.Parser, new[]{ "Messagestatus", "Key", "Values" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Aconcagua.Proto.SourceSeriesKey), global::Aconcagua.Proto.SourceSeriesKey.Parser, new[]{ "Sourcename", "Seriesname" }, null, null, null)
           }));
     }
@@ -1213,6 +1215,7 @@ namespace Aconcagua.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public MetadataList(MetadataList other) : this() {
+      Messagestatus = other.messagestatus_ != null ? other.Messagestatus.Clone() : null;
       Key = other.key_ != null ? other.Key.Clone() : null;
       values_ = other.values_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -1223,8 +1226,19 @@ namespace Aconcagua.Proto {
       return new MetadataList(this);
     }
 
+    /// <summary>Field number for the "messagestatus" field.</summary>
+    public const int MessagestatusFieldNumber = 1;
+    private global::Google.Rpc.Status messagestatus_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Rpc.Status Messagestatus {
+      get { return messagestatus_; }
+      set {
+        messagestatus_ = value;
+      }
+    }
+
     /// <summary>Field number for the "key" field.</summary>
-    public const int KeyFieldNumber = 1;
+    public const int KeyFieldNumber = 2;
     private global::Aconcagua.Proto.SourceSeriesKey key_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Aconcagua.Proto.SourceSeriesKey Key {
@@ -1235,9 +1249,9 @@ namespace Aconcagua.Proto {
     }
 
     /// <summary>Field number for the "values" field.</summary>
-    public const int ValuesFieldNumber = 2;
+    public const int ValuesFieldNumber = 3;
     private static readonly pb::FieldCodec<string> _repeated_values_codec
-        = pb::FieldCodec.ForString(18);
+        = pb::FieldCodec.ForString(26);
     private readonly pbc::RepeatedField<string> values_ = new pbc::RepeatedField<string>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<string> Values {
@@ -1257,6 +1271,7 @@ namespace Aconcagua.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(Messagestatus, other.Messagestatus)) return false;
       if (!object.Equals(Key, other.Key)) return false;
       if(!values_.Equals(other.values_)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -1265,6 +1280,7 @@ namespace Aconcagua.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (messagestatus_ != null) hash ^= Messagestatus.GetHashCode();
       if (key_ != null) hash ^= Key.GetHashCode();
       hash ^= values_.GetHashCode();
       if (_unknownFields != null) {
@@ -1280,8 +1296,12 @@ namespace Aconcagua.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (key_ != null) {
+      if (messagestatus_ != null) {
         output.WriteRawTag(10);
+        output.WriteMessage(Messagestatus);
+      }
+      if (key_ != null) {
+        output.WriteRawTag(18);
         output.WriteMessage(Key);
       }
       values_.WriteTo(output, _repeated_values_codec);
@@ -1293,6 +1313,9 @@ namespace Aconcagua.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (messagestatus_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Messagestatus);
+      }
       if (key_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Key);
       }
@@ -1307,6 +1330,12 @@ namespace Aconcagua.Proto {
     public void MergeFrom(MetadataList other) {
       if (other == null) {
         return;
+      }
+      if (other.messagestatus_ != null) {
+        if (messagestatus_ == null) {
+          messagestatus_ = new global::Google.Rpc.Status();
+        }
+        Messagestatus.MergeFrom(other.Messagestatus);
       }
       if (other.key_ != null) {
         if (key_ == null) {
@@ -1327,13 +1356,20 @@ namespace Aconcagua.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
+            if (messagestatus_ == null) {
+              messagestatus_ = new global::Google.Rpc.Status();
+            }
+            input.ReadMessage(messagestatus_);
+            break;
+          }
+          case 18: {
             if (key_ == null) {
               key_ = new global::Aconcagua.Proto.SourceSeriesKey();
             }
             input.ReadMessage(key_);
             break;
           }
-          case 18: {
+          case 26: {
             values_.AddEntriesFrom(input, _repeated_values_codec);
             break;
           }
@@ -1368,6 +1404,7 @@ namespace Aconcagua.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public ObservationsList(ObservationsList other) : this() {
+      Messagestatus = other.messagestatus_ != null ? other.Messagestatus.Clone() : null;
       Key = other.key_ != null ? other.Key.Clone() : null;
       values_ = other.values_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -1378,8 +1415,19 @@ namespace Aconcagua.Proto {
       return new ObservationsList(this);
     }
 
+    /// <summary>Field number for the "messagestatus" field.</summary>
+    public const int MessagestatusFieldNumber = 1;
+    private global::Google.Rpc.Status messagestatus_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Rpc.Status Messagestatus {
+      get { return messagestatus_; }
+      set {
+        messagestatus_ = value;
+      }
+    }
+
     /// <summary>Field number for the "key" field.</summary>
-    public const int KeyFieldNumber = 1;
+    public const int KeyFieldNumber = 2;
     private global::Aconcagua.Proto.SourceSeriesKey key_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Aconcagua.Proto.SourceSeriesKey Key {
@@ -1390,9 +1438,9 @@ namespace Aconcagua.Proto {
     }
 
     /// <summary>Field number for the "values" field.</summary>
-    public const int ValuesFieldNumber = 2;
+    public const int ValuesFieldNumber = 3;
     private static readonly pbc::MapField<string, double>.Codec _map_values_codec
-        = new pbc::MapField<string, double>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForDouble(17), 18);
+        = new pbc::MapField<string, double>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForDouble(17), 26);
     private readonly pbc::MapField<string, double> values_ = new pbc::MapField<string, double>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::MapField<string, double> Values {
@@ -1412,6 +1460,7 @@ namespace Aconcagua.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(Messagestatus, other.Messagestatus)) return false;
       if (!object.Equals(Key, other.Key)) return false;
       if (!Values.Equals(other.Values)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -1420,6 +1469,7 @@ namespace Aconcagua.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (messagestatus_ != null) hash ^= Messagestatus.GetHashCode();
       if (key_ != null) hash ^= Key.GetHashCode();
       hash ^= Values.GetHashCode();
       if (_unknownFields != null) {
@@ -1435,8 +1485,12 @@ namespace Aconcagua.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (key_ != null) {
+      if (messagestatus_ != null) {
         output.WriteRawTag(10);
+        output.WriteMessage(Messagestatus);
+      }
+      if (key_ != null) {
+        output.WriteRawTag(18);
         output.WriteMessage(Key);
       }
       values_.WriteTo(output, _map_values_codec);
@@ -1448,6 +1502,9 @@ namespace Aconcagua.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (messagestatus_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Messagestatus);
+      }
       if (key_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Key);
       }
@@ -1462,6 +1519,12 @@ namespace Aconcagua.Proto {
     public void MergeFrom(ObservationsList other) {
       if (other == null) {
         return;
+      }
+      if (other.messagestatus_ != null) {
+        if (messagestatus_ == null) {
+          messagestatus_ = new global::Google.Rpc.Status();
+        }
+        Messagestatus.MergeFrom(other.Messagestatus);
       }
       if (other.key_ != null) {
         if (key_ == null) {
@@ -1482,13 +1545,20 @@ namespace Aconcagua.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
+            if (messagestatus_ == null) {
+              messagestatus_ = new global::Google.Rpc.Status();
+            }
+            input.ReadMessage(messagestatus_);
+            break;
+          }
+          case 18: {
             if (key_ == null) {
               key_ = new global::Aconcagua.Proto.SourceSeriesKey();
             }
             input.ReadMessage(key_);
             break;
           }
-          case 18: {
+          case 26: {
             values_.AddEntriesFrom(input, _map_values_codec);
             break;
           }
