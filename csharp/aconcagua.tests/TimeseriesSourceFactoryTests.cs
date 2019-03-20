@@ -93,11 +93,11 @@ namespace aconcagua.tests
         public void CanCreateQueriesCorrectly()
         {
             var actualresult = GetObservationsQuery.CreateOValueFieldNamesFrom(FrequencyIndicator.Monthly);
-            var expectedresult = "OValue1 AS M1, OValue2 AS M2, OValue3 AS M3, OValue4 AS M4, OValue5 AS M5, OValue6 AS M6, OValue7 AS M7, OValue8 AS M8, OValue9 AS M9, OValue10 AS M10, OValue11 AS M11, OValue12 AS M12";
+            var expectedresult = "OValue1 AS M01, OValue2 AS M02, OValue3 AS M03, OValue4 AS M04, OValue5 AS M05, OValue6 AS M06, OValue7 AS M07, OValue8 AS M08, OValue9 AS M09, OValue10 AS M10, OValue11 AS M11, OValue12 AS M12";
             Assert.AreEqual(actualresult, expectedresult);
 
             actualresult = GetObservationsQuery.CreateOValueFieldNamesFrom(FrequencyIndicator.Quarterly);
-            expectedresult = "OValue13 AS Q1, OValue14 AS Q2, OValue15 AS Q3, OValue16 AS Q4";
+            expectedresult = "OValue13 AS Q01, OValue14 AS Q02, OValue15 AS Q03, OValue16 AS Q04";
             Assert.AreEqual(actualresult, expectedresult);
         }
 

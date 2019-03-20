@@ -59,7 +59,7 @@ namespace aconcagua.data.factory
         public IDictionary<string, double> Observations => _observations;
         public StatusInformation Status { get; }
 
-        StatusInformation ITimeseriesObservations.Status => throw new NotImplementedException();
+        StatusInformation ITimeseriesObservations.Status => new StatusInformation();
 
         private readonly Dictionary<string, string> _metadata = new Dictionary<string, string>();
         private readonly Dictionary<string, double> _observations = new Dictionary<string, double>();
