@@ -20,6 +20,11 @@ class TimeseriesDataServiceStub(object):
         request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
         response_deserializer=aconcagua__pb2.GetVersionResponse.FromString,
         )
+    self.GetSeriesKeys = channel.unary_unary(
+        '/aconcagua.proto.TimeseriesDataService/GetSeriesKeys',
+        request_serializer=aconcagua__pb2.GetSeriesKeysRequest.SerializeToString,
+        response_deserializer=aconcagua__pb2.GetSeriesKeysResponse.FromString,
+        )
     self.GetMetadata = channel.unary_unary(
         '/aconcagua.proto.TimeseriesDataService/GetMetadata',
         request_serializer=aconcagua__pb2.GetMetadataRequest.SerializeToString,
@@ -37,6 +42,13 @@ class TimeseriesDataServiceServicer(object):
   pass
 
   def GetVersion(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetSeriesKeys(self, request, context):
     # missing associated documentation comment in .proto file
     pass
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -64,6 +76,11 @@ def add_TimeseriesDataServiceServicer_to_server(servicer, server):
           servicer.GetVersion,
           request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
           response_serializer=aconcagua__pb2.GetVersionResponse.SerializeToString,
+      ),
+      'GetSeriesKeys': grpc.unary_unary_rpc_method_handler(
+          servicer.GetSeriesKeys,
+          request_deserializer=aconcagua__pb2.GetSeriesKeysRequest.FromString,
+          response_serializer=aconcagua__pb2.GetSeriesKeysResponse.SerializeToString,
       ),
       'GetMetadata': grpc.unary_unary_rpc_method_handler(
           servicer.GetMetadata,

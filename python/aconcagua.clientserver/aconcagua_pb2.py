@@ -15,15 +15,16 @@ _sym_db = _symbol_database.Default()
 
 from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
+from google.rpc import status_pb2 as google_dot_rpc_dot_status__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='aconcagua.proto',
   package='aconcagua.proto',
   syntax='proto3',
-  serialized_pb=_b('\n\x0f\x61\x63oncagua.proto\x12\x0f\x61\x63oncagua.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\"%\n\x12GetVersionResponse\x12\x0f\n\x07version\x18\x01 \x01(\t\"\xe8\x01\n\x12GetMetadataRequest\x12Q\n\x0frequestmetadata\x18\x01 \x03(\x0b\x32\x38.aconcagua.proto.GetMetadataRequest.RequestmetadataEntry\x12\x17\n\x0fmetadataheaders\x18\x02 \x03(\t\x12.\n\x04keys\x18\x03 \x03(\x0b\x32 .aconcagua.proto.SourceSeriesKey\x1a\x36\n\x14RequestmetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xf0\x01\n\x13GetMetadataResponse\x12T\n\x10responsemetadata\x18\x01 \x03(\x0b\x32:.aconcagua.proto.GetMetadataResponse.ResponsemetadataEntry\x12\x17\n\x0fmetadataheaders\x18\x02 \x03(\t\x12\x31\n\nseriesdata\x18\x03 \x03(\x0b\x32\x1d.aconcagua.proto.MetadataList\x1a\x37\n\x15ResponsemetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xec\x01\n\x16GetObservationsRequest\x12U\n\x0frequestmetadata\x18\x01 \x03(\x0b\x32<.aconcagua.proto.GetObservationsRequest.RequestmetadataEntry\x12\x13\n\x0b\x66requencies\x18\x02 \x01(\t\x12.\n\x04keys\x18\x03 \x03(\x0b\x32 .aconcagua.proto.SourceSeriesKey\x1a\x36\n\x14RequestmetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xf8\x01\n\x17GetObservationsResponse\x12X\n\x10responsemetadata\x18\x01 \x03(\x0b\x32>.aconcagua.proto.GetObservationsResponse.ResponsemetadataEntry\x12\x13\n\x0b\x66requencies\x18\x02 \x01(\t\x12\x35\n\nseriesdata\x18\x03 \x03(\x0b\x32!.aconcagua.proto.ObservationsList\x1a\x37\n\x15ResponsemetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"M\n\x0cMetadataList\x12-\n\x03key\x18\x01 \x01(\x0b\x32 .aconcagua.proto.SourceSeriesKey\x12\x0e\n\x06values\x18\x02 \x03(\t\"\xaf\x01\n\x10ObservationsList\x12-\n\x03key\x18\x01 \x01(\x0b\x32 .aconcagua.proto.SourceSeriesKey\x12=\n\x06values\x18\x02 \x03(\x0b\x32-.aconcagua.proto.ObservationsList.ValuesEntry\x1a-\n\x0bValuesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\"9\n\x0fSourceSeriesKey\x12\x12\n\nsourcename\x18\x01 \x01(\t\x12\x12\n\nseriesname\x18\x02 \x01(\t2\xa8\x02\n\x15TimeseriesDataService\x12K\n\nGetVersion\x12\x16.google.protobuf.Empty\x1a#.aconcagua.proto.GetVersionResponse\"\x00\x12Z\n\x0bGetMetadata\x12#.aconcagua.proto.GetMetadataRequest\x1a$.aconcagua.proto.GetMetadataResponse\"\x00\x12\x66\n\x0fGetObservations\x12\'.aconcagua.proto.GetObservationsRequest\x1a(.aconcagua.proto.GetObservationsResponse\"\x00\x42+\n\x11io.grpc.aconcaguaB\x0e\x41\x63oncaguaProtoP\x01\xa2\x02\x03\x41\x43\x41\x62\x06proto3')
+  serialized_pb=_b('\n\x0f\x61\x63oncagua.proto\x12\x0f\x61\x63oncagua.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x17google/rpc/status.proto\"%\n\x12GetVersionResponse\x12\x0f\n\x07version\x18\x01 \x01(\t\"\xad\x02\n\x14GetSeriesKeysRequest\x12S\n\x0frequestmetadata\x18\x01 \x03(\x0b\x32:.aconcagua.proto.GetSeriesKeysRequest.RequestmetadataEntry\x12\x13\n\x0bsourcenames\x18\x02 \x03(\t\x12\x43\n\x07\x66ilters\x18\x03 \x03(\x0b\x32\x32.aconcagua.proto.GetSeriesKeysRequest.FiltersEntry\x1a\x36\n\x14RequestmetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a.\n\x0c\x46iltersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xd8\x01\n\x15GetSeriesKeysResponse\x12V\n\x10responsemetadata\x18\x01 \x03(\x0b\x32<.aconcagua.proto.GetSeriesKeysResponse.ResponsemetadataEntry\x12.\n\x04keys\x18\x03 \x03(\x0b\x32 .aconcagua.proto.SourceSeriesKey\x1a\x37\n\x15ResponsemetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xe8\x01\n\x12GetMetadataRequest\x12Q\n\x0frequestmetadata\x18\x01 \x03(\x0b\x32\x38.aconcagua.proto.GetMetadataRequest.RequestmetadataEntry\x12\x17\n\x0fmetadataheaders\x18\x02 \x03(\t\x12.\n\x04keys\x18\x03 \x03(\x0b\x32 .aconcagua.proto.SourceSeriesKey\x1a\x36\n\x14RequestmetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xf0\x01\n\x13GetMetadataResponse\x12T\n\x10responsemetadata\x18\x01 \x03(\x0b\x32:.aconcagua.proto.GetMetadataResponse.ResponsemetadataEntry\x12\x17\n\x0fmetadataheaders\x18\x02 \x03(\t\x12\x31\n\nseriesdata\x18\x03 \x03(\x0b\x32\x1d.aconcagua.proto.MetadataList\x1a\x37\n\x15ResponsemetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xec\x01\n\x16GetObservationsRequest\x12U\n\x0frequestmetadata\x18\x01 \x03(\x0b\x32<.aconcagua.proto.GetObservationsRequest.RequestmetadataEntry\x12\x13\n\x0b\x66requencies\x18\x02 \x01(\t\x12.\n\x04keys\x18\x03 \x03(\x0b\x32 .aconcagua.proto.SourceSeriesKey\x1a\x36\n\x14RequestmetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xf8\x01\n\x17GetObservationsResponse\x12X\n\x10responsemetadata\x18\x01 \x03(\x0b\x32>.aconcagua.proto.GetObservationsResponse.ResponsemetadataEntry\x12\x13\n\x0b\x66requencies\x18\x02 \x01(\t\x12\x35\n\nseriesdata\x18\x03 \x03(\x0b\x32!.aconcagua.proto.ObservationsList\x1a\x37\n\x15ResponsemetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"x\n\x0cMetadataList\x12)\n\rmessagestatus\x18\x01 \x01(\x0b\x32\x12.google.rpc.Status\x12-\n\x03key\x18\x02 \x01(\x0b\x32 .aconcagua.proto.SourceSeriesKey\x12\x0e\n\x06values\x18\x03 \x03(\t\"\xda\x01\n\x10ObservationsList\x12)\n\rmessagestatus\x18\x01 \x01(\x0b\x32\x12.google.rpc.Status\x12-\n\x03key\x18\x02 \x01(\x0b\x32 .aconcagua.proto.SourceSeriesKey\x12=\n\x06values\x18\x03 \x03(\x0b\x32-.aconcagua.proto.ObservationsList.ValuesEntry\x1a-\n\x0bValuesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\"9\n\x0fSourceSeriesKey\x12\x12\n\nsourcename\x18\x01 \x01(\t\x12\x12\n\nseriesname\x18\x02 \x01(\t2\x8a\x03\n\x15TimeseriesDataService\x12K\n\nGetVersion\x12\x16.google.protobuf.Empty\x1a#.aconcagua.proto.GetVersionResponse\"\x00\x12`\n\rGetSeriesKeys\x12%.aconcagua.proto.GetSeriesKeysRequest\x1a&.aconcagua.proto.GetSeriesKeysResponse\"\x00\x12Z\n\x0bGetMetadata\x12#.aconcagua.proto.GetMetadataRequest\x1a$.aconcagua.proto.GetMetadataResponse\"\x00\x12\x66\n\x0fGetObservations\x12\'.aconcagua.proto.GetObservationsRequest\x1a(.aconcagua.proto.GetObservationsResponse\"\x00\x42+\n\x11io.grpc.aconcaguaB\x0e\x41\x63oncaguaProtoP\x01\xa2\x02\x03\x41\x43\x41\x62\x06proto3')
   ,
-  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,google_dot_rpc_dot_status__pb2.DESCRIPTOR,])
 
 
 
@@ -54,8 +55,202 @@ _GETVERSIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=95,
-  serialized_end=132,
+  serialized_start=120,
+  serialized_end=157,
+)
+
+
+_GETSERIESKEYSREQUEST_REQUESTMETADATAENTRY = _descriptor.Descriptor(
+  name='RequestmetadataEntry',
+  full_name='aconcagua.proto.GetSeriesKeysRequest.RequestmetadataEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='aconcagua.proto.GetSeriesKeysRequest.RequestmetadataEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='aconcagua.proto.GetSeriesKeysRequest.RequestmetadataEntry.value', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=359,
+  serialized_end=413,
+)
+
+_GETSERIESKEYSREQUEST_FILTERSENTRY = _descriptor.Descriptor(
+  name='FiltersEntry',
+  full_name='aconcagua.proto.GetSeriesKeysRequest.FiltersEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='aconcagua.proto.GetSeriesKeysRequest.FiltersEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='aconcagua.proto.GetSeriesKeysRequest.FiltersEntry.value', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=415,
+  serialized_end=461,
+)
+
+_GETSERIESKEYSREQUEST = _descriptor.Descriptor(
+  name='GetSeriesKeysRequest',
+  full_name='aconcagua.proto.GetSeriesKeysRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='requestmetadata', full_name='aconcagua.proto.GetSeriesKeysRequest.requestmetadata', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='sourcenames', full_name='aconcagua.proto.GetSeriesKeysRequest.sourcenames', index=1,
+      number=2, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='filters', full_name='aconcagua.proto.GetSeriesKeysRequest.filters', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_GETSERIESKEYSREQUEST_REQUESTMETADATAENTRY, _GETSERIESKEYSREQUEST_FILTERSENTRY, ],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=160,
+  serialized_end=461,
+)
+
+
+_GETSERIESKEYSRESPONSE_RESPONSEMETADATAENTRY = _descriptor.Descriptor(
+  name='ResponsemetadataEntry',
+  full_name='aconcagua.proto.GetSeriesKeysResponse.ResponsemetadataEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='aconcagua.proto.GetSeriesKeysResponse.ResponsemetadataEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='aconcagua.proto.GetSeriesKeysResponse.ResponsemetadataEntry.value', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=625,
+  serialized_end=680,
+)
+
+_GETSERIESKEYSRESPONSE = _descriptor.Descriptor(
+  name='GetSeriesKeysResponse',
+  full_name='aconcagua.proto.GetSeriesKeysResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='responsemetadata', full_name='aconcagua.proto.GetSeriesKeysResponse.responsemetadata', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='keys', full_name='aconcagua.proto.GetSeriesKeysResponse.keys', index=1,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_GETSERIESKEYSRESPONSE_RESPONSEMETADATAENTRY, ],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=464,
+  serialized_end=680,
 )
 
 
@@ -92,8 +287,8 @@ _GETMETADATAREQUEST_REQUESTMETADATAENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=313,
-  serialized_end=367,
+  serialized_start=359,
+  serialized_end=413,
 )
 
 _GETMETADATAREQUEST = _descriptor.Descriptor(
@@ -136,8 +331,8 @@ _GETMETADATAREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=135,
-  serialized_end=367,
+  serialized_start=683,
+  serialized_end=915,
 )
 
 
@@ -174,8 +369,8 @@ _GETMETADATARESPONSE_RESPONSEMETADATAENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=555,
-  serialized_end=610,
+  serialized_start=625,
+  serialized_end=680,
 )
 
 _GETMETADATARESPONSE = _descriptor.Descriptor(
@@ -218,8 +413,8 @@ _GETMETADATARESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=370,
-  serialized_end=610,
+  serialized_start=918,
+  serialized_end=1158,
 )
 
 
@@ -256,8 +451,8 @@ _GETOBSERVATIONSREQUEST_REQUESTMETADATAENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=313,
-  serialized_end=367,
+  serialized_start=359,
+  serialized_end=413,
 )
 
 _GETOBSERVATIONSREQUEST = _descriptor.Descriptor(
@@ -300,8 +495,8 @@ _GETOBSERVATIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=613,
-  serialized_end=849,
+  serialized_start=1161,
+  serialized_end=1397,
 )
 
 
@@ -338,8 +533,8 @@ _GETOBSERVATIONSRESPONSE_RESPONSEMETADATAENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=555,
-  serialized_end=610,
+  serialized_start=625,
+  serialized_end=680,
 )
 
 _GETOBSERVATIONSRESPONSE = _descriptor.Descriptor(
@@ -382,8 +577,8 @@ _GETOBSERVATIONSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=852,
-  serialized_end=1100,
+  serialized_start=1400,
+  serialized_end=1648,
 )
 
 
@@ -395,15 +590,22 @@ _METADATALIST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='key', full_name='aconcagua.proto.MetadataList.key', index=0,
+      name='messagestatus', full_name='aconcagua.proto.MetadataList.messagestatus', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='values', full_name='aconcagua.proto.MetadataList.values', index=1,
-      number=2, type=9, cpp_type=9, label=3,
+      name='key', full_name='aconcagua.proto.MetadataList.key', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='values', full_name='aconcagua.proto.MetadataList.values', index=2,
+      number=3, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -420,8 +622,8 @@ _METADATALIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1102,
-  serialized_end=1179,
+  serialized_start=1650,
+  serialized_end=1770,
 )
 
 
@@ -458,8 +660,8 @@ _OBSERVATIONSLIST_VALUESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1312,
-  serialized_end=1357,
+  serialized_start=1946,
+  serialized_end=1991,
 )
 
 _OBSERVATIONSLIST = _descriptor.Descriptor(
@@ -470,15 +672,22 @@ _OBSERVATIONSLIST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='key', full_name='aconcagua.proto.ObservationsList.key', index=0,
+      name='messagestatus', full_name='aconcagua.proto.ObservationsList.messagestatus', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='values', full_name='aconcagua.proto.ObservationsList.values', index=1,
-      number=2, type=11, cpp_type=10, label=3,
+      name='key', full_name='aconcagua.proto.ObservationsList.key', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='values', full_name='aconcagua.proto.ObservationsList.values', index=2,
+      number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -495,8 +704,8 @@ _OBSERVATIONSLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1182,
-  serialized_end=1357,
+  serialized_start=1773,
+  serialized_end=1991,
 )
 
 
@@ -533,10 +742,17 @@ _SOURCESERIESKEY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1359,
-  serialized_end=1416,
+  serialized_start=1993,
+  serialized_end=2050,
 )
 
+_GETSERIESKEYSREQUEST_REQUESTMETADATAENTRY.containing_type = _GETSERIESKEYSREQUEST
+_GETSERIESKEYSREQUEST_FILTERSENTRY.containing_type = _GETSERIESKEYSREQUEST
+_GETSERIESKEYSREQUEST.fields_by_name['requestmetadata'].message_type = _GETSERIESKEYSREQUEST_REQUESTMETADATAENTRY
+_GETSERIESKEYSREQUEST.fields_by_name['filters'].message_type = _GETSERIESKEYSREQUEST_FILTERSENTRY
+_GETSERIESKEYSRESPONSE_RESPONSEMETADATAENTRY.containing_type = _GETSERIESKEYSRESPONSE
+_GETSERIESKEYSRESPONSE.fields_by_name['responsemetadata'].message_type = _GETSERIESKEYSRESPONSE_RESPONSEMETADATAENTRY
+_GETSERIESKEYSRESPONSE.fields_by_name['keys'].message_type = _SOURCESERIESKEY
 _GETMETADATAREQUEST_REQUESTMETADATAENTRY.containing_type = _GETMETADATAREQUEST
 _GETMETADATAREQUEST.fields_by_name['requestmetadata'].message_type = _GETMETADATAREQUEST_REQUESTMETADATAENTRY
 _GETMETADATAREQUEST.fields_by_name['keys'].message_type = _SOURCESERIESKEY
@@ -549,11 +765,15 @@ _GETOBSERVATIONSREQUEST.fields_by_name['keys'].message_type = _SOURCESERIESKEY
 _GETOBSERVATIONSRESPONSE_RESPONSEMETADATAENTRY.containing_type = _GETOBSERVATIONSRESPONSE
 _GETOBSERVATIONSRESPONSE.fields_by_name['responsemetadata'].message_type = _GETOBSERVATIONSRESPONSE_RESPONSEMETADATAENTRY
 _GETOBSERVATIONSRESPONSE.fields_by_name['seriesdata'].message_type = _OBSERVATIONSLIST
+_METADATALIST.fields_by_name['messagestatus'].message_type = google_dot_rpc_dot_status__pb2._STATUS
 _METADATALIST.fields_by_name['key'].message_type = _SOURCESERIESKEY
 _OBSERVATIONSLIST_VALUESENTRY.containing_type = _OBSERVATIONSLIST
+_OBSERVATIONSLIST.fields_by_name['messagestatus'].message_type = google_dot_rpc_dot_status__pb2._STATUS
 _OBSERVATIONSLIST.fields_by_name['key'].message_type = _SOURCESERIESKEY
 _OBSERVATIONSLIST.fields_by_name['values'].message_type = _OBSERVATIONSLIST_VALUESENTRY
 DESCRIPTOR.message_types_by_name['GetVersionResponse'] = _GETVERSIONRESPONSE
+DESCRIPTOR.message_types_by_name['GetSeriesKeysRequest'] = _GETSERIESKEYSREQUEST
+DESCRIPTOR.message_types_by_name['GetSeriesKeysResponse'] = _GETSERIESKEYSRESPONSE
 DESCRIPTOR.message_types_by_name['GetMetadataRequest'] = _GETMETADATAREQUEST
 DESCRIPTOR.message_types_by_name['GetMetadataResponse'] = _GETMETADATARESPONSE
 DESCRIPTOR.message_types_by_name['GetObservationsRequest'] = _GETOBSERVATIONSREQUEST
@@ -569,6 +789,44 @@ GetVersionResponse = _reflection.GeneratedProtocolMessageType('GetVersionRespons
   # @@protoc_insertion_point(class_scope:aconcagua.proto.GetVersionResponse)
   ))
 _sym_db.RegisterMessage(GetVersionResponse)
+
+GetSeriesKeysRequest = _reflection.GeneratedProtocolMessageType('GetSeriesKeysRequest', (_message.Message,), dict(
+
+  RequestmetadataEntry = _reflection.GeneratedProtocolMessageType('RequestmetadataEntry', (_message.Message,), dict(
+    DESCRIPTOR = _GETSERIESKEYSREQUEST_REQUESTMETADATAENTRY,
+    __module__ = 'aconcagua_pb2'
+    # @@protoc_insertion_point(class_scope:aconcagua.proto.GetSeriesKeysRequest.RequestmetadataEntry)
+    ))
+  ,
+
+  FiltersEntry = _reflection.GeneratedProtocolMessageType('FiltersEntry', (_message.Message,), dict(
+    DESCRIPTOR = _GETSERIESKEYSREQUEST_FILTERSENTRY,
+    __module__ = 'aconcagua_pb2'
+    # @@protoc_insertion_point(class_scope:aconcagua.proto.GetSeriesKeysRequest.FiltersEntry)
+    ))
+  ,
+  DESCRIPTOR = _GETSERIESKEYSREQUEST,
+  __module__ = 'aconcagua_pb2'
+  # @@protoc_insertion_point(class_scope:aconcagua.proto.GetSeriesKeysRequest)
+  ))
+_sym_db.RegisterMessage(GetSeriesKeysRequest)
+_sym_db.RegisterMessage(GetSeriesKeysRequest.RequestmetadataEntry)
+_sym_db.RegisterMessage(GetSeriesKeysRequest.FiltersEntry)
+
+GetSeriesKeysResponse = _reflection.GeneratedProtocolMessageType('GetSeriesKeysResponse', (_message.Message,), dict(
+
+  ResponsemetadataEntry = _reflection.GeneratedProtocolMessageType('ResponsemetadataEntry', (_message.Message,), dict(
+    DESCRIPTOR = _GETSERIESKEYSRESPONSE_RESPONSEMETADATAENTRY,
+    __module__ = 'aconcagua_pb2'
+    # @@protoc_insertion_point(class_scope:aconcagua.proto.GetSeriesKeysResponse.ResponsemetadataEntry)
+    ))
+  ,
+  DESCRIPTOR = _GETSERIESKEYSRESPONSE,
+  __module__ = 'aconcagua_pb2'
+  # @@protoc_insertion_point(class_scope:aconcagua.proto.GetSeriesKeysResponse)
+  ))
+_sym_db.RegisterMessage(GetSeriesKeysResponse)
+_sym_db.RegisterMessage(GetSeriesKeysResponse.ResponsemetadataEntry)
 
 GetMetadataRequest = _reflection.GeneratedProtocolMessageType('GetMetadataRequest', (_message.Message,), dict(
 
@@ -662,6 +920,12 @@ _sym_db.RegisterMessage(SourceSeriesKey)
 
 DESCRIPTOR.has_options = True
 DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n\021io.grpc.aconcaguaB\016AconcaguaProtoP\001\242\002\003ACA'))
+_GETSERIESKEYSREQUEST_REQUESTMETADATAENTRY.has_options = True
+_GETSERIESKEYSREQUEST_REQUESTMETADATAENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_GETSERIESKEYSREQUEST_FILTERSENTRY.has_options = True
+_GETSERIESKEYSREQUEST_FILTERSENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+_GETSERIESKEYSRESPONSE_RESPONSEMETADATAENTRY.has_options = True
+_GETSERIESKEYSRESPONSE_RESPONSEMETADATAENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
 _GETMETADATAREQUEST_REQUESTMETADATAENTRY.has_options = True
 _GETMETADATAREQUEST_REQUESTMETADATAENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
 _GETMETADATARESPONSE_RESPONSEMETADATAENTRY.has_options = True
@@ -679,8 +943,8 @@ _TIMESERIESDATASERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=1419,
-  serialized_end=1715,
+  serialized_start=2053,
+  serialized_end=2447,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetVersion',
@@ -692,9 +956,18 @@ _TIMESERIESDATASERVICE = _descriptor.ServiceDescriptor(
     options=None,
   ),
   _descriptor.MethodDescriptor(
+    name='GetSeriesKeys',
+    full_name='aconcagua.proto.TimeseriesDataService.GetSeriesKeys',
+    index=1,
+    containing_service=None,
+    input_type=_GETSERIESKEYSREQUEST,
+    output_type=_GETSERIESKEYSRESPONSE,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
     name='GetMetadata',
     full_name='aconcagua.proto.TimeseriesDataService.GetMetadata',
-    index=1,
+    index=2,
     containing_service=None,
     input_type=_GETMETADATAREQUEST,
     output_type=_GETMETADATARESPONSE,
@@ -703,7 +976,7 @@ _TIMESERIESDATASERVICE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetObservations',
     full_name='aconcagua.proto.TimeseriesDataService.GetObservations',
-    index=2,
+    index=3,
     containing_service=None,
     input_type=_GETOBSERVATIONSREQUEST,
     output_type=_GETOBSERVATIONSRESPONSE,

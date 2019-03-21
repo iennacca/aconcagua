@@ -49,6 +49,7 @@ def showobservationsresponse(response):
     i = 0
     for ts in response.seriesdata:
         print('[%02d] source[series]: %s[%s]' % (i, ts.key.sourcename, ts.key.seriesname))
+        print('       info: %s: %s' % (ts.messagestatus.code, ts.messagestatus.message))
 
         for key in ts.values:
             print('    %s: %d' % (key, ts.values[key]))
