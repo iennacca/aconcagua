@@ -15,6 +15,8 @@ grpc.web = require('grpc-web');
 var google_api_annotations_pb = require('./google/api/annotations_pb.js')
 
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js')
+
+var google_rpc_status_pb = require('./google/rpc/status_pb.js')
 const proto = {};
 proto.aconcagua = {};
 proto.aconcagua.proto = require('./aconcagua_pb.js');

@@ -13,6 +13,7 @@ var global = Function('return this')();
 
 var google_api_annotations_pb = require('./google/api/annotations_pb.js');
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
+var google_rpc_status_pb = require('./google/rpc/status_pb.js');
 goog.exportSymbol('proto.aconcagua.proto.GetMetadataRequest', null, global);
 goog.exportSymbol('proto.aconcagua.proto.GetMetadataResponse', null, global);
 goog.exportSymbol('proto.aconcagua.proto.GetObservationsRequest', null, global);
@@ -1530,7 +1531,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.aconcagua.proto.MetadataList.repeatedFields_ = [2];
+proto.aconcagua.proto.MetadataList.repeatedFields_ = [3];
 
 
 
@@ -1561,8 +1562,9 @@ proto.aconcagua.proto.MetadataList.prototype.toObject = function(opt_includeInst
  */
 proto.aconcagua.proto.MetadataList.toObject = function(includeInstance, msg) {
   var f, obj = {
+    messagestatus: (f = msg.getMessagestatus()) && google_rpc_status_pb.Status.toObject(includeInstance, f),
     key: (f = msg.getKey()) && proto.aconcagua.proto.SourceSeriesKey.toObject(includeInstance, f),
-    valuesList: jspb.Message.getRepeatedField(msg, 2)
+    valuesList: jspb.Message.getRepeatedField(msg, 3)
   };
 
   if (includeInstance) {
@@ -1600,11 +1602,16 @@ proto.aconcagua.proto.MetadataList.deserializeBinaryFromReader = function(msg, r
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
+      var value = new google_rpc_status_pb.Status;
+      reader.readMessage(value,google_rpc_status_pb.Status.deserializeBinaryFromReader);
+      msg.setMessagestatus(value);
+      break;
+    case 2:
       var value = new proto.aconcagua.proto.SourceSeriesKey;
       reader.readMessage(value,proto.aconcagua.proto.SourceSeriesKey.deserializeBinaryFromReader);
       msg.setKey(value);
       break;
-    case 2:
+    case 3:
       var value = /** @type {string} */ (reader.readString());
       msg.addValues(value);
       break;
@@ -1637,10 +1644,18 @@ proto.aconcagua.proto.MetadataList.prototype.serializeBinary = function() {
  */
 proto.aconcagua.proto.MetadataList.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getKey();
+  f = message.getMessagestatus();
   if (f != null) {
     writer.writeMessage(
       1,
+      f,
+      google_rpc_status_pb.Status.serializeBinaryToWriter
+    );
+  }
+  f = message.getKey();
+  if (f != null) {
+    writer.writeMessage(
+      2,
       f,
       proto.aconcagua.proto.SourceSeriesKey.serializeBinaryToWriter
     );
@@ -1648,7 +1663,7 @@ proto.aconcagua.proto.MetadataList.serializeBinaryToWriter = function(message, w
   f = message.getValuesList();
   if (f.length > 0) {
     writer.writeRepeatedString(
-      2,
+      3,
       f
     );
   }
@@ -1656,18 +1671,48 @@ proto.aconcagua.proto.MetadataList.serializeBinaryToWriter = function(message, w
 
 
 /**
- * optional SourceSeriesKey key = 1;
+ * optional google.rpc.Status messagestatus = 1;
+ * @return {?proto.google.rpc.Status}
+ */
+proto.aconcagua.proto.MetadataList.prototype.getMessagestatus = function() {
+  return /** @type{?proto.google.rpc.Status} */ (
+    jspb.Message.getWrapperField(this, google_rpc_status_pb.Status, 1));
+};
+
+
+/** @param {?proto.google.rpc.Status|undefined} value */
+proto.aconcagua.proto.MetadataList.prototype.setMessagestatus = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+proto.aconcagua.proto.MetadataList.prototype.clearMessagestatus = function() {
+  this.setMessagestatus(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.aconcagua.proto.MetadataList.prototype.hasMessagestatus = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional SourceSeriesKey key = 2;
  * @return {?proto.aconcagua.proto.SourceSeriesKey}
  */
 proto.aconcagua.proto.MetadataList.prototype.getKey = function() {
   return /** @type{?proto.aconcagua.proto.SourceSeriesKey} */ (
-    jspb.Message.getWrapperField(this, proto.aconcagua.proto.SourceSeriesKey, 1));
+    jspb.Message.getWrapperField(this, proto.aconcagua.proto.SourceSeriesKey, 2));
 };
 
 
 /** @param {?proto.aconcagua.proto.SourceSeriesKey|undefined} value */
 proto.aconcagua.proto.MetadataList.prototype.setKey = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
+  jspb.Message.setWrapperField(this, 2, value);
 };
 
 
@@ -1681,22 +1726,22 @@ proto.aconcagua.proto.MetadataList.prototype.clearKey = function() {
  * @return {!boolean}
  */
 proto.aconcagua.proto.MetadataList.prototype.hasKey = function() {
-  return jspb.Message.getField(this, 1) != null;
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
 /**
- * repeated string values = 2;
+ * repeated string values = 3;
  * @return {!Array.<string>}
  */
 proto.aconcagua.proto.MetadataList.prototype.getValuesList = function() {
-  return /** @type {!Array.<string>} */ (jspb.Message.getRepeatedField(this, 2));
+  return /** @type {!Array.<string>} */ (jspb.Message.getRepeatedField(this, 3));
 };
 
 
 /** @param {!Array.<string>} value */
 proto.aconcagua.proto.MetadataList.prototype.setValuesList = function(value) {
-  jspb.Message.setField(this, 2, value || []);
+  jspb.Message.setField(this, 3, value || []);
 };
 
 
@@ -1705,7 +1750,7 @@ proto.aconcagua.proto.MetadataList.prototype.setValuesList = function(value) {
  * @param {number=} opt_index
  */
 proto.aconcagua.proto.MetadataList.prototype.addValues = function(value, opt_index) {
-  jspb.Message.addToRepeatedField(this, 2, value, opt_index);
+  jspb.Message.addToRepeatedField(this, 3, value, opt_index);
 };
 
 
@@ -1761,6 +1806,7 @@ proto.aconcagua.proto.ObservationsList.prototype.toObject = function(opt_include
  */
 proto.aconcagua.proto.ObservationsList.toObject = function(includeInstance, msg) {
   var f, obj = {
+    messagestatus: (f = msg.getMessagestatus()) && google_rpc_status_pb.Status.toObject(includeInstance, f),
     key: (f = msg.getKey()) && proto.aconcagua.proto.SourceSeriesKey.toObject(includeInstance, f),
     valuesMap: (f = msg.getValuesMap()) ? f.toObject(includeInstance, undefined) : []
   };
@@ -1800,11 +1846,16 @@ proto.aconcagua.proto.ObservationsList.deserializeBinaryFromReader = function(ms
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
+      var value = new google_rpc_status_pb.Status;
+      reader.readMessage(value,google_rpc_status_pb.Status.deserializeBinaryFromReader);
+      msg.setMessagestatus(value);
+      break;
+    case 2:
       var value = new proto.aconcagua.proto.SourceSeriesKey;
       reader.readMessage(value,proto.aconcagua.proto.SourceSeriesKey.deserializeBinaryFromReader);
       msg.setKey(value);
       break;
-    case 2:
+    case 3:
       var value = msg.getValuesMap();
       reader.readMessage(value, function(message, reader) {
         jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readDouble);
@@ -1839,34 +1890,72 @@ proto.aconcagua.proto.ObservationsList.prototype.serializeBinary = function() {
  */
 proto.aconcagua.proto.ObservationsList.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getKey();
+  f = message.getMessagestatus();
   if (f != null) {
     writer.writeMessage(
       1,
+      f,
+      google_rpc_status_pb.Status.serializeBinaryToWriter
+    );
+  }
+  f = message.getKey();
+  if (f != null) {
+    writer.writeMessage(
+      2,
       f,
       proto.aconcagua.proto.SourceSeriesKey.serializeBinaryToWriter
     );
   }
   f = message.getValuesMap(true);
   if (f && f.getLength() > 0) {
-    f.serializeBinary(2, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeDouble);
+    f.serializeBinary(3, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeDouble);
   }
 };
 
 
 /**
- * optional SourceSeriesKey key = 1;
+ * optional google.rpc.Status messagestatus = 1;
+ * @return {?proto.google.rpc.Status}
+ */
+proto.aconcagua.proto.ObservationsList.prototype.getMessagestatus = function() {
+  return /** @type{?proto.google.rpc.Status} */ (
+    jspb.Message.getWrapperField(this, google_rpc_status_pb.Status, 1));
+};
+
+
+/** @param {?proto.google.rpc.Status|undefined} value */
+proto.aconcagua.proto.ObservationsList.prototype.setMessagestatus = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+proto.aconcagua.proto.ObservationsList.prototype.clearMessagestatus = function() {
+  this.setMessagestatus(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.aconcagua.proto.ObservationsList.prototype.hasMessagestatus = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional SourceSeriesKey key = 2;
  * @return {?proto.aconcagua.proto.SourceSeriesKey}
  */
 proto.aconcagua.proto.ObservationsList.prototype.getKey = function() {
   return /** @type{?proto.aconcagua.proto.SourceSeriesKey} */ (
-    jspb.Message.getWrapperField(this, proto.aconcagua.proto.SourceSeriesKey, 1));
+    jspb.Message.getWrapperField(this, proto.aconcagua.proto.SourceSeriesKey, 2));
 };
 
 
 /** @param {?proto.aconcagua.proto.SourceSeriesKey|undefined} value */
 proto.aconcagua.proto.ObservationsList.prototype.setKey = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
+  jspb.Message.setWrapperField(this, 2, value);
 };
 
 
@@ -1880,19 +1969,19 @@ proto.aconcagua.proto.ObservationsList.prototype.clearKey = function() {
  * @return {!boolean}
  */
 proto.aconcagua.proto.ObservationsList.prototype.hasKey = function() {
-  return jspb.Message.getField(this, 1) != null;
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
 /**
- * map<string, double> values = 2;
+ * map<string, double> values = 3;
  * @param {boolean=} opt_noLazyCreate Do not create the map if
  * empty, instead returning `undefined`
  * @return {!jspb.Map<string,number>}
  */
 proto.aconcagua.proto.ObservationsList.prototype.getValuesMap = function(opt_noLazyCreate) {
   return /** @type {!jspb.Map<string,number>} */ (
-      jspb.Message.getMapField(this, 2, opt_noLazyCreate,
+      jspb.Message.getMapField(this, 3, opt_noLazyCreate,
       null));
 };
 

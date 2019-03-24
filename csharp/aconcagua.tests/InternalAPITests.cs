@@ -174,7 +174,7 @@ namespace aconcagua.tests
         }
 
         [TestMethod]
-        public void CanHandleTimeseriesLevelErrors()
+        public void CanHandleTimeseriesLevelErrors00()
         {
             var goRequest = ClientHandler.GetObservations.CreateRequest(
                 "dmx:.\\..\\..\\..\\..\\data\\tcd.dmx",
@@ -186,5 +186,20 @@ namespace aconcagua.tests
             Assert.IsNotNull(goResponse);
             Assert.IsTrue(goResponse.Seriesdata.Count > 0);
         }
+
+        [TestMethod]
+        public void CanHandleTimeseriesLevelErrors01()
+        {
+            var goRequest = ClientHandler.GetObservations.CreateRequest(
+                "dmx:.\\..\\..\\..\\..\\data\\tcd.dmx",
+                new[] { "628NGD%" },
+                "MQA"
+            );
+            var goResponse = ServerHandler.CallGetObservations(goRequest);
+            ClientHandler.GetObservations.ShowResponse(goResponse);
+            Assert.IsNotNull(goResponse);
+            Assert.IsTrue(goResponse.Seriesdata.Count > 0);
+        }
+
     }
 }

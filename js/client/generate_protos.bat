@@ -37,5 +37,17 @@ set GOOGLEAPIS_DIR=..\..\googleapis
 	--proto_path=%GOOGLEAPIS_DIR%;. ^
 	--grpc-web_out=import_style=commonjs,mode=grpcwebtext:.
 
+%TOOLS_PATH%\protoc.exe ^
+	%GOOGLEAPIS_DIR%\google\rpc\status.proto  ^
+	--js_out=import_style=commonjs:. ^
+	--proto_path=%GOOGLEAPIS_DIR%;. ^
+	--grpc-web_out=import_style=commonjs,mode=grpcwebtext:.
+
+%TOOLS_PATH%\protoc.exe ^
+	%GOOGLEAPIS_DIR%\google\rpc\code.proto  ^
+	--js_out=import_style=commonjs:. ^
+	--proto_path=%GOOGLEAPIS_DIR%;. ^
+	--grpc-web_out=import_style=commonjs,mode=grpcwebtext:.
+
 
 endlocal

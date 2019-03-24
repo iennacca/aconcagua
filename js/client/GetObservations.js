@@ -35,7 +35,6 @@ function GetObservations() {
     this.RunQuery = function (request) {
         return new Promise(function (resolve, reject) {
             try {
-                console.log(request);
                 client.getObservations(request, {}, function (err, response) {
                     if (err)
                         reject(err);
@@ -48,29 +47,34 @@ function GetObservations() {
             }
         });
     };
+
     this.ShowResponse = function (response) {
         return new Promise(function (resolve, reject) {
             try {
                 // add headers
                 let firstRow = ws.rows(0);
-                let headers = ['source', 'series'].
-                    concat(Array.from(response.getSeriesdataList()[0].getValuesMap().keys()));
+                let headers = ['source', 'series', 'status'];
                 
-                console.log(headers);
-
+                console.log('Hello');
                 headers.forEach((header, colIndex) => {
                     firstRow.setCellValue(colIndex, header);
                 });
 
-                // get observation headers
-                // add data
                 var r = response.getSeriesdataList();
                 r.forEach((rowData, rowIndex) => {
                     let wsRow = ws.rows(rowIndex + 1);
+
+                    var message = rowData.getMessagestatus().getMessage();
+                    
+                    var entries = [...rowData.getValuesMap().entries()].
+                        map(kv => kv[0] + ": " + kv[1]);
+
                     let md = [
                         rowData.getKey().getSourcename(),
-                        rowData.getKey().getSeriesname()
-                    ].concat(Array.from(rowData.getValuesMap().values()));
+                        rowData.getKey().getSeriesname(),
+                        rowData.getMessagestatus().getMessage()
+                    ].concat(entries);
+
                     md.forEach((cellData, cellIndex) => {
                         wsRow.setCellValue(cellIndex, cellData);
                     });

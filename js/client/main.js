@@ -23,13 +23,12 @@ $('#getversion').on("click", function () {
         var query = new GetVersion();
 
         query.Run().
-            then((response) => {
-                $('#getversion_status').text('Ok');
-            }).catch((err) => {
-                $('#getversion_status').text(err.message);
-            });
-    }
-    catch(err) {
+        then((response) => {
+            $('#getversion_status').text('Ok');
+        }).catch((err) => {
+            $('#getversion_status').text(err.message);
+        });
+    } catch(err) {
         console.log(err.message);
         $('#getversion_status').text(err.message);
     }
@@ -47,8 +46,7 @@ $('#getserieskeys').on("click", function () {
         }).catch((err) => {
             $('#getserieskeys_status').text(err.message);
         });
-    }
-    catch(err) {
+    } catch(err) {
         console.log(err.message);
         $('#getserieskeys_status').text(err.message);
     }
@@ -68,8 +66,7 @@ $('#getdata').on("click", function () {
         }).catch((err) => {
             $('#getdata_status').text(err.message);
         });
-    }
-    catch(err) {
+    } catch(err) {
         console.log(err.message);
         $('#getdata_status').text(err.message);
     }
@@ -97,8 +94,7 @@ $('#getsheetdata').on("click", function () {
             console.log(err.message);
             $('#getsheetdata_status').text(err.message);    
         });
-    }
-    catch(err) {
+    } catch(err) {
         console.log(err.message);
         $('#getsheetdata_status').text(err.message);
     }
@@ -130,7 +126,6 @@ $('#getsheetvalues').on("click", function () {
                 response.getSeriesdataList().map(k => k.getKey().getSeriesname()),
                 $('#getsheetdata_frequency').val()
             ).then((response) => {
-                console.log(response);
                 $('#getsheetdata_status').text('Ok');
             }).catch((err) => {
                 $('#getsheetdata_status').text(err.message);
@@ -139,8 +134,7 @@ $('#getsheetvalues').on("click", function () {
             console.log(err.message);
             $('#getsheetdata_status').text(err.message);    
         });
-    }
-    catch(err) {
+    } catch(err) {
         console.log(err.message);
         $('#getsheetdata_status').text(err.message);
     }
@@ -166,9 +160,7 @@ function onSelectionChanged(evt, ui) {
         });
     }
 
-    console.log(chartData);
     $('#chart').igDataChart("option", "dataSource", chartData);
-
     evt.stopPropagation();
     return true;
     //chartData = [{ observation: "OValue17", data: -0.217 }, ...];

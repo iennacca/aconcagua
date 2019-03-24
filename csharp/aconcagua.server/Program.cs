@@ -86,12 +86,12 @@ namespace aconcagua.server
 
         public static GetSeriesKeysResponse CallGetSeriesKeys(GetSeriesKeysRequest request)
         {
-            var reply = new GetSeriesKeysResponse();
+            var response = new GetSeriesKeysResponse();
             try
             {
                 var tssFactory = TimeseriesSourceFactory.Factory;
 
-                reply.Responsemetadata.Add(request.Requestmetadata);
+                response.Responsemetadata.Add(request.Requestmetadata);
 
                 foreach (var sourcename in request.Sourcenames)
                 {
@@ -99,7 +99,7 @@ namespace aconcagua.server
                     foreach (var kv in request.Filters)
                         d[kv.Key] = kv.Value;
 
-                    reply.Keys.AddRange(
+                    response.Keys.AddRange(
                         tssFactory[sourcename].GetSeriesKeys(d).Select(
                             t => new SourceSeriesKey() { Seriesname = t.Key, Sourcename = sourcename }));
                 }
@@ -109,19 +109,21 @@ namespace aconcagua.server
                 IOCContainer.Logger.Error(ex.Message);
                 throw;
             }
-            return reply;
+
+            IOCContainer.Logger.Info($"GetSeriesKeyResponse: {response.Keys.Count} series found");
+            return response;
         }
 
         public static GetMetadataResponse CallGetMetadata(GetMetadataRequest request)
         {
-            var reply = new GetMetadataResponse();
+            var response = new GetMetadataResponse();
             try
             {
                 var tssFactory = TimeseriesSourceFactory.Factory;
 
                 //TODO [jc]: what do we do with the requestmetadata?
-                reply.Responsemetadata.Add(request.Requestmetadata);
-                reply.Metadataheaders.Add(request.Metadataheaders);
+                response.Responsemetadata.Add(request.Requestmetadata);
+                response.Metadataheaders.Add(request.Metadataheaders);
 
                 foreach (var ssKey in request.Keys)
                 {
@@ -140,7 +142,7 @@ namespace aconcagua.server
                             }
                         };
                         m.Values.AddRange(ts.Metadata.Values);
-                        reply.Seriesdata.Add(m);
+                        response.Seriesdata.Add(m);
                     }
                 }
             }
@@ -149,16 +151,17 @@ namespace aconcagua.server
                 IOCContainer.Logger.Error(ex.Message);
                 throw;
             }
-            return reply;
+            IOCContainer.Logger.Info($"GetMetadataResponse: {response.Seriesdata.Count} series found");
+            return response;
         }
 
         public static GetObservationsResponse CallGetObservations(GetObservationsRequest request)
         {
-            var reply = new GetObservationsResponse();
+            var response = new GetObservationsResponse();
             var tssFactory = TimeseriesSourceFactory.Factory;
 
             //TODO [jc]: what do we do with the requestmetadata?
-            reply.Responsemetadata.Add(request.Requestmetadata);
+            response.Responsemetadata.Add(request.Requestmetadata);
 
             foreach (var ssKey in request.Keys)
             {
@@ -185,11 +188,12 @@ namespace aconcagua.server
                         Message = ts.Status.Message
                     };
 
-                    reply.Seriesdata.Add(o);
+                    response.Seriesdata.Add(o);
                 }
             }
-            reply.Frequencies = request.Frequencies;
-            return reply;
+            response.Frequencies = request.Frequencies;
+            IOCContainer.Logger.Info($"GetObservationsResponse: {response.Seriesdata.Count} series found");
+            return response;
         }
     }
 }
