@@ -28,7 +28,7 @@ namespace aconcagua.server
 {
     internal class Program
     {
-        private const int Port = 50451;
+        private const int Port = 50500;
 
         public static void Main(string[] args)
         {
