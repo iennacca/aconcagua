@@ -9,8 +9,8 @@
     "grpc": "^1.15.0",
     "grpc-web": "^1.0.0",
     "lodash": "^4.17.15",
-    "webpack": "^4.16.5",
-    "webpack-cli": "^3.1.0"
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   },
   "dependencies": {
     "@infragistics/ignite-ui-full": "^18.2.83",
